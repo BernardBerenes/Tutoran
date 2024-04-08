@@ -15,18 +15,18 @@
             <img src="{{ asset('/Assets/204 1.png') }}" alt="" class="w-full">
         </div>
         <div class="w-1/2 bg-indigo-400 flex justify-center items-center">
-            <form method="POST" action="" class="h-5/6 w-4/5 bg-white rounded-2xl p-12">
+            <form method="POST" action="{{ route('Login') }}" class="h-4/5 w-4/5 bg-white rounded-2xl p-12">
                 @csrf
                 <div class="text-4xl h-12 flex justify-around mb-10">
                     <a href="{{ route('LoginPage') }}" class="underline underline-offset-8">Masuk</a>
                     <a href="{{ route('RegisterPage') }}">Daftar</a>
                 </div>
                 <div>
-                    <a href="#" class="w-full flex border border-black flex justify-center items-center text-xl font-medium rounded-3xl py-3 gap-5 mb-5">
+                    <a href="#" class="w-full flex border border-black flex justify-center items-center text-xl font-medium rounded-3xl py-2 gap-5 mb-5">
                         <img src="{{ asset('/Assets/Logo google.png') }}" alt="">
                         <p>Lanjutkan dengan Google</p>
                     </a>
-                    <a href="#" class="w-full flex border border-black flex justify-center items-center text-xl font-medium rounded-3xl py-3 gap-5 mb-10">
+                    <a href="#" class="w-full flex border border-black flex justify-center items-center text-xl font-medium rounded-3xl py-2 gap-5 mb-10">
                         <img src="{{ asset('/Assets/Logo fb.png') }}" alt="">
                         <p>Lanjutkan dengan Facebook</p>
                     </a>
@@ -38,11 +38,14 @@
                 </div>
                 <div class="flex flex-col text-2xl mb-4">
                     <label class="mb-3 font-medium">Email</label>
-                    <input type="text" class="h-14 rounded-xl text-xl">
+                    <input type="text" class="h-12 rounded-xl text-xl" name="email">
+                    @error('Email')
+                        <p>{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="flex flex-col text-2xl mb-4">
                     <label class="mb-3 font-medium">Kata Sandi</label>
-                    <input type="password" class="h-14 rounded-xl text-xl">
+                    <input type="password" class="h-12 rounded-xl text-xl" name="password">
                 </div>
                 <div class="flex flex-col font-medium">
                     <a href="" class="underline underline-offset-4 text-black mb-2">Lupa kata sandi?</a>

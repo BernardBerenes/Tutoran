@@ -38,8 +38,26 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'students',
         ],
+        
+        'student' => [
+            'driver' => 'session',
+            'provider' => 'student',
+            'credentials' => [
+                'email' => 'Email',
+                'password' => 'Password'
+            ]
+        ],
+
+        'tutor' => [
+            'driver' => 'session',
+            'provider' => 'tutor',
+            'credentials' => [
+                'email' => 'Email',
+                'password' => 'Password'
+            ]
+        ]
     ],
 
     /*
@@ -65,10 +83,15 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'student' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\Student::class
+        ],
+
+        'tutor' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\Tutor::class
+        ]
     ],
 
     /*

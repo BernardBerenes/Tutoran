@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthenthicationController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
-use PHPUnit\Framework\Attributes\Group;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +17,10 @@ use PHPUnit\Framework\Attributes\Group;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('Home');
 
 Route::get('/login', [PageController::class, 'LoginPage'])->name('LoginPage');
 Route::get('/register', [PageController::class, 'RegisterPage'])->name('RegisterPage');
+
+Route::post('/register', [AuthenthicationController::class, 'Register'])->name('Register');
+Route::post('/login', [AuthenthicationController::class, 'Login'])->name('Login');

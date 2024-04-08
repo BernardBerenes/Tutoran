@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use PhpParser\Node\Stmt\Return_;
 
 class AuthenthicationController extends Controller
 {
@@ -14,6 +14,11 @@ class AuthenthicationController extends Controller
             'password' => 'required'
         ]);
 
+        Student::create([
+            'Name' => $request->name,
+            'Email' => $request->email,
+            'Password' => $request->password
+        ]);
         $request->session()->regenerate();
         $request->session()->put(['email' => $request->email]);
 
@@ -21,14 +26,15 @@ class AuthenthicationController extends Controller
     }
 
     public function Login(Request $request){
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required'
-        ]);
-        
-        if(Auth::attempt($request)){
+        $credentials = $request->only('email', 'password');
+
+        if(Auth::guard('student')->attempt($credentials)){
             $request->session()->regenerate();
-            $request->session()->put(['email' => $request->email]);
+            $request->session()->put(['Email' => $request->email, 'Roles' => 'Student']);
+            return redirect(route('Home'));
+        } else if(Auth::guard('tutor')->attempt($credentials)){
+            $request->session()->regenerate();
+            $request->session()->put(['Email' => $request->email, 'Roles' => 'Tutor']);
             return redirect(route('Home'));
         }
 

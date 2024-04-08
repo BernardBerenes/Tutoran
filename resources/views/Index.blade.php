@@ -10,27 +10,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-[#7981A2] overflow-x-hidden">
-    <nav class="flex items-center h-28 w-full bg-slate-200">
-        <a href=""><img src="/img/Logo_Tutoran.png" alt="" class="ml-20"></a>
-        <div class="flex justify-between ml-16 text-2xl font-medium w-3/4">
-            <div class="flex gap-x-12">
-                <a href="">Beranda</a>
-                <a href="">Mata Pelajaran</a>
-                <a href="">Tentang Kami</a>
-            </div>
-            <div>
-                <a href="" class="px-5 py-3 bg-slate-600 font-bold rounded-full">Masuk/Daftar</a>
-                <a href="" class="px-5 py-3 ml-5 bg-slate-600 font-bold rounded-full text-white">Langganan</a>
-            </div>
-        </div>
-    </nav>
+    @include('Component.Navbar')
     <div class="main-content bg-[#7981A2]">
-        <div class="bg-[url('img/HomeBG.png')] bg-cover min-h-screen flex flex-col bg-no-repeat opacity-60">
+        <div class="bg-[{{url('img/HomeBG.png')}}] bg-cover min-h-screen flex flex-col bg-no-repeat opacity-60">
             <form class="w-96 mx-auto absolute mr-20 mt-20 right-px">   
                 <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                 <div class="relative">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                        <img src="/img/Search.png">
+                        <img src="{{ asset('Assets/Search.png') }}">
                     </div>
                     <input type="search" id="default-search" class="block ml-1 w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 bg-gray-300 focus:ring-blue-500 focus:border-blue-500 rounded-full" placeholder="Search" required />
                     <!-- <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button> -->
@@ -46,9 +33,9 @@
         </div>
         <div class="">
             <div class="flex flex-row justify-center">
-                <img src="img/SD.png">
-                <img src="img/Smp.png">
-                <img src="img/Sma.png">
+                <img src="{{ asset('Assets/img/SD.png') }}">
+                <img src="{{ asset('Assets/img/SMP.png') }}">
+                <img src="{{ asset('Assets/img/SMA.png') }}">
             </div>
             <div class="flex flex-row space-x-0 place-content-evenly mt-[-80px]">
                 <div class="bg-[#65668B] shadow-outer shadow-2xl w-90 h-65">
@@ -85,11 +72,11 @@
                 <div><p class="text-[32px] font-medium mb-4">Januari 2024 - Juni 2024</p></div>
                 <div class="flex flex-row justify-between">
                     <div class="max-w-sm bg-white rounded-lg shadow">
-                        <img class="rounded-t-lg" src="/img/Xi Lhit.png"/>
+                        <img class="rounded-t-lg" src="{{ asset('Assets/img/Xi Lhit.png') }}"/>
                         <div class="p-5 bg-[#D1D2E5]">
                             <p class="mb-2 text-4xl font-bold tracking-tight text-gray-900">Xi Lhit, S.Pd., M.Si.</p>
                             <div class="flex flex-row">
-                                <img src="/img/Rating Star.png">
+                                <img src="{{ asset('Assets/img/Rating Star.png') }}">
                                 <p class="font-bold text-xl">5.0/5.0 (62)</p>
                             </div>
                             <p class="mt-3 font-bold text-black text-lg">Alumni Universitas Indonesia, Stanford University.</p>
@@ -100,11 +87,11 @@
                         </div>
                     </div>
                     <div class="max-w-sm bg-white rounded-lg shadow">
-                        <img class="rounded-t-lg" src="/img/Xi Lhit.png"/>
+                        <img class="rounded-t-lg" src="{{ asset('Assets/img/Xi Lhit.png') }}"/>
                         <div class="p-5 bg-[#D1D2E5]">
                             <p class="mb-2 text-4xl font-bold tracking-tight text-gray-900">Xi Lhit, S.Pd., M.Si.</p>
                             <div class="flex flex-row">
-                                <img src="/img/Rating Star.png">
+                                <img src="{{ asset('Assets/img/Rating Star.png') }}">
                                 <p class="font-bold text-xl">5.0/5.0 (62)</p>
                             </div>
                             <p class="mt-3 font-bold text-black text-lg">Alumni Universitas Indonesia, Stanford University.</p>
@@ -115,11 +102,11 @@
                         </div>
                     </div>
                     <div class="max-w-sm bg-white rounded-lg shadow">
-                        <img class="rounded-t-lg" src="/img/Xi Lhit.png"/>
+                        <img class="rounded-t-lg" src="{{ asset('Assets/img/Xi Lhit.png') }}"/>
                         <div class="p-5 bg-[#D1D2E5]">
                             <p class="mb-2 text-4xl font-bold tracking-tight text-gray-900">Xi Lhit, S.Pd., M.Si.</p>
                             <div class="flex flex-row">
-                                <img src="/img/Rating Star.png">
+                                <img src="{{ asset('Assets/img/Rating Star.png') }}">
                                 <p class="font-bold text-xl">5.0/5.0 (62)</p>
                             </div>
                             <p class="mt-3 font-bold text-black text-lg">Alumni Universitas Indonesia, Stanford University.</p>
@@ -131,7 +118,7 @@
                     </div>
                 </div>
                 <div class="flex flex-row items-center bg-gray-800 my-6 rounded-lg w-1/2">
-                    <img src="/img/Trophy 1.png" class="p-6">
+                    <img src="{{ asset('Assets/img/Trophy 1.png') }}" class="p-6">
                     <div class="m-4">
                         <p class="font-bold text-6xl text-white">Leaderboard</p>
                         <a href="#" class="mt-5 inline-flex w-80 justify-center items-center px-3 py-2 text-xl font-bold text-center text-black bg-white rounded-lg hover:bg-gray-200">Cek Peringkat</a>
@@ -142,7 +129,7 @@
         <div class="bg-[#7981A2]">
             <div class="m-20 flex flex-col">
                 <div class="flex flex-row items-center bg-gray-200 rounded-lg w-full shadow md:flex-row my-10">
-                    <img class="object-cover rounded-t-lg h-[442px]" src="img/Jessica Profile.png" alt="">
+                    <img class="object-cover rounded-t-lg h-[442px]" src="{{ asset('Assets/img/Jessica profile.png') }}" alt="">
                     <div>
                         <div class="flex flex-col justify-between p-4">
                             <p class="text-[60px] font-semibold text-black">Jessica Wang</p>
@@ -152,7 +139,7 @@
                     </div>
                 </div>
                 <div class="flex flex-row items-center bg-gray-200 rounded-lg w-full shadow md:flex-row mb-20">
-                    <img class="object-cover rounded-t-lg h-[442px]" src="img/Anissa Profile.png" alt="">
+                    <img class="object-cover rounded-t-lg h-[442px]" src="{{ asset('Assets/img/Anissa Profile.png') }}" alt="">
                     <div>
                         <div class="flex flex-col justify-between p-4">
                             <p class="text-[60px] font-semibold text-black">Anissa Rahayu</p>
@@ -177,7 +164,7 @@
             <div class="md:flex md:justify-between">
               <div class="mb-6 md:mb-0">
                   <a href="" class="flex items-center">
-                      <img src="img/Logo_Tutoran.png" class="h-8 me-3"/>
+                      <img src="{{ asset('Assets/img/Logo_Tutoran.png') }}" class="h-8 me-3"/>
                   </a>
                   <div class="text-gray-500 font-medium flex flex-col">
                     <p class="mt-8">Informasi Kontak</p>
@@ -233,16 +220,16 @@
                       <h2 class="mb-6 text-sm font-semibold uppercase text-white underline underline-offset-4">Media Sosial</h2>
                       <div class="text-gray-500 font-medium flex flex-row">
                             <a href="#" class="flex items-center rtl:space-x-reverse">
-                                <img src="img/Facebook.png" class="h-8" alt="Tutoran Logo" />
+                                <img src="{{ asset('Assets/img/Facebook.png') }}" class="h-8" alt="Tutoran Logo" />
                             </a>
                             <a href="#" class="flex items-center  rtl:space-x-reverse">
-                                <img src="img/Twitter Circled.png" class="h-8" alt="Tutoran Logo" />
+                                <img src="{{ asset('Assets/img/Twitter Circled.png') }}" class="h-8" alt="Tutoran Logo" />
                             </a>
                             <a href="#" class="flex items-center  rtl:space-x-reverse">
-                                <img src="img/Instagram Circle.png" class="h-8" alt="Tutoran Logo" />
+                                <img src="{{ asset('Assets/img/Instagram Circle.png') }}" class="h-8" alt="Tutoran Logo" />
                             </a>  
                             <a href="#" class="flex items-center  rtl:space-x-reverse">
-                                <img src="img/LinkedIn.png" class="h-8" alt="Tutoran Logo" />
+                                <img src="{{ asset('Assets/img/LinkedIn.png') }}" class="h-8" alt="Tutoran Logo" />
                             </a>        
                         </div>
                   </div>

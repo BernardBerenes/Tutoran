@@ -15,12 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('Home');
+Route::get('/', [PageController::class, 'IndexPage'])->name('IndexPage');
+
+Route::get('/cart', [PageController::class, 'CartPage'])->name('CartPage');
 
 Route::get('/login', [PageController::class, 'LoginPage'])->name('LoginPage');
 Route::get('/register', [PageController::class, 'RegisterPage'])->name('RegisterPage');
 
 Route::post('/register', [AuthenthicationController::class, 'Register'])->name('Register');
 Route::post('/login', [AuthenthicationController::class, 'Login'])->name('Login');
+
+Route::post('/logout', [AuthenthicationController::class, 'Logout'])->name('Logout');

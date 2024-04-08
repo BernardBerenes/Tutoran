@@ -3,7 +3,7 @@
         <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0">
               <a href="" class="flex items-center">
-                  <img src="img/Logo_Tutoran.png" class="h-8 me-3"/>
+                  <img src="" class="h-8 me-3"/>
               </a>
               <div class="text-gray-500 font-medium flex flex-col">
                 <p class="mt-8">Informasi Kontak</p>

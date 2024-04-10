@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="{{ asset('Style/app.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
-    <title>Tutoran</title>
+    <title>Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-[#7981A2] overflow-x-hidden">
     @include('Component.Navbar')
     <div class="main-content bg-[#7981A2]">
-        <div class="bg-[{{url('img/HomeBG.png')}}] bg-cover min-h-screen flex flex-col bg-no-repeat opacity-60">
+        <div class="bg-[url('../images/image_name.jpg')] bg-cover min-h-screen flex flex-col bg-no-repeat opacity-60">
             <form class="w-96 mx-auto absolute mr-20 mt-20 right-px">   
                 <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                 <div class="relative">
@@ -151,7 +151,7 @@
                 <div class="w-full">
                     <div class="p-6 bg-gradient-to-r from-[#5962BE] to-[#7289C5] rounded-lg shadow flex flex-col items-center">
                         <p class="mb-8 text-6xl font-bold tracking-tight text-white">Mulai Perjalananmu Bersama Tutoran</p>
-                        <a href="#" class="items-center px-20 py-4 text-4xl font-medium text-center text-white bg-[#27272E] rounded-full hover:bg-[#3E3E4B] ">
+                        <a href="{{ route('RegisterPage') }}" class="items-center px-20 py-4 text-4xl font-medium text-center text-white bg-[#27272E] rounded-full hover:bg-[#3E3E4B] ">
                         Daftar
                         </a>
                     </div>
@@ -159,89 +159,6 @@
             </div>
         </div>
     </div>
-    <footer class="bg-[#27272E]">
-        <div class="mx-auto w-full max-w-screen-xl p-4 pt-20 pb-6 lg:pb-8">
-            <div class="md:flex md:justify-between">
-              <div class="mb-6 md:mb-0">
-                  <a href="" class="flex items-center">
-                      <img src="{{ asset('Assets/img/Logo_Tutoran.png') }}" class="h-8 me-3"/>
-                  </a>
-                  <div class="text-gray-500 font-medium flex flex-col">
-                    <p class="mt-8">Informasi Kontak</p>
-                    <div class="mt-4 flex flex-row">
-                        <p class="text-white mr-1">Email:</p>
-                        <p>tutoran@gmail.com</p>
-                    </div>
-                    <div class="flex flex-row">
-                        <p class="text-white mr-1">Jam:</p>  
-                        <p>09:00 - 17:00, Senin - Sabtu</p>
-                    </div>            
-                  </div>
-              </div>
-              <div class="grid gap-8 sm:gap-4 sm:grid-cols-3">
-                <div>
-                    <h2 class="mb-6 text-sm font-semibold uppercase text-white underline underline-offset-4">Menu Utama</h2>
-                    <ul class="text-gray-500 font-medium">
-                        <li>
-                            <a href="HomePage.html" class="hover:underline">Beranda</a>
-                        </li>
-                        <li>
-                            <a href="" class="hover:underline">Tentang Kami</a>
-                        </li>
-                        <li>
-                            <a href="" class="hover:underline">Pelayanan Kami</a>
-                        </li>
-                        <li>
-                            <a href="" class="hover:underline">Kebijakan Privasi</a>
-                        </li>
-                        <li>
-                            <a href="" class="hover:underline">Syarat dan Ketentuan</a>
-                        </li>
-                        <li>
-                            <a href="" class="hover:underline">Pertanyaan yang Sering Ditanyakan</a>
-                        </li>
-                    </ul>
-                </div>
-                  <div class="ml-10"> <!--flex items-center flex-col-->
-                      <h2 class="mb-6 text-sm font-semibold uppercase text-white underline underline-offset-4 ">Tautan</h2>
-                      <ul class="text-gray-500  font-medium">
-                          <li>
-                              <a href="" class="hover:underline">SD</a>
-                          </li>
-                          <li>
-                              <a href="" class="hover:underline">SMP</a>
-                          </li>
-                          <li>
-                              <a href="" class="hover:underline">SMA</a>
-                          </li>
-                      </ul>
-                  </div>
-                  <div>
-                      <h2 class="mb-6 text-sm font-semibold uppercase text-white underline underline-offset-4">Media Sosial</h2>
-                      <div class="text-gray-500 font-medium flex flex-row">
-                            <a href="#" class="flex items-center rtl:space-x-reverse">
-                                <img src="{{ asset('Assets/img/Facebook.png') }}" class="h-8" alt="Tutoran Logo" />
-                            </a>
-                            <a href="#" class="flex items-center  rtl:space-x-reverse">
-                                <img src="{{ asset('Assets/img/Twitter Circled.png') }}" class="h-8" alt="Tutoran Logo" />
-                            </a>
-                            <a href="#" class="flex items-center  rtl:space-x-reverse">
-                                <img src="{{ asset('Assets/img/Instagram Circle.png') }}" class="h-8" alt="Tutoran Logo" />
-                            </a>  
-                            <a href="#" class="flex items-center  rtl:space-x-reverse">
-                                <img src="{{ asset('Assets/img/LinkedIn.png') }}" class="h-8" alt="Tutoran Logo" />
-                            </a>        
-                        </div>
-                  </div>
-              </div>
-          </div>
-          <div class="sm:flex sm:items-center sm:justify-center mt-12">
-              <span class="text-sm text-gray-500 sm:text-center text-gray-400">© 2024 <a href="" class="hover:underline">tutoran</a>. All Rights Reserved.
-              </span>
-              </div>
-          </div>
-        </div>
-    </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    @include('Component.Footer')
 </body>
 </html>

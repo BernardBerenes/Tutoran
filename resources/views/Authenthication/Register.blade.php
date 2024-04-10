@@ -11,7 +11,7 @@
 <body>
     <div class="container bg-indigo-200 min-h-screen max-w-full flex">
         <div class="w-1/2 flex flex-col pt-28 justify-center items-center">
-            <a href=""><img src="{{ asset('/Assets/Logo_Tutoran.png') }}" alt=""></a>
+            <a href="{{ route('IndexPage') }}"><img src="{{ asset('/Assets/img/Logo_Tutoran.png') }}" alt=""></a>
             <img src="{{ asset('/Assets/204 1.png') }}" alt="" class="w-full">
         </div>
         <div class="w-1/2 bg-indigo-400 flex justify-center items-center">

@@ -11,7 +11,7 @@
 <body>
     <div class="container bg-indigo-200 min-h-screen max-w-full flex">
         <div class="w-1/2 flex flex-col pt-28 justify-center items-center">
-            <a href=""><img src="{{ asset('/Assets/Logo_Tutoran.png') }}" alt=""></a>
+            <a href="{{ route('IndexPage') }}"><img src="{{ asset('/Assets/img/Logo_Tutoran.png') }}" alt=""></a>
             <img src="{{ asset('/Assets/204 1.png') }}" alt="" class="w-full">
         </div>
         <div class="w-1/2 bg-indigo-400 flex justify-center items-center">
@@ -39,13 +39,13 @@
                 <div class="flex flex-col text-2xl mb-4">
                     <label class="mb-3 font-medium">Email</label>
                     <input type="text" class="h-12 rounded-xl text-xl" name="email">
-                    @error('Email')
-                        <p>{{ $message }}</p>
-                    @enderror
                 </div>
                 <div class="flex flex-col text-2xl mb-4">
                     <label class="mb-3 font-medium">Kata Sandi</label>
                     <input type="password" class="h-12 rounded-xl text-xl" name="password">
+                    @error('Password')
+                        <p class="text-red-500">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="flex flex-col font-medium">
                     <a href="" class="underline underline-offset-4 text-black mb-2">Lupa kata sandi?</a>

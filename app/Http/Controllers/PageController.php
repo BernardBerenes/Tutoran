@@ -7,13 +7,11 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     public function IndexPage(){
-        $email = session()->get('Email');
-
-        return view('Index')->with('email', $email);
+        return view('Index')->with('currentPage', 'Beranda');
     }
 
     public function CartPage(){
-        return view('Cart');
+        return view('Cart')->with('currentPage', '');
     }
 
     public function RegisterPage(){
@@ -22,5 +20,17 @@ class PageController extends Controller
 
     public function LoginPage(){
         return view('Authenthication.Login');
+    }
+
+    public function AboutUsPage(){
+        return view('AboutUs')->with('currentPage', 'About Us');
+    }
+
+    public function ProfilePage(){
+        return view('Profile')->with('currentPage', 'Profile');
+    }
+
+    public function ChangePasswordPage(){
+        return view('ChangePassword')->with('currentPage', 'ChangePassword');
     }
 }

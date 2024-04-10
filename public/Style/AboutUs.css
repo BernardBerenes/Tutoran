@@ -1,0 +1,53 @@
+*{
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: white;
+}
+
+#title1{
+    background-image: url("Teachers1.png");
+    height: 28vw;
+    opacity: 0.9;
+    padding: 20px;
+}
+
+#title1 p{
+    color:black;
+    margin-left: 5vw;
+    margin-right: 15vw;
+    font-size: 1.2vw;
+    font-weight: 500;
+    letter-spacing: -.01px;
+    line-height: 1.6vw;
+    text-align: left;
+    opacity: 1;
+}
+
+#title1 div h1{
+    color: white;
+    font-size: 4vw;
+    letter-spacing: 6px;
+    margin-left: 5vw;
+    text-align: left;
+    opacity: 1;
+}
+
+#title1 div h3{
+    color: white;
+    font-size: 8vw;
+    font-weight: 500;
+    letter-spacing: 6px;
+    margin-top: -2vw;
+    margin-left: 5vw;
+    margin-bottom: 1vw;
+    text-align: left;
+    opacity: 1;
+}

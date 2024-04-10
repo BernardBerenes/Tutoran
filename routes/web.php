@@ -26,3 +26,9 @@ Route::post('/register', [AuthenthicationController::class, 'Register'])->name('
 Route::post('/login', [AuthenthicationController::class, 'Login'])->name('Login');
 
 Route::post('/logout', [AuthenthicationController::class, 'Logout'])->name('Logout');
+
+Route::get('/about-us', [PageController::class, 'AboutUsPage'])->name('AboutUsPage');
+
+Route::get('/profile', [PageController::class, 'ProfilePage'])->name('ProfilePage');
+
+Route::get('/change-password', [PageController::class, 'ChangePasswordPage'])->name('ChangePasswordPage');

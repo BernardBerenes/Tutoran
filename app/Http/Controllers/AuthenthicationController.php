@@ -22,7 +22,11 @@ class AuthenthicationController extends Controller
         ]);
         Auth::guard('student')->attempt($credentials);
         $request->session()->regenerate();
-        $request->session()->put(['Email' => $request->email, 'Roles' => 'Student']);
+        $request->session()->put([
+            'Email' => $request->email,
+            'Name' => $request->name,
+            'Roles' => 'Student'
+        ]);
 
         return redirect(route('IndexPage'));
     }
@@ -32,16 +36,22 @@ class AuthenthicationController extends Controller
 
         if(Auth::guard('student')->attempt($credentials)){
             $request->session()->regenerate();
-            $request->session()->put(['Email' => $request->email, 'Roles' => 'Student']);
+            $request->session()->put([
+                'Email' => $request->email, 
+                'Roles' => 'Student'
+            ]);
             return redirect(route('IndexPage'));
         } else if(Auth::guard('tutor')->attempt($credentials)){
             $request->session()->regenerate();
-            $request->session()->put(['Email' => $request->email, 'Roles' => 'Tutor']);
+            $request->session()->put([
+                'Email' => $request->email, 
+                'Roles' => 'Tutor'
+            ]);
             return redirect(route('IndexPage'));
         }
 
         return back()->withErrors([
-            'Email' => 'Invalid Credentials'
+            'Password' => 'Invalid Credentials'
         ]);
     }
 

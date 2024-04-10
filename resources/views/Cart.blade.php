@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="{{ asset('Style/app.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
-    <title>Tutoran</title>
+    <title>Cart</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="font-[Inter]">
+<body class="">
     @include('Component.Navbar')
     <div class="grid grid-row-2">
         <div class="p-14 flex flex-col justify-between">
@@ -20,24 +20,28 @@
             </div>
             <hr class="h-px my-8 bg-gray-200 border-0 bg-gray-700">
             <div class="grid grid-cols-8">
-                <img src="img/Matematika Peminatan.png">
+                <img src="{{ asset('Assets/img/Matematika Peminatan.png') }}">
                 <div class="flex-row col-span-5 items-center">
                     <p class="text-[32px]">Integral Tak Tentu Fungsi Belajar</p>
                     <p class="text-xl font-light">Matematika Pemintatan</p>
                     <p class="text-base font-medium">Oleh Dicky Dharma Susanto</p>
                 </div>
                 <div class="flex flex-row col-span-2">
-                    <a href="">
-                        <svg class="w-[29px] h-[29px] stroke-current text-black hover:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
-                        </svg>   
-                    </a>
+                    <form method="POST" action="{{ route('IndexPage') }}">
+                        @method('DELETE')
+                        @csrf
+                        <button>
+                            <svg class="w-[29px] h-[29px] stroke-current text-black hover:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
+                            </svg>   
+                        </button>
+                    </form>
                     <p class="ml-2 font-medium text-2xl">Rp 159.000,00</p>
                 </div>
             </div>
             <hr class="h-px my-8 bg-gray-200 border-0 bg-gray-700">
             <div class="grid grid-cols-8">
-                <img src="img/Kimia.png">
+                <img src="{{ asset('Assets/img/Kimia.png') }}">
                 <div class="flex-row col-span-5 items-center">
                     <p class="text-[32px]">Tata Nama Senyawa dan Persamaan Reaksi</p>
                     <p class="text-xl font-light">Kimia</p>
@@ -82,6 +86,5 @@
         </div>
     </div>
     @include('Component.Footer')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 </html>

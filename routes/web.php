@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthenthicationController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,3 +33,6 @@ Route::get('/about-us', [PageController::class, 'AboutUsPage'])->name('AboutUsPa
 Route::get('/profile', [PageController::class, 'ProfilePage'])->name('ProfilePage');
 
 Route::get('/change-password', [PageController::class, 'ChangePasswordPage'])->name('ChangePasswordPage');
+Route::patch('/change-password', [ProfileController::class, 'ChangePassword'])->name('ChangePassword');
+
+Route::patch('/profile/update-profile', [ProfileController::class, 'UpdateProfile'])->name('UpdateProfile');

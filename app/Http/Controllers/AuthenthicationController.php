@@ -33,26 +33,25 @@ class AuthenthicationController extends Controller
 
     public function Login(Request $request){
         $credentials = $request->only('email', 'password');
-
         if(Auth::guard('student')->attempt($credentials)){
-            $request->session()->regenerate();
+            $user = Auth::guard('student')->user();
             $request->session()->put([
-                'Email' => $request->email, 
-                'Roles' => 'Student'
+                'Roles' => 'Student',
+                'User' => $user
             ]);
-            return redirect(route('IndexPage'));
         } else if(Auth::guard('tutor')->attempt($credentials)){
-            $request->session()->regenerate();
+            $user = Auth::guard('tutor')->user();
             $request->session()->put([
-                'Email' => $request->email, 
-                'Roles' => 'Tutor'
+                'Roles' => 'Tutor',
+                'User' => $user
             ]);
-            return redirect(route('IndexPage'));
+        } else{
+            return back()->withErrors([
+                'Password' => 'Invalid Credentials'
+            ]);
         }
-
-        return back()->withErrors([
-            'Password' => 'Invalid Credentials'
-        ]);
+        $request->session()->regenerate();
+        return redirect(route('IndexPage'));
     }
 
     public function Logout(Request $request){

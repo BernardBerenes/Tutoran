@@ -17,7 +17,7 @@ class Tutor extends Model implements Authenticatable
         'Email',
         'Password',
         'Gender',
-        'Age',
+        'DateOfBirth',
         'PhoneNumber',
         'Background',
         'Rating'

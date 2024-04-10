@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('Email');
             $table->string('Password');
             $table->char('Gender', 1)->nullable();
-            $table->integer('Age')->nullable();
+            $table->date('DateOfBirth')->nullable();
             $table->string('PhoneNumber', 15)->nullable();
             $table->timestamps();
         });

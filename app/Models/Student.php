@@ -17,7 +17,7 @@ class Student extends Model implements Authenticatable
         'Email',
         'Password',
         'Gender',
-        'Age',
+        'DateOfBirth',
         'PhoneNumber'
     ];
 

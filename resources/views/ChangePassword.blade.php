@@ -16,10 +16,15 @@
         <div class="w-full flex justify-center">
             <div class="w-1/2 h-2/5 mt-12 flex flex-col">
                 <h1 class="font-medium text-4xl mb-7">Ubah Kata Sandi</h1>
-                <form action="{{ route('IndexPage') }}" class="flex flex-col gap-y-5">
+                <form method="POST" action="{{ route('ChangePassword') }}" class="flex flex-col gap-y-5">
+                    @method('PATCH')
+                    @csrf
                     <div class="flex flex-col">
                         <label class="font-medium text-2xl">Kata Sandi Sekarang</label>
                         <input type="text" class="rounded-lg h-12 border-gray-400 shadow-lg" name="currentPassword" >
+                        @error('currentPassword')
+                            <p class="text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="flex flex-col">
                         <label class="font-medium text-2xl">Kata Sandi Baru</label>

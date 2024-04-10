@@ -27,7 +27,9 @@ class PageController extends Controller
     }
 
     public function ProfilePage(){
-        return view('Profile')->with('currentPage', 'Profile');
+        $user = session('User');
+
+        return view('Profile')->with('currentPage', 'Profile')->with('user', $user);
     }
 
     public function ChangePasswordPage(){

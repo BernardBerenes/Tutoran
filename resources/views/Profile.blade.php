@@ -16,26 +16,31 @@
         <div class="w-full flex justify-center">
             <div class="w-1/2 h-3/4 mt-12 flex flex-col">
                 <h1 class="font-medium text-4xl mb-7">Profil</h1>
-                <form action="{{ route('IndexPage') }}" class="flex flex-col gap-y-5">
+                <form method="POST" action="{{ route('UpdateProfile') }}" class="flex flex-col gap-y-5">
+                    @method('PATCH')
+                    @csrf
                     <div class="flex flex-col">
                         <label class="font-medium text-2xl">Nama</label>
-                        <input type="text" class="rounded-lg h-12 border-gray-400 shadow-lg" name="name" >
+                        <input type="text" class="rounded-lg h-12 border-gray-400 shadow-lg" name="name" value="{{$user->Name}}" >
                     </div>
                     <div class="flex flex-col">
                         <label class="font-medium text-2xl">Email</label>
-                        <input type="text" class="rounded-lg h-12 border-gray-400 shadow-lg" name="email" >
+                        <input type="text" class="rounded-lg h-12 border-gray-400 shadow-lg" name="email" value="{{$user->Email}}" >
                     </div>
                     <div class="flex flex-col">
                         <label class="font-medium text-2xl">Jenis Kelamin</label>
-                        <input type="text" class="rounded-lg h-12 border-gray-400 shadow-lg" name="gender" >
+                        <select class="rounded-lg h-12 border-gray-400 shadow-lg pl-3" name="gender">
+                            <option value="M" {{ $user->Gender == 'M' ? 'selected' : ''}}>Male</option>
+                            <option value="F"  {{ $user->Gender == 'F' ? 'selected' : '' }}>Female</option>
+                        </select>
                     </div>
                     <div class="flex flex-col">
                         <label class="font-medium text-2xl">Tanggal Lahir</label>
-                        <input type="text" class="rounded-lg h-12 border-gray-400 shadow-lg" name="dob" >
+                        <input type="date" class="rounded-lg h-12 border-gray-400 shadow-lg" name="dob" value="{{ $user->DateOfBirth }}" >
                     </div>
                     <div class="flex flex-col">
                         <label class="font-medium text-2xl">Nomor HP</label>
-                        <input type="text" class="rounded-lg h-12 border-gray-400 shadow-lg" name="phoneNumber" >
+                        <input type="text" class="rounded-lg h-12 border-gray-400 shadow-lg" name="phoneNumber" value="{{ $user->PhoneNumber }}" >
                     </div>
                     <button type="submit" class="bg-slate-500 rounded-md py-3 w-32 font-semibold text-white text-xl align">Simpan</button>
                 </form>

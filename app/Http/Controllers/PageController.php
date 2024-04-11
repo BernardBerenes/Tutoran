@@ -26,7 +26,7 @@ class PageController extends Controller
         return view('AboutUs')->with('currentPage', 'About Us');
     }
 
-    public function ProfilePage(){
+    public function ProfilePage(Request $request){
         $user = session('User');
 
         return view('Profile')->with('currentPage', 'Profile')->with('user', $user);

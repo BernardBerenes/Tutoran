@@ -12,7 +12,7 @@
 <body class="bg-[#7981A2] overflow-x-hidden">
     @include('Component.Navbar')
     <div class="main-content bg-[#7981A2]">
-        <div class="bg-[url('../images/image_name.jpg')] bg-cover min-h-screen flex flex-col bg-no-repeat opacity-60">
+        <div class="bg-[url('Assets/HomePageBG.png')] bg-cover min-h-screen flex flex-col bg-no-repeat opacity-60">
             <form class="w-96 mx-auto absolute mr-20 mt-20 right-px">   
                 <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                 <div class="relative">
@@ -31,7 +31,7 @@
                 <p>Platform private tutoring terbaik di Indonesia</p>
             </div>
         </div>
-        <div class="">
+        <div>
             <div class="flex flex-row justify-center">
                 <img src="{{ asset('Assets/img/SD.png') }}">
                 <img src="{{ asset('Assets/img/SMP.png') }}">
@@ -63,11 +63,11 @@
                     </div>
                 </div>
             </div>
-            <div class="bg-[url('img/Main-2.png')] bg-cover min-h-screen"></div>
+            <div class="bg-[url('Assets/Main-2.png')] bg-cover min-h-screen"></div>
             <div class="flex justify-end mt-[-140px] mr-40"><button type="submit" class="text-black end-2.5 bottom-2.5 bg-white hover:bg-gray-200 font-semibold rounded-lg text-4xl px-20 py-2 m-2">Beli Sekarang</button></div>
         </div>
         <div class="bg-white py-10">
-            <div class="mt-5 m-20 bg-[url('img/Main-3.png')] bg-cover bg-no-repeat">
+            <div class="mt-5 m-20 bg-[url('Assets/Main-3.png')] bg-cover bg-no-repeat">
                 <div><p class="text-[90px] font-bold">Tutor Terbaik</p></div>
                 <div><p class="text-[32px] font-medium mb-4">Januari 2024 - Juni 2024</p></div>
                 <div class="flex flex-row justify-between">

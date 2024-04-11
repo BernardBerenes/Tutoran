@@ -29,6 +29,9 @@
                     <div class="flex flex-col">
                         <label class="font-medium text-2xl">Kata Sandi Baru</label>
                         <input type="text" class="rounded-lg h-12 border-gray-400 shadow-lg" name="newPassword" >
+                        @error('newPassword')
+                            <p class="text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
                     <button type="submit" class="bg-slate-500 rounded-md py-3 w-32 font-semibold text-white text-xl align">Simpan</button>
                 </form>

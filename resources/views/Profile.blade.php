@@ -11,21 +11,21 @@
 </head>
 <body class="overflow-hidden">
     @include('Component.Navbar')
-    <div class="flex flex-row h-[90vh]">
+    <div class="flex flex-row h-screen">
         @include('Component.ProfileMenu')
         <div class="w-full flex justify-center">
-            <div class="w-1/2 h-3/4 mt-12 flex flex-col">
+            <div class="w-1/2 h-screen mt-12 flex flex-col">
                 <h1 class="font-medium text-4xl mb-7">Profil</h1>
                 <form method="POST" action="{{ route('UpdateProfile') }}" class="flex flex-col gap-y-5">
                     @method('PATCH')
                     @csrf
                     <div class="flex flex-col">
                         <label class="font-medium text-2xl">Nama</label>
-                        <input type="text" class="rounded-lg h-12 border-gray-400 shadow-lg" name="name" value="{{$user->Name}}" >
+                        <input type="text" class="rounded-lg h-12 border-gray-400 shadow-lg bg-gray-300" name="name" value="{{$user->Name}}" disabled >
                     </div>
                     <div class="flex flex-col">
                         <label class="font-medium text-2xl">Email</label>
-                        <input type="text" class="rounded-lg h-12 border-gray-400 shadow-lg" name="email" value="{{$user->Email}}" >
+                        <input type="text" class="rounded-lg h-12 border-gray-400 shadow-lg bg-gray-300" name="email" value="{{$user->Email}}" disabled >
                     </div>
                     <div class="flex flex-col">
                         <label class="font-medium text-2xl">Jenis Kelamin</label>

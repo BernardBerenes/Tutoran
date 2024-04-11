@@ -31,13 +31,16 @@ class ProfileController extends Controller
     }
 
     public function ChangePassword(Request $request){
+        $request->validate([
+            'currentPassword' => 'required',
+            'newPassword' => 'required'
+        ]);
+        
         if(!Hash::check($request->currentPassword, session('User')->Password)){
             return back()->withErrors([
                 'currentPassword' => 'Kata Sandi salah!!'
             ]);
-        } else{
-            // Validation (Requirement)
-        }
+        } 
 
         if(session('Roles') == 'Student'){
             Student::findOrFail(session('User')->id)->update([

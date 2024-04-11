@@ -50,7 +50,6 @@
             Connect with us at your convenience to meet a dedicated advisor by email, live-chat, or at one of our store.
         </p>
     </section>
-
     @include('Component.Footer')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>

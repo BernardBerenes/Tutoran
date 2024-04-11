@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthenthicationController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Psy\CodeCleaner\FunctionContextPass;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,17 +21,22 @@ Route::get('/', [PageController::class, 'IndexPage'])->name('IndexPage');
 
 Route::get('/cart', [PageController::class, 'CartPage'])->name('CartPage');
 
-Route::get('/login', [PageController::class, 'LoginPage'])->name('LoginPage');
-Route::get('/register', [PageController::class, 'RegisterPage'])->name('RegisterPage');
+Route::middleware('guest')->group(function(){
+    Route::get('/login', [PageController::class, 'LoginPage'])->name('LoginPage');
+    Route::get('/register', [PageController::class, 'RegisterPage'])->name('RegisterPage');
+    
+    Route::post('/register', [AuthenthicationController::class, 'Register'])->name('Register');
+    Route::post('/login', [AuthenthicationController::class, 'Login'])->name('Login');
+});
 
-Route::post('/register', [AuthenthicationController::class, 'Register'])->name('Register');
-Route::post('/login', [AuthenthicationController::class, 'Login'])->name('Login');
+Route::middleware(['customer'])->group(function(){
+    Route::post('/logout', [AuthenthicationController::class, 'Logout'])->name('Logout');
+    Route::get('/profile', [PageController::class, 'ProfilePage'])->name('ProfilePage');
+});
 
-Route::post('/logout', [AuthenthicationController::class, 'Logout'])->name('Logout');
 
 Route::get('/about-us', [PageController::class, 'AboutUsPage'])->name('AboutUsPage');
 
-Route::get('/profile', [PageController::class, 'ProfilePage'])->name('ProfilePage');
 
 Route::get('/change-password', [PageController::class, 'ChangePasswordPage'])->name('ChangePasswordPage');
 Route::patch('/change-password', [ProfileController::class, 'ChangePassword'])->name('ChangePassword');

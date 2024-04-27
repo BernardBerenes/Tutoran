@@ -9,7 +9,7 @@
     <title>Cart</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="">
+<body>
     @include('Component.Navbar')
     <div class="grid grid-row-2">
         <div class="p-14 flex flex-col justify-between">

@@ -20,7 +20,8 @@ class Tutor extends Model implements Authenticatable
         'DateOfBirth',
         'PhoneNumber',
         'Background',
-        'Rating'
+        'Rating',
+        'Image'
     ];
 
     protected $hidden = [

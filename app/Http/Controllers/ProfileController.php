@@ -54,4 +54,23 @@ class ProfileController extends Controller
         session('User')->Password = $request->newPassword;
         return back();
     }
+
+    public function ChangePicture(Request $request){
+        $extension = $request->file('image')->getClientOriginalExtension();
+        $fileName = session('User')->id.'.'.$extension;
+        $request->file('image')->storeAs('/public/Profile Picture/', $fileName);
+        session('User')->Image = $fileName;
+
+        if(session('Roles') == 'Student'){
+            Student::findOrFail(session('User')->id)->update([
+                'Image' => $fileName
+            ]);
+        } else{
+            Tutor::findOrFail(session('User')->id)->update([
+                'Image' => $fileName
+            ]);
+        }
+
+        return back();
+    }
 }

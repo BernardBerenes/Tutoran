@@ -18,7 +18,8 @@ class Student extends Model implements Authenticatable
         'Password',
         'Gender',
         'DateOfBirth',
-        'PhoneNumber'
+        'PhoneNumber',
+        'Image'
     ];
 
     protected $hidden = [

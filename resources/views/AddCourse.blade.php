@@ -6,36 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="app.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
-    <title>Tutoran</title>
+    <title>Add Course</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="font-[Inter]">
-    <nav class="flex items-center h-28 w-full bg-slate-200">
-        <a href=""><img src="/img/Logo_Tutoran.png" alt="" class="ml-20"></a>
-        <div class="flex justify-between ml-16 text-2xl font-medium w-3/4">
-            <div class="flex gap-x-12">
-                <a href="" class="underline underline-offset-2">Beranda</a>
-                <a href="index.html" class="group text-black font-medium transition-all duration-600 ease-in-out"><span class="bg-left-bottom bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out my-2 mx-3">Mata Pelajaran</span></a>
-                <a href="index.html" class="group text-black font-medium transition-all duration-600 ease-in-out"><span class="bg-left-bottom bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out my-2 mx-3">Tentang Kami</span></a>
-            </div>
-            <div>
-                <a href="" class="px-5 py-3 bg-[#D9D9D9] text-[#65668B] hover:bg-[#BDBFC5] font-bold rounded-full">Masuk/Daftar</a>
-                <a href="" class="px-5 py-3 ml-5 bg-[#65668B] hover:bg-[#7981A2] font-bold rounded-full text-white">Langganan</a>
-            </div>
-        </div>
-    </nav>
+    @include('Component.Navbar')
     <div class="bg-white">
         <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
             <h2 class="mb-4 text-3xl font-bold text-black">Add Course</h2>
-            <form action="#">
+            <form method="POST" action="{{ route('AddCourse') }}">
+                @csrf
                 <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     <div class="sm:col-span-2">
-                        <label for="judul" class="block mb-2 text-2xl font-medium text-black ">Judul</label>
-                        <input type="text" name="judul" id="judul" class="bg-white border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 shadow-md" placeholder="Contoh: Limit Fungsi dan Aljabar" required="">
+                        <label class="block mb-2 text-2xl font-medium text-black ">Judul</label>
+                        <input type="text" class="bg-white border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 shadow-md" placeholder="Contoh: Limit Fungsi dan Aljabar" name="title">
                     </div>
                     <div class="sm:col-span-2">
-                        <label for="harga" class="block mb-2 text-2xl font-medium text-black ">Harga</label>
-                        <input type="text" name="harga" id="harga" class="bg-white border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 shadow-md" placeholder="Contoh: 100000" required="">
+                        <label class="block mb-2 text-2xl font-medium text-black ">Harga</label>
+                        <input type="number" class="bg-white border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 shadow-md" placeholder="Contoh: 100000" name="price">
                     </div>
                     <div class="sm:col-span-2">
                         <label for="mataPelajaran" class="block mb-2 text-2xl font-medium text-black ">Mata Pelajaran</label>
@@ -48,8 +36,8 @@
                         </select>
                     </div>
                     <div class="sm:col-span-2">
-                        <label for="kurikulum" class="block mb-2 text-2xl font-medium text-black ">Kurikulum</label>
-                        <select id="kurikulum" class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 shadow-md">
+                        <label class="block mb-2 text-2xl font-medium text-black ">Kurikulum</label>
+                        <select class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 shadow-md" name="curriculum">
                             <option selected="">Kurikulum Merdeka 1</option>
                             <option value="">Kurikulum Merdeka 2</option>
                             <option value="">Kurikulum Merdeka 3</option>
@@ -68,7 +56,7 @@
                                     <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
                                     <p class="text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                                 </div>
-                                <input id="gambarPoster" type="file" class="hidden" />
+                                <input type="file" class="hidden" name="poster"/>
                             </label>
                         </div> 
                     </div>

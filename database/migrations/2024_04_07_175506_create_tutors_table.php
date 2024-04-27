@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('PhoneNumber', 15)->nullable();
             $table->string('Background')->nullable();
             $table->float('Rating')->nullable();
+            $table->string('Image')->nullable();
             $table->timestamps();
         });
     }

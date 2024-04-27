@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('Price');
             $table->string('Lesson');
             $table->string('Curriculum');
+            $table->string('Poster');
             $table->timestamps();
         });
     }

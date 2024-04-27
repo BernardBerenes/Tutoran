@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ForumQuestion;
+use App\Models\Student;
 use Illuminate\Http\Request;
+use PDO;
 
 class PageController extends Controller
 {
@@ -26,13 +29,36 @@ class PageController extends Controller
         return view('AboutUs')->with('currentPage', 'About Us');
     }
 
-    public function ProfilePage(Request $request){
+    public function ProfilePage(){
         $user = session('User');
 
-        return view('Profile')->with('currentPage', 'Profile')->with('user', $user);
+        return view('Profile.Profile')->with('currentPage', 'Profile')->with('user', $user);
     }
 
     public function ChangePasswordPage(){
-        return view('ChangePassword')->with('currentPage', 'ChangePassword');
+        return view('Profile.ChangePassword')->with('currentPage', 'ChangePassword');
+    }
+
+    public function AddCoursePage(){
+        return view('AddCourse')->with('currentPage', '');
+    }
+
+    public function SubjectPage(){
+        return view('Subject');
+    }
+
+    public function TutorListPage(){
+        return view('TutorList');
+    }
+
+    public function ForumDiscussionPage(){
+        $publisher = Student::all();
+        $forumQuestion = ForumQuestion::orderBy('created_at', 'desc')->get();
+
+        return view('ForumDiscussion')->with('currentPage', 'Forum')->with('question', $forumQuestion)->with('publisher', $publisher);
+    }
+
+    public function TutorDetailPage(){
+        return view('TutorDetailPage');
     }
 }

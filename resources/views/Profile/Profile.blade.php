@@ -30,6 +30,9 @@
                     <div class="flex flex-col">
                         <label class="font-medium text-2xl">Jenis Kelamin</label>
                         <select class="rounded-lg h-12 border-gray-400 shadow-lg pl-3" name="gender">
+                            @if (!$user->Gender)
+                                <option selected>Pilih Jenis Kelamin</option>
+                            @endif
                             <option value="M" {{ $user->Gender == 'M' ? 'selected' : ''}}>Male</option>
                             <option value="F"  {{ $user->Gender == 'F' ? 'selected' : '' }}>Female</option>
                         </select>

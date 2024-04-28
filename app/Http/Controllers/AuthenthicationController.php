@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class AuthenthicationController extends Controller
 {
     public function Register(Request $request){
+        // Validation
         $credentials = $request->only('email', 'password');
         $request->validate([
             'email' => 'required',
@@ -21,29 +22,28 @@ class AuthenthicationController extends Controller
             'Password' => $request->password
         ]);
         Auth::guard('student')->attempt($credentials);
+        $user = Auth::guard('student')->user();
         $request->session()->regenerate();
         $request->session()->put([
-            'Email' => $request->email,
-            'Name' => $request->name,
-            'Roles' => 'Student'
+            'Roles' => 'Student',
+            'User' => $user
         ]);
 
         return redirect(route('IndexPage'));
     }
 
     public function Login(Request $request){
+        // Validation
         $credentials = $request->only('email', 'password');
         if(Auth::guard('student')->attempt($credentials)){
             $user = Auth::guard('student')->user();
             $request->session()->put([
-                'Roles' => 'Student',
-                'User' => $user
+                'Roles' => 'Student'
             ]);
         } else if(Auth::guard('tutor')->attempt($credentials)){
             $user = Auth::guard('tutor')->user();
             $request->session()->put([
-                'Roles' => 'Tutor',
-                'User' => $user
+                'Roles' => 'Tutor'
             ]);
         } else{
             return back()->withErrors([

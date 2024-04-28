@@ -12,8 +12,8 @@ class CourseController extends Controller
         // Validation
 
         // $extension = $request->file('image')->getClientOriginalExtension();
-        // $file_name = $request->name.'.'.$extension;
-        // $request->file('image')->storeAs('/public/Course Poster/', $file_name);
+        // $fileName = $request->name.'.'.$extension;
+        // $request->file('image')->storeAs('/public/Course Poster/', $fileName);
         
         $lastId = DB::table('courses')->insertGetId([
             'TutorID' => session('User')->id,

@@ -19,9 +19,9 @@ return new class extends Migration
             $table->char('Gender', 1)->nullable();
             $table->date('DateOfBirth')->nullable();
             $table->string('PhoneNumber', 15)->nullable();
-            $table->string('Background')->nullable();
+            $table->string('Background');
             $table->float('Rating')->nullable();
-            $table->string('Image')->nullable();
+            $table->string('Image')->default('Default.png');
             $table->timestamps();
         });
     }

@@ -10,7 +10,7 @@ class ForumController extends Controller
     public function AddForumQuestion(Request $request){
         // Validation
         ForumQuestion::create([
-            'StudentID' => session('User')->Name,
+            'StudentID' => session('User')->id,
             'Question' => $request->question
         ]);
 

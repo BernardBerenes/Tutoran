@@ -33,8 +33,8 @@
                             @if (!$user->Gender)
                                 <option selected>Pilih Jenis Kelamin</option>
                             @endif
-                            <option value="M" {{ $user->Gender == 'M' ? 'selected' : ''}}>Male</option>
-                            <option value="F"  {{ $user->Gender == 'F' ? 'selected' : '' }}>Female</option>
+                            <option value="M" {{ $user->Gender == 'M' ? 'selected' : ''}}>Laki-laki</option>
+                            <option value="F"  {{ $user->Gender == 'F' ? 'selected' : '' }}>Perempuan</option>
                         </select>
                     </div>
                     <div class="flex flex-col">

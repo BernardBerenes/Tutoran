@@ -14,11 +14,7 @@
             @if (auth()->guard('student')->check() || auth()->guard('tutor')->check())
                 <a href="{{ route('CartPage') }}"><img src="{{ asset('Assets/Cart.png') }}" alt=""></a>
                 <a href="{{ route('ProfilePage') }}">
-                    @if (auth()->guard(strtolower(session('Roles')))->user()->Image)
-                        <img src="{{ asset('/storage/Profile Picture/'.auth()->guard(strtolower(session('Roles')))->user()->Image) }}" alt="" class="w-12 h-12 rounded-full cursor-pointer">
-                    @else
-                        <img src="{{ asset('/storage/Profile Picture/Default.png') }}" alt="" class="w-12 h-12 rounded-full cursor-pointer">
-                    @endif
+                    <img src="{{ asset('/storage/Profile Picture/'.session('Roles').'/'.auth()->guard(strtolower(session('Roles')))->user()->Image) }}" alt="" class="w-12 h-12 rounded-full cursor-pointer border-[1px] border-solid border-gray-300">
                 </a>
             @else
                 <a href="{{ route('LoginPage') }}" class="px-5 py-3 bg-[#D9D9D9] text-[#65668B] hover:bg-[#BDBFC5] font-bold rounded-full">Masuk/Daftar</a>

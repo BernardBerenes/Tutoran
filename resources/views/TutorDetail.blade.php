@@ -4,36 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="{{ asset('Style/app.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <title>Tutoran</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="font-[Inter]">
-    <nav class="flex items-center h-28 w-full bg-slate-200">
-        <a href=""><img src="/img/Logo_Tutoran.png" alt="" class="ml-20"></a>
-        <div class="flex justify-between ml-16 text-2xl font-medium w-3/4">
-            <div class="flex gap-x-12">
-                <a href="" class="underline underline-offset-2">Beranda</a>
-                <a href="index.html" class="group text-black font-medium transition-all duration-600 ease-in-out"><span class="bg-left-bottom bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out my-2 mx-3">Mata Pelajaran</span></a>
-                <a href="index.html" class="group text-black font-medium transition-all duration-600 ease-in-out"><span class="bg-left-bottom bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out my-2 mx-3">Tentang Kami</span></a>
-            </div>
-            <div>
-                <a href="" class="px-5 py-3 bg-[#D9D9D9] text-[#65668B] hover:bg-[#BDBFC5] font-bold rounded-full">Masuk/Daftar</a>
-                <a href="" class="px-5 py-3 ml-5 bg-[#65668B] hover:bg-[#7981A2] font-bold rounded-full text-white">Langganan</a>
-            </div>
-        </div>
-    </nav>
+<body>
+    @include('Component.Navbar')
     <div class="bg-white grid grid-cols-2 mx-40 my-20 gap-x-24">
         <div class="flex flex-col">
             <h2 class="mb-4 text-[50px] font-bold text-black">Detail Tutor</h2>
             <hr class="h-px bg-gray-200 border-0 bg-gray-700">
             <div class="flex flex-row items-center">
-                <img src="img/Xi Lhit.png" class="object-cover w-[150px] h-[150px] mx-4 my-10 rounded-full" alt="">   
-                <h2 class="text-[32px] font-bold text-black">Bernard Bereness</h2>
+                <img src="{{ asset('/storage/Profile Picture/Tutor/'.$tutor->Image) }}" class="object-cover w-[150px] h-[150px] mx-4 my-10 rounded-full" alt="">   
+                <h2 class="text-[32px] font-bold text-black">{{ $tutor->Name }}</h2>
             </div>
             <h3 class="text-2xl font-semibold">Latar Belakang</h2>
-            <p class="text-base text-justify my-8">Aku sangat menikmati sains. Bagi saya, menjelajahi dunia sains memberikan kegembiraan yang sebanding dengan menonton film. Di sini, saya ingin menyebarkan rasa cinta saya terhadap sains, sehingga Anda dapat belajar dengan santai. Semoga Anda juga bisa mencintai materi pelajaran seperti yang saya rasakan.</p>
+            <p class="text-base text-justify my-8">{{ $tutor->Background }}</p>
             <h3 class="text-2xl font-semibold">Subjek</h2>
             <div class="flex flex-row my-8">
                 <p class="px-6 py-2 bg-[#65668B] hover:bg-[#7981A2] text-center text-base rounded-full text-white">Fisika</p>

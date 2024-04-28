@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\ForumQuestion;
 use App\Models\Student;
+use App\Models\Tutor;
 use Illuminate\Http\Request;
-use PDO;
 
 class PageController extends Controller
 {
@@ -30,7 +30,7 @@ class PageController extends Controller
     }
 
     public function ProfilePage(){
-        $user = session('User');
+        $user = auth()->guard(strtolower(session('Roles')))->user();
 
         return view('Profile.Profile')->with('currentPage', 'Profile')->with('user', $user);
     }
@@ -44,11 +44,19 @@ class PageController extends Controller
     }
 
     public function SubjectPage(){
-        return view('Subject');
+        return view('Subject')->with('currentPage', '');
     }
 
     public function TutorListPage(){
-        return view('TutorList');
+        $tutors = Tutor::all();
+
+        return view('TutorList')->with('currentPage', '')->with('tutors', $tutors);
+    }
+
+    public function TutorDetailPage($TutorID){
+        $tutor = Tutor::findOrFail($TutorID);
+
+        return view('TutorDetail')->with('currentPage', '')->with('tutor', $tutor);
     }
 
     public function ForumDiscussionPage(){
@@ -56,9 +64,5 @@ class PageController extends Controller
         $forumQuestion = ForumQuestion::orderBy('created_at', 'desc')->get();
 
         return view('ForumDiscussion')->with('currentPage', 'Forum')->with('question', $forumQuestion)->with('publisher', $publisher);
-    }
-
-    public function TutorDetailPage(){
-        return view('TutorDetailPage');
     }
 }

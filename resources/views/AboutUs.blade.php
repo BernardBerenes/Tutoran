@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('Style/app.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
     <title>About Us</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthenthicationController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ForumController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -48,10 +49,12 @@ Route::get('/add-course', [PageController::class, 'AddCoursePage'])->name('AddCo
 Route::get('/subject', [PageController::class, 'SubjectPage'])->name('SubjectPage');
 Route::get('/tutor-list', [PageController::class, 'TutorListPage'])->name('TutorListPage');
 
-Route::post('/add-course', [CourseController::class, 'AddCourse'])->name('AddCourse');
+Route::post('/add-course/post', [CourseController::class, 'AddCourse'])->name('AddCourse');
 
 Route::get('/forum-discussion', [PageController::class, 'ForumDiscussionPage'])->name('ForumDiscussionPage');
 
-Route::get('/tutor-detail', [PageController::class, 'TutorDetailPage'])->name('TutorDetailPage');
+Route::post('/forum-discussion/post', [ForumController::class, 'AddForumQuestion'])->name('AddForumQuestion');
+
+Route::get('/tutor-detail/{TutorID}', [PageController::class, 'TutorDetailPage'])->name('TutorDetailPage');
 
 Route::post('/change-picture', [ProfileController::class, 'ChangePicture'])->name('ChangePicture');

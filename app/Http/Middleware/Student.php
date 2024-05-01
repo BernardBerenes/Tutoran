@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class Customer
+class Student
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,7 @@ class Customer
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!auth('student')->check() && !auth('tutor')->check()){
+        if(!auth('student')->check()){
             return back();
         }
         return $next($request);

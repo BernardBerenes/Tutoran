@@ -20,12 +20,12 @@
             <span>Change Image</span>
         </label>
         <input id="file" type="file" onchange="uploadPicture()" class="hidden" name="image"/>
-        <img src="{{ asset('/storage/Profile Picture/'.session('Roles').'/'.auth()->guard(strtolower(session('Roles')))->user()->Image) }}" id="output" width="200" class="border-[1px] border-solid border-gray-300" />
+        <img src="{{ asset('/storage/Profile Picture/'.session('Roles').'/'.auth(strtolower(session('Roles')))->user()->Image) }}" id="output" width="200" class="border-[1px] border-solid border-gray-300" />
     </form>
-    <h6 class="font-semibold mt-2">{{ auth()->guard(strtolower(session('Roles')))->user()->Name }}</h6>
+    <h6 class="font-semibold mt-2">{{ auth(strtolower(session('Roles')))->user()->Name }}</h6>
     <div class="w-full text-2xl font-regular mt-4">
         <a href="{{ route('ProfilePage') }}" class="pl-4 h-14 flex items-center border border-y-gray-300 hover:bg-gray-300 transition duration-150 {{ $currentPage === 'Profile' ? 'bg-gray-200' : ''}}">Profil</a>
-        @if(auth()->guard('student')->check())
+        @if(auth('student')->check())
             <a href="" class="pl-4 h-14 flex items-center border border-y-gray-300 hover:bg-gray-300 transition duration-150">Riwayat Pembelian</a>
         @endif
         <a href="" class="pl-4 h-14 flex items-center border border-y-gray-300 hover:bg-gray-300 transition duration-150">Laporan Siswa</a>

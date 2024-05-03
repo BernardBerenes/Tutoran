@@ -14,18 +14,17 @@ class ProfileController extends Controller
     public function UpdateProfile(Request $request){
         // Validation (Requirement)
         if(session('Roles') == 'Student'){
-            Student::findOrFail(session('User')->id)->update([
+            Student::findOrFail(auth('student')->user()->id)->update([
                 'Gender' => $request->gender,
                 'DateOfBirth' => $request->dob,
                 'PhoneNumber' => $request->phoneNumber
             ]);
-            $user = Auth::guard('student')->user();
-            $request->session()->put([
-                'Roles' => 'Student',
-                'User' => $user
-            ]);
         } else{
-            // For Tutor
+            Tutor::findOrFail(auth('tutor')->user()->id)->update([
+                'Gender' => $request->gender,
+                'DateOfBirth' => $request->dob,
+                'PhoneNumber' => $request->phoneNumber
+            ]);
         }
 
         return back();
@@ -36,24 +35,31 @@ class ProfileController extends Controller
             'currentPassword' => 'required',
             'newPassword' => 'required'
         ]);
-        
-        if(!Hash::check($request->currentPassword, session('User')->Password)){
-            return back()->withErrors([
-                'currentPassword' => 'Kata Sandi salah!!'
-            ]);
-        } 
+
+        if(auth('student')->check()){
+            if(!Hash::check($request->currentPassword, auth('student')->user()->Password)){
+                return back()->withErrors([
+                    'currentPassword' => 'Kata Sandi salah!!'
+                ]);
+            } 
+        } else{
+            if(!Hash::check($request->currentPassword, auth('tutor')->user()->Password)){
+                return back()->withErrors([
+                    'currentPassword' => 'Kata Sandi salah!!'
+                ]);
+            } 
+        }
 
         if(session('Roles') == 'Student'){
-            Student::findOrFail(session('User')->id)->update([
+            Student::findOrFail(auth('student')->user()->id)->update([
                 'Password' => $request->newPassword
             ]);
         } else{
-            Tutor::findOrFail(session('User')->id)->update([
+            Tutor::findOrFail(auth('tutor')->user()->id)->update([
                 'Password' => $request->newPassword
             ]);
         }
-        session('User')->Password = $request->newPassword;
-        return back();
+        return redirect(route('ProfilePage'));
     }
 
     public function ChangePicture(Request $request){

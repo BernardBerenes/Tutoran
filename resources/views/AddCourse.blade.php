@@ -12,10 +12,10 @@
 </head>
 <body>
     @include('Component.Navbar')
-    <div">
+    <div>
         <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
             <h2 class="mb-4 text-3xl font-bold text-black">Tambah Kursus</h2>
-            <form method="POST" action="{{ route('AddCourse') }}">
+            <form method="POST" action="{{ route('AddCourse') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     <div class="sm:col-span-2">
@@ -29,7 +29,8 @@
                     <div class="sm:col-span-2">
                         <label for="mataPelajaran" class="block mb-2 text-2xl font-medium text-black ">Mata Pelajaran</label>
                         <select id="mataPelajaran" class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 shadow-md">
-                            <option selected="">Matematika Peminatan</option>
+                            <option selected>Pilih Mata Pelajaran</option>
+                            <option value="">Matematika Peminatan</option>
                             <option value="TV">Matematika</option>
                             <option value="PC">Biology</option>
                             <option value="GA">Fisika</option>
@@ -39,7 +40,8 @@
                     <div class="sm:col-span-2">
                         <label class="block mb-2 text-2xl font-medium text-black ">Kurikulum</label>
                         <select class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 shadow-md" name="curriculum">
-                            <option selected="">Kurikulum Merdeka 1</option>
+                            <option selected>Pilih Kurikulum</option>
+                            <option value="ABC">Kurikulum Merdeka 1</option>
                             <option value="">Kurikulum Merdeka 2</option>
                             <option value="">Kurikulum Merdeka 3</option>
                             <option value="">Kurikulum Merdeka 4</option>

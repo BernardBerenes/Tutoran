@@ -38,15 +38,24 @@
                 </div>
                 <div class="flex flex-col text-2xl mb-4">
                     <label class="mb-3 font-medium">Nama</label>
-                    <input type="text" class="h-12 rounded-xl text-xl" name="name">
+                    <input type="text" class="h-12 rounded-xl text-xl" value="{{ old('name') }}" name="name">
+                    @error('name')
+                        <p>{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="flex flex-col text-2xl mb-4">
                     <label class="mb-3 font-medium">Email</label>
-                    <input type="text" class="h-12 rounded-xl text-xl" name="email">
+                    <input type="text" class="h-12 rounded-xl text-xl" value="{{ old('email') }}" name="email">
+                    @error('email')
+                        <p>{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="flex flex-col text-2xl mb-4">
                     <label class="mb-3 font-medium">Kata Sandi</label>
                     <input type="password" class="h-12 rounded-xl text-xl" name="password">
+                    @error('password')
+                        <p>{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="flex flex-col font-medium mb-8">
                     <div class="flex flex-row items-center gap-1">

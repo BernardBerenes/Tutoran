@@ -9,7 +9,7 @@
     <title>Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-[#7981A2] overflow-x-hidden">
+<body class="bg-[#7981A2]">
     @include('Component.Navbar')
     <div class="main-content bg-[#7981A2]">
         <div class="bg-[url('Assets/HomePageBG.png')] bg-cover min-h-screen flex flex-col bg-no-repeat opacity-60">
@@ -71,51 +71,23 @@
                 <div><p class="text-[90px] font-bold">Tutor Terbaik</p></div>
                 <div><p class="text-[32px] font-medium mb-4">Januari 2024 - Juni 2024</p></div>
                 <div class="flex flex-row justify-between">
-                    <div class="max-w-sm bg-white rounded-lg shadow">
-                        <img class="rounded-t-lg" src="{{ asset('Assets/img/Xi Lhit.png') }}"/>
-                        <div class="p-5 bg-[#D1D2E5]">
-                            <p class="mb-2 text-4xl font-bold tracking-tight text-gray-900">Xi Lhit, S.Pd., M.Si.</p>
-                            <div class="flex flex-row">
-                                <img src="{{ asset('Assets/img/Rating Star.png') }}">
-                                <p class="font-bold text-xl">5.0/5.0 (62)</p>
+                    @foreach ($topTutor as $top)
+                        <div class="max-w-sm bg-white rounded-lg shadow">
+                            <img class="rounded-t-lg" src="{{ asset('Assets/img/Xi Lhit.png') }}"/>
+                            <div class="p-5 bg-[#D1D2E5]">
+                                <p class="mb-2 text-4xl font-bold tracking-tight text-gray-900">{{ $top->Name }}</p>
+                                <div class="flex flex-row">
+                                    <img src="{{ asset('Assets/img/Rating Star.png') }}">
+                                    <p class="font-bold text-xl">{{ $top->Rating }}/5.0 (62)</p>
+                                </div>
+                                <p class="mt-3 font-bold text-black text-lg">Alumni Universitas Indonesia, Stanford University.</p>
+                                <p class="text-lg font-medium">Sebanyak 45/47 murid SMA-nya masuk ke PTN favorit.</p>
+                                <a href="{{ route('TutorDetailPage', ['TutorID'=>$top->id]) }}" class="mt-5 inline-flex w-80 justify-center items-center px-3 py-2 text-xl font-bold text-center text-white bg-[#65668B]  rounded-lg hover:bg-[#7981A2]">
+                                Lihat Profil
+                                </a>
                             </div>
-                            <p class="mt-3 font-bold text-black text-lg">Alumni Universitas Indonesia, Stanford University.</p>
-                            <p class="text-lg font-medium">Sebanyak 45/47 murid SMA-nya masuk ke PTN favorit.</p>
-                            <a href="#" class="mt-5 inline-flex w-80 justify-center items-center px-3 py-2 text-xl font-bold text-center text-white bg-[#65668B]  rounded-lg hover:bg-[#7981A2]">
-                            Lihat Profil
-                            </a>
                         </div>
-                    </div>
-                    <div class="max-w-sm bg-white rounded-lg shadow">
-                        <img class="rounded-t-lg" src="{{ asset('Assets/img/Xi Lhit.png') }}"/>
-                        <div class="p-5 bg-[#D1D2E5]">
-                            <p class="mb-2 text-4xl font-bold tracking-tight text-gray-900">Xi Lhit, S.Pd., M.Si.</p>
-                            <div class="flex flex-row">
-                                <img src="{{ asset('Assets/img/Rating Star.png') }}">
-                                <p class="font-bold text-xl">5.0/5.0 (62)</p>
-                            </div>
-                            <p class="mt-3 font-bold text-black text-lg">Alumni Universitas Indonesia, Stanford University.</p>
-                            <p class="text-lg font-medium">Sebanyak 45/47 murid SMA-nya masuk ke PTN favorit.</p>
-                            <a href="#" class="mt-5 inline-flex w-80 justify-center items-center px-3 py-2 text-xl font-bold text-center text-white bg-[#65668B]  rounded-lg hover:bg-[#7981A2]">
-                            Lihat Profil
-                            </a>
-                        </div>
-                    </div>
-                    <div class="max-w-sm bg-white rounded-lg shadow">
-                        <img class="rounded-t-lg" src="{{ asset('Assets/img/Xi Lhit.png') }}"/>
-                        <div class="p-5 bg-[#D1D2E5]">
-                            <p class="mb-2 text-4xl font-bold tracking-tight text-gray-900">Xi Lhit, S.Pd., M.Si.</p>
-                            <div class="flex flex-row">
-                                <img src="{{ asset('Assets/img/Rating Star.png') }}">
-                                <p class="font-bold text-xl">5.0/5.0 (62)</p>
-                            </div>
-                            <p class="mt-3 font-bold text-black text-lg">Alumni Universitas Indonesia, Stanford University.</p>
-                            <p class="text-lg font-medium">Sebanyak 45/47 murid SMA-nya masuk ke PTN favorit.</p>
-                            <a href="#" class="mt-5 inline-flex w-80 justify-center items-center px-3 py-2 text-xl font-bold text-center text-white bg-[#65668B]  rounded-lg hover:bg-[#7981A2]">
-                            Lihat Profil
-                            </a>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="flex flex-row items-center bg-gray-800 my-6 rounded-lg w-1/2">
                     <img src="{{ asset('Assets/img/Trophy 1.png') }}" class="p-6">
@@ -149,12 +121,21 @@
                     </div>
                 </div>
                 <div class="w-full">
-                    <div class="p-6 bg-gradient-to-r from-[#5962BE] to-[#7289C5] rounded-lg shadow flex flex-col items-center">
-                        <p class="mb-8 text-6xl font-bold tracking-tight text-white">Mulai Perjalananmu Bersama Tutoran</p>
-                        <a href="{{ route('RegisterPage') }}" class="items-center px-20 py-4 text-4xl font-medium text-center text-white bg-[#27272E] rounded-full hover:bg-[#3E3E4B] ">
-                        Daftar
-                        </a>
-                    </div>
+                    @if (auth(strtolower(session('Roles')))->check())
+                        <div class="p-6 rounded-lg flex flex-col items-center">
+                            <h1 class="text-[120px] font-bold text-white">FAQ</h1>
+                            <a href="#" class="items-center px-20 py-4 text-4xl font-medium text-center text-white bg-[#27272E] rounded-full hover:bg-[#3E3E4B] ">
+                            Pelajari Lebih Lanjut
+                            </a>
+                        </div>
+                    @else
+                        <div class="p-6 bg-gradient-to-r from-[#5962BE] to-[#7289C5] rounded-lg shadow flex flex-col items-center">
+                            <p class="mb-8 text-6xl font-bold tracking-tight text-white">Mulai Perjalananmu Bersama Tutoran!!</p>
+                            <a href="{{ route('RegisterPage') }}" class="items-center px-20 py-4 text-4xl font-medium text-center text-white bg-[#27272E] rounded-full hover:bg-[#3E3E4B] ">
+                            Daftar
+                            </a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

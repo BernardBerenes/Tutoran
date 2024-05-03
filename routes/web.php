@@ -38,6 +38,8 @@ Route::middleware('customer')->group(function(){
     Route::patch('/change-password', [ProfileController::class, 'ChangePassword'])->name('ChangePassword');
     Route::patch('/profile/update-profile', [ProfileController::class, 'UpdateProfile'])->name('UpdateProfile');
     Route::post('/change-picture', [ProfileController::class, 'ChangePicture'])->name('ChangePicture');
+    Route::get('/forum-discussion', [PageController::class, 'ForumDiscussionPage'])->name('ForumDiscussionPage');
+    Route::post('/forum-discussion/post', [ForumController::class, 'AddForumQuestion'])->name('AddForumQuestion');
 });
 
 Route::middleware('tutor')->group(function(){
@@ -46,14 +48,22 @@ Route::middleware('tutor')->group(function(){
 });
 
 Route::middleware('student')->group(function(){
-    Route::get('/forum-discussion', [PageController::class, 'ForumDiscussionPage'])->name('ForumDiscussionPage');
-    Route::post('/forum-discussion/post', [ForumController::class, 'AddForumQuestion'])->name('AddForumQuestion');
+
 });
+
+Route::get('/course-list', [PageController::class, 'CourseListPage'])->name('CourseListPage');
 
 Route::get('/about-us', [PageController::class, 'AboutUsPage'])->name('AboutUsPage');
 
 Route::get('/subject', [PageController::class, 'SubjectPage'])->name('SubjectPage');
 Route::get('/tutor-list', [PageController::class, 'TutorListPage'])->name('TutorListPage');
 
-
 Route::get('/tutor-detail/{TutorID}', [PageController::class, 'TutorDetailPage'])->name('TutorDetailPage');
+
+Route::get('/tutor-course-list', [PageController::class, 'TutorCourseListPage'])->name('TutorCourseListPage');
+
+Route::get('/student-rating/detail', [PageController::class, 'StudentRatingDetailPage'])->name('StudentRatingDetailPage');
+
+Route::post('/insert-cart/{CourseID}', [CourseController::class, 'InsertCart'])->name('InsertCart');
+
+Route::delete('/delete-cart/{CourseID}', [CourseController::class, 'DeleteCart'])->name('DeleteCart');

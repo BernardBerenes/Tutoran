@@ -34,4 +34,8 @@ class Student extends Model implements Authenticatable
     {
         return $this->Password;
     }
+
+    public function Course(){
+        return $this->belongsToMany(Course::class, 'carts', 'StudentID', 'CourseID')->withTimestamps();
+    }
 }

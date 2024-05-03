@@ -54,7 +54,7 @@
             </div>
             <div class="grid gap-4 grid-cols-2 gap-6 mt-12">
                 @foreach ($tutors as $t)
-                    <a href="{{ route('TutorDetailPage', ['TutorID'=>$t->id]) }}" class="grid grid-row-2 border border-gray-300 rounded-lg shadow-md">
+                    <a href="{{ route('TutorDetailPage', ['TutorID'=>$t->id]) }}" class="grid grid-row-2 border border-gray-300 rounded-lg shadow-md hover:bg-gray-50">
                         <div class="grid grid-cols-4">
                             <img src="{{ asset('/storage/Profile Picture/Tutor/'.$t->Image) }}" class="object-cover w-[100px] h-[100px] m-4 rounded-full" alt="">
                             <div class="flex flex-col col-span-3 mt-4 mr-8 text-justify">

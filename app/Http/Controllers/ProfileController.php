@@ -5,14 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use App\Models\Tutor;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
     public function UpdateProfile(Request $request){
-        // Validation (Requirement)
+        $request->validate([
+            ''
+        ]);
         if(session('Roles') == 'Student'){
             Student::findOrFail(auth('student')->user()->id)->update([
                 'Gender' => $request->gender,
@@ -66,7 +67,8 @@ class ProfileController extends Controller
         if(Storage::exists('/public/Profile Picture/'.session('Roles').'/'.auth()->guard(strtolower(session('Roles')))->user()->Image) && auth()->guard(strtolower(session('Roles')))->user()->Image != 'Default.png'){
             Storage::delete('/public/Profile Picture/'.session('Roles').'/'.auth()->guard(strtolower(session('Roles')))->user()->Image);
         }
-        $id = auth()->guard(strtolower(session('Roles')))->user()->id;
+        
+        $id = auth(strtolower(session('Roles')))->user()->id;
         $extension = $request->file('image')->getClientOriginalExtension();
         $fileName = $id.'.'.$extension;
 

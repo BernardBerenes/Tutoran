@@ -34,7 +34,7 @@
             </div>
         </div>
         <div>
-            <h2 class="mb-4 text-[50px] font-bold text-black">Daftar Khusus</h2>
+            <h2 class="mb-4 text-[50px] font-bold text-black">Daftar Kursus</h2>
             <hr class="h-px bg-gray-200 border-0 bg-gray-700">
             <div class="flex flex-col gap-y-8 overflow-x-hidden overflow-y-auto w-[540px] h-[430px] my-10 pr-4">
                 <a href="#" class="grid grid-cols-4 border border-gray-300 shadow-md w-[500px] h-[120px] hover:bg-gray-50">

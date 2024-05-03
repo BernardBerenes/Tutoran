@@ -3,29 +3,47 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class CourseController extends Controller
 {
     public function AddCourse(Request $request){
-        // Validation
+        $request->validate([
+            // 'title' => 'required',
+            // 'price' => 'required',
+            // 'poster' => 'required|max:25000|mimes:png,jpg,jpeg,svg'
+        ]);
 
-        // $extension = $request->file('image')->getClientOriginalExtension();
-        // $fileName = $request->name.'.'.$extension;
-        // $request->file('image')->storeAs('/public/Course Poster/', $fileName);
-        
-        $lastId = DB::table('courses')->insertGetId([
-            'TutorID' => session('User')->id,
+        $lastId = Course::latest()->value('id') + 1;
+        $extension = $request->file('poster')->getClientOriginalExtension();
+        $fileName = $lastId.'.'.$extension;
+        $request->file('poster')->storeAs('/public/Poster/', $fileName);
+
+        Course::create([
+            'TutorID' => auth('tutor')->user()->id,
             'Title' => $request->title,
             'Price' => $request->price,
             'Lesson' => 'Matematika',
             'Curriculum' => 'K13',
-            'Poster' => 'Test'
+            'Poster' => $fileName
         ]);
 
-        dd($lastId);
+        return redirect(route('SubjectPage'));
+    }
 
-        return redirect(route('IndexPage'));
+    public function InsertCart($CourseID){
+        $student = Student::findOrFail(auth('student')->user()->id);
+        $student->Course()->attach($CourseID);
+
+        return redirect(route('CartPage'));
+    }
+
+    public function DeleteCart($CourseID){
+        $student = Student::findOrFail(auth('student')->user()->id);
+        $student->Course()->detach($CourseID);
+
+        return back();
     }
 }

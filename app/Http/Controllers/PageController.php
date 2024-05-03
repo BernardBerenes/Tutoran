@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\ForumQuestion;
 use App\Models\Student;
 use App\Models\Tutor;
@@ -10,11 +11,17 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     public function IndexPage(){
-        return view('Index')->with('currentPage', 'Beranda');
+        $topTutor = Tutor::orderByDesc('Rating')->take(3)->get();
+
+        return view('Index')->with('currentPage', 'Beranda')->with('topTutor', $topTutor);
     }
 
     public function CartPage(){
-        return view('Cart')->with('currentPage', '');
+        $student = Student::findOrFail(auth('student')->user()->id);
+        $course = $student->Course;
+        $tutor = Tutor::all();
+
+        return view('Cart')->with('currentPage', '')->with('course', $course)->with('tutor', $tutor);
     }
 
     public function RegisterPage(){
@@ -44,7 +51,10 @@ class PageController extends Controller
     }
 
     public function SubjectPage(){
-        return view('Subject')->with('currentPage', '');
+        $course = Course::all();
+        $tutor = Tutor::all();
+
+        return view('Subject')->with('currentPage', '')->with('course', $course)->with('tutor', $tutor);
     }
 
     public function TutorListPage(){
@@ -64,5 +74,23 @@ class PageController extends Controller
         $forumQuestion = ForumQuestion::orderBy('created_at', 'desc')->get();
 
         return view('ForumDiscussion')->with('currentPage', 'Forum')->with('question', $forumQuestion)->with('publisher', $publisher);
+    }
+
+    public function CourseListPage(){
+        $topTutor = Tutor::orderByDesc('Rating')->take(5)->get();
+
+        return view('CourseList')->with('currentPage', 'Course List')->with('topTutor', $topTutor);
+    }
+
+    public function StudentRatingPage(){
+
+    }
+
+    public function StudentRatingDetailPage(){
+        return view('StudentRatingDetail')->with('currentPage', '');
+    }
+
+    public function TutorCourseListPage(){
+        return view('TutorCourseList')->with('currentPage', '');
     }
 }

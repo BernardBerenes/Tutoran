@@ -3,11 +3,16 @@
     <div class="flex justify-between ml-16 text-2xl font-medium w-3/4 items-center">
         <div class="flex gap-x-12">
             <a href="{{ route('IndexPage') }}" class="{{ $currentPage == 'Beranda' ? 'underline underline-offset-[6px]' : '' }} group text-black font-medium transition-all duration-600 ease-in-out"><span class="bg-left-bottom bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out pb-[2px]">Beranda</span></a>
-            <a href="" class="group text-black font-medium transition-all duration-600 ease-in-out"><span class="bg-left-bottom bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out pb-[3px]">Mata Pelajaran</span></a>
+            @if (!auth('tutor')->check())
+                <a href="{{ route('CourseListPage') }}" class="{{ $currentPage == 'Course List' ? 'underline underline-offset-[6px]' : '' }} group text-black font-medium transition-all duration-600 ease-in-out"><span class="bg-left-bottom bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out pb-[3px]">Mata Pelajaran</span></a>
+            @endif
             <a href="{{ route('AboutUsPage') }}" class="{{ $currentPage == 'About Us' ? 'underline underline-offset-[6px]' : '' }} group text-black font-medium transition-all duration-600 ease-in-out"><span class="bg-left-bottom bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out pb-[2px]">Tentang Kami</span></a>
-            @if (auth('student')->check())
+            @if (auth('student')->check() || auth('tutor')->check())
                 <a href="" class="{{ $currentPage == 'My Course' ? 'underline underline-offset-[6px]' : '' }} group text-black font-medium transition-all duration-600 ease-in-out"><span class="bg-left-bottom bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out pb-[2px]">Kursus Saya</span></a>
                 <a href="{{ route('ForumDiscussionPage') }}" class="{{ $currentPage == 'Forum' ? 'underline underline-offset-[6px]' : '' }} group text-black font-medium transition-all duration-600 ease-in-out"><span class="bg-left-bottom bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out pb-[2px]">Forum</span></a>
+            @endif
+            @if (auth('tutor')->check())
+                <a href="" class="{{ $currentPage == 'Chat' ? 'underline underline-offset-[6px]' : '' }} group text-black font-medium transition-all duration-600 ease-in-out"><span class="bg-left-bottom bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out pb-[2px]">Chat</span></a>
             @endif
         </div>    
         <div class="flex gap-x-8 items-center">

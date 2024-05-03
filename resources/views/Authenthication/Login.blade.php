@@ -38,7 +38,7 @@
                 </div>
                 <div class="flex flex-col text-2xl mb-4">
                     <label class="mb-3 font-medium">Email</label>
-                    <input type="text" class="h-12 rounded-xl text-xl" name="email">
+                    <input type="text" class="h-12 rounded-xl text-xl" value="{{ old('email') }}" name="email">
                 </div>
                 <div class="flex flex-col text-2xl mb-4">
                     <label class="mb-3 font-medium">Kata Sandi</label>

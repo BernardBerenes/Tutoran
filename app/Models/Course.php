@@ -17,4 +17,12 @@ class Course extends Model
         'Curriculum',
         'Poster'
     ];
+
+    public function Student(){
+        return $this->belongsToMany(Student::class, 'carts', 'CourseID', 'StudentID');
+    }
+
+    public function Tutor(){
+        return $this->belongsTo(Tutor::class, 'TutorID', 'id');
+    }
 }

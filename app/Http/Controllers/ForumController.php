@@ -8,9 +8,12 @@ use Illuminate\Http\Request;
 class ForumController extends Controller
 {
     public function AddForumQuestion(Request $request){
-        // Validation
+        $request->validate([
+            'question' => 'required|regex:/(\w+\s){4,}\w+/'
+        ]);
+
         ForumQuestion::create([
-            'StudentID' => session('User')->id,
+            'StudentID' => auth(strtolower(session('Roles')))->user()->id,
             'Question' => $request->question
         ]);
 
@@ -18,6 +21,8 @@ class ForumController extends Controller
     }
 
     public function AddForumAnswer(Request $request){
-
+        $request->validate([
+            'answer' => 'required|regex:/(\w+\s){4,}\w+/'
+        ]);
     }
 }

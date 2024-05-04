@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('Style/app.css') }}">
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
-    <title>Tutoran</title>
+    <title>Forum Discussion</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         function forumInput() {
@@ -38,7 +38,10 @@
             </div>
             <form method="POST" action="{{ route('AddForumQuestion') }}">
                 @csrf
-                <textarea id="popup" rows="4" class="hidden bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full h-[100px] p-2.5 mb-5 mt-16 resize-none" placeholder="Tulis pertanyaanmu disini" name="question"></textarea>    
+                <textarea id="popup" rows="4" class="hidden bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full h-[100px] p-2.5 mb-5 mt-16 resize-none" placeholder="Tulis pertanyaanmu disini" name="question"></textarea>
+                @error('question')
+                    <p class="text-red-400">{{ $message }}</p>
+                @enderror
                 <button id="addForumBtn" class="hidden w-[150px] h-[50px] bg-[#65668B] hover:bg-[#7981A2] font-semibold rounded-2xl text-[20px] text-white">Tambahkan</button>
             </form>
             <div class="grid gap-4 grid-cols-2 gap-6 mt-12">

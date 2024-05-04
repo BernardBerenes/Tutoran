@@ -93,4 +93,8 @@ class PageController extends Controller
     public function TutorCourseListPage(){
         return view('TutorCourseList')->with('currentPage', '');
     }
+
+    public function PaymentPage(){
+        return view('Payment')->with('currentPage', '');
+    }
 }

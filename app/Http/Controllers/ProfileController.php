@@ -14,6 +14,7 @@ class ProfileController extends Controller
         $request->validate([
             ''
         ]);
+
         if(session('Roles') == 'Student'){
             Student::findOrFail(auth('student')->user()->id)->update([
                 'Gender' => $request->gender,
@@ -24,7 +25,8 @@ class ProfileController extends Controller
             Tutor::findOrFail(auth('tutor')->user()->id)->update([
                 'Gender' => $request->gender,
                 'DateOfBirth' => $request->dob,
-                'PhoneNumber' => $request->phoneNumber
+                'PhoneNumber' => $request->phoneNumber,
+                'Background' => $request->background
             ]);
         }
 

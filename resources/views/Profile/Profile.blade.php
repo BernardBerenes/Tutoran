@@ -46,6 +46,12 @@
                         <label class="font-medium text-2xl">Nomor HP</label>
                         <input type="text" class="rounded-lg h-12 border-gray-400 shadow-lg" name="phoneNumber" value="{{ $user->PhoneNumber }}" >
                     </div>
+                    @if (auth('tutor')->check())
+                        <div class="flex flex-col">
+                            <label class="font-medium text-2xl">Latar Belakang</label>
+                            <textarea rows="3" class="border border-gray-400 shadow-lg text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 resize-none" name="background"></textarea>
+                        </div>
+                    @endif
                     <button type="submit" class="bg-slate-500 rounded-md py-3 w-32 font-semibold text-white text-xl align">Simpan</button>
                 </form>
             </div>

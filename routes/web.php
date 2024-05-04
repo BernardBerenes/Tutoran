@@ -67,3 +67,5 @@ Route::get('/student-rating/detail', [PageController::class, 'StudentRatingDetai
 Route::post('/insert-cart/{CourseID}', [CourseController::class, 'InsertCart'])->name('InsertCart');
 
 Route::delete('/delete-cart/{CourseID}', [CourseController::class, 'DeleteCart'])->name('DeleteCart');
+
+Route::get('/payment', [PageController::class, 'PaymentPage'])->name('PaymentPage');

@@ -37,34 +37,15 @@
             <h2 class="mb-4 text-[50px] font-bold text-black">Daftar Kursus</h2>
             <hr class="h-px bg-gray-200 border-0 bg-gray-700">
             <div class="flex flex-col gap-y-8 overflow-x-hidden overflow-y-auto w-[540px] h-[430px] my-10 pr-4">
-                <a href="#" class="grid grid-cols-4 border border-gray-300 shadow-md w-[500px] h-[120px] hover:bg-gray-50">
-                    <img src="img/Matematika Peminatan.png" class="p-4 object-cover w-[120px] h-[120px]" alt="">
-                    <div class="flex flex-col col-span-3 flex flex-col ">
-                        <p class="text-2xl font-medium text-black mt-4">Integral Tak Tentu Fungsi Aljabar</p>
-                        <p class="mb-3 text-base text-black ">Matematika Peminatan</p>
-                    </div>
-                </a>
-                <a href="#" class="grid grid-cols-4 border border-gray-300 shadow-md w-[500px] h-[120px] hover:bg-gray-50">
-                    <img src="img/Kimia.png" class="p-4 object-cover w-[120px] h-[120px]" alt="">
-                    <div class="flex flex-col col-span-3 flex flex-col ">
-                        <p class="text-2xl font-medium text-black mt-4">Tata Nama Senyawa dan Persamaan Reaksi</p>
-                        <p class="mb-3 text-base text-black ">Kimia</p>
-                    </div>
-                </a>                   
-                <a href="#" class="grid grid-cols-4 border border-gray-300 shadow-md w-[500px] h-[120px] hover:bg-gray-50">
-                    <img src="img/Kimia.png" class="p-4 object-cover w-[120px] h-[120px]" alt="">
-                    <div class="flex flex-col col-span-3 flex flex-col ">
-                        <p class="text-2xl font-medium text-black mt-4">Induksi Elektromagnetik</p>
-                        <p class="mb-3 text-base text-black ">Fisika</p>
-                    </div>
-                </a>                   
-                <a href="#" class="grid grid-cols-4 border border-gray-300 shadow-md w-[500px] h-[120px] hover:bg-gray-50">
-                    <img src="img/Kimia.png" class="p-4 object-cover w-[120px] h-[120px]" alt="">
-                    <div class="flex flex-col col-span-3 flex flex-col ">
-                        <p class="text-2xl font-medium text-black mt-4">Tata Nama Senyawa dan Persamaan Reaksi</p>
-                        <p class="mb-3 text-base text-black ">Kimia</p>
-                    </div>
-                </a>                   
+                @foreach ($course as $c)
+                    <a href="#" class="grid grid-cols-4 border border-gray-300 shadow-md w-[500px] h-[120px] hover:bg-gray-50">
+                        <img src="{{ asset('/storage/Poster/'.$c->Poster) }}" class="p-4 object-cover w-[120px] h-[120px]" alt="">
+                        <div class="flex flex-col col-span-3 flex flex-col ">
+                            <p class="text-2xl font-medium text-black mt-4">{{ $c->Title }}</p>
+                            <p class="mb-3 text-base text-black ">{{ $c->Lesson }}</p>
+                        </div>
+                    </a>
+                @endforeach           
             </div>
             <div class="flex justify-end">
                 <a href="" class="ml-auto">
@@ -75,89 +56,7 @@
             </div>
         </div>
     </div>
-    <footer class="bg-[#27272E]">
-        <div class="mx-auto w-full max-w-screen-xl p-4 pt-20 pb-6 lg:pb-8">
-            <div class="md:flex md:justify-between">
-            <div class="mb-6 md:mb-0">
-                <a href="" class="flex items-center">
-                    <img src="img/Logo_Tutoran.png" class="h-8 me-3"/>
-                </a>
-                <div class="text-gray-500 font-medium flex flex-col">
-                    <p class="mt-8">Informasi Kontak</p>
-                    <div class="mt-4 flex flex-row">
-                        <p class="text-white mr-1">Email:</p>
-                        <p>tutoran@gmail.com</p>
-                    </div>
-                    <div class="flex flex-row">
-                        <p class="text-white mr-1">Jam:</p>  
-                        <p>09:00 - 17:00, Senin - Sabtu</p>
-                    </div>            
-                </div>
-            </div>
-            <div class="grid gap-8 sm:gap-4 sm:grid-cols-3">
-                <div>
-                    <h2 class="mb-6 text-sm font-semibold uppercase text-white underline underline-offset-4">Menu Utama</h2>
-                    <ul class="text-gray-500 font-medium">
-                        <li>
-                            <a href="HomePage.html" class="hover:underline">Beranda</a>
-                        </li>
-                        <li>
-                            <a href="" class="hover:underline">Tentang Kami</a>
-                        </li>
-                        <li>
-                            <a href="" class="hover:underline">Pelayanan Kami</a>
-                        </li>
-                        <li>
-                            <a href="" class="hover:underline">Kebijakan Privasi</a>
-                        </li>
-                        <li>
-                            <a href="" class="hover:underline">Syarat dan Ketentuan</a>
-                        </li>
-                        <li>
-                            <a href="" class="hover:underline">Pertanyaan yang Sering Ditanyakan</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="ml-10"> <!--flex items-center flex-col-->
-                    <h2 class="mb-6 text-sm font-semibold uppercase text-white underline underline-offset-4 ">Tautan</h2>
-                    <ul class="text-gray-500  font-medium">
-                        <li>
-                            <a href="" class="hover:underline">SD</a>
-                        </li>
-                        <li>
-                            <a href="" class="hover:underline">SMP</a>
-                        </li>
-                        <li>
-                            <a href="" class="hover:underline">SMA</a>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h2 class="mb-6 text-sm font-semibold uppercase text-white underline underline-offset-4">Media Sosial</h2>
-                    <div class="text-gray-500 font-medium flex flex-row">
-                            <a href="#" class="flex items-center rtl:space-x-reverse">
-                                <img src="img/Facebook.png" class="h-8" alt="Tutoran Logo" />
-                            </a>
-                            <a href="#" class="flex items-center  rtl:space-x-reverse">
-                                <img src="img/Twitter Circled.png" class="h-8" alt="Tutoran Logo" />
-                            </a>
-                            <a href="#" class="flex items-center  rtl:space-x-reverse">
-                                <img src="img/Instagram Circle.png" class="h-8" alt="Tutoran Logo" />
-                            </a>  
-                            <a href="#" class="flex items-center  rtl:space-x-reverse">
-                                <img src="img/LinkedIn.png" class="h-8" alt="Tutoran Logo" />
-                            </a>        
-                        </div>
-                </div>
-            </div>
-        </div>
-        <div class="sm:flex sm:items-center sm:justify-center mt-12">
-            <span class="text-sm text-gray-500 sm:text-center text-gray-400">© 2024 <a href="" class="hover:underline">tutoran</a>. All Rights Reserved.
-            </span>
-            </div>
-        </div>
-        </div>
-    </footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    @include('Component.Footer')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 </html>

@@ -51,7 +51,9 @@ class PageController extends Controller
     }
 
     public function SubjectPage(){
-        $course = Course::all();
+        $student = Student::findOrFail(auth('student')->user()->id);
+        $cart = $student->Course()->pluck('CourseID');
+        $course = Course::whereNotIn('id', $cart)->get();
         $tutor = Tutor::all();
 
         return view('Subject')->with('currentPage', '')->with('course', $course)->with('tutor', $tutor);
@@ -65,8 +67,9 @@ class PageController extends Controller
 
     public function TutorDetailPage($TutorID){
         $tutor = Tutor::findOrFail($TutorID);
+        $course = Course::where('TutorID', $TutorID)->get();
 
-        return view('TutorDetail')->with('currentPage', '')->with('tutor', $tutor);
+        return view('TutorDetail')->with('currentPage', '')->with('tutor', $tutor)->with('course', $course);
     }
 
     public function ForumDiscussionPage(){

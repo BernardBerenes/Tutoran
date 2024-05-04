@@ -35,9 +35,14 @@ class CourseController extends Controller
 
     public function InsertCart($CourseID){
         $student = Student::findOrFail(auth('student')->user()->id);
+        $count = $student->Course()->where('CourseID', $CourseID)->where('StudentID', $student->id)->count();
+
+        if($count > 0){
+            return back();
+        }
         $student->Course()->attach($CourseID);
 
-        return redirect(route('CartPage'));
+        return back();
     }
 
     public function DeleteCart($CourseID){

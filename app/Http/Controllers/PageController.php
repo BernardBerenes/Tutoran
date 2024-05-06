@@ -50,13 +50,13 @@ class PageController extends Controller
         return view('AddCourse')->with('currentPage', '');
     }
 
-    public function SubjectPage(){
+    public function SubTopicPage(){
         $student = Student::findOrFail(auth('student')->user()->id);
         $cart = $student->Course()->pluck('CourseID');
         $course = Course::whereNotIn('id', $cart)->get();
         $tutor = Tutor::all();
 
-        return view('Subject')->with('currentPage', '')->with('course', $course)->with('tutor', $tutor);
+        return view('SubTopic')->with('currentPage', '')->with('course', $course)->with('tutor', $tutor);
     }
 
     public function TutorListPage(){
@@ -79,10 +79,10 @@ class PageController extends Controller
         return view('ForumDiscussion')->with('currentPage', 'Forum')->with('question', $forumQuestion)->with('publisher', $publisher);
     }
 
-    public function CourseListPage(){
+    public function SubjectPage(){
         $topTutor = Tutor::orderByDesc('Rating')->take(5)->get();
 
-        return view('CourseList')->with('currentPage', 'Course List')->with('topTutor', $topTutor);
+        return view('Subject')->with('currentPage', 'Subject')->with('topTutor', $topTutor);
     }
 
     public function StudentRatingPage(){
@@ -93,11 +93,29 @@ class PageController extends Controller
         return view('StudentRatingDetail')->with('currentPage', '');
     }
 
-    public function TutorCourseListPage(){
-        return view('TutorCourseList')->with('currentPage', '');
+    public function TutorCourseListPage($TutorID){
+        $course = Course::where('TutorID', $TutorID)->get();
+        
+        return view('TutorCourseList')->with('currentPage', 'Tutor Course List')->with('course', $course);
     }
 
     public function PaymentPage(){
         return view('Payment')->with('currentPage', '');
+    }
+
+    public function MembershipPage(){
+        return view('Membership')->with('currentPage', '');
+    }
+
+    public function RatingTutor($TutorID){
+        $tutor = Tutor::findOrFail($TutorID);
+
+        return view('RatingTutor')->with('currentPage', '')->with('tutor', $tutor);
+    }
+
+    public function StudentReportPage(){
+        $user = auth()->guard(strtolower(session('Roles')))->user();
+
+        return view('StudentReport')->with('currentPage', '')->with('user', $user);
     }
 }

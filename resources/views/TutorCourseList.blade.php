@@ -26,38 +26,16 @@
                 </div>
             </form>
             <div class="grid gap-6 mt-12">
-                <a href="#" class="flex flex-row border border-gray-300 shadow-md">
-                    <img src="img/Kimia.png" class="object-cover w-[120px] h-[120px] m-4" alt="">
-                    <div class="flex flex-col w-full m-4">
-                        <h2 class="text-[24px] font-medium mt-4">Integral Tak Tentu Fungsi Aljabar</h2>
-                        <p class="mt-3 text-base font-light">Matematika Peminatan</p>
-                        <p class="flex justify-end font-light">Ditambahkan pada: 25 Maret 2024</p>
-                    </div>
-                </a>   
-                <a href="#" class="flex flex-row border border-gray-300 shadow-md">
-                    <img src="img/Kimia.png" class="object-cover w-[120px] h-[120px] m-4" alt="">
-                    <div class="flex flex-col w-full m-4">
-                        <h2 class="text-[24px] font-medium mt-4">Integral Tak Tentu Fungsi Aljabar</h2>
-                        <p class="mt-3 text-base font-light">Matematika Peminatan</p>
-                        <p class="flex justify-end font-light">Ditambahkan pada: 25 Maret 2024</p>
-                    </div>
-                </a>   
-                <a href="#" class="flex flex-row border border-gray-300 shadow-md">
-                    <img src="img/Kimia.png" class="object-cover w-[120px] h-[120px] m-4" alt="">
-                    <div class="flex flex-col w-full m-4">
-                        <h2 class="text-[24px] font-medium mt-4">Integral Tak Tentu Fungsi Aljabar</h2>
-                        <p class="mt-3 text-base font-light">Matematika Peminatan</p>
-                        <p class="flex justify-end font-light">Ditambahkan pada: 25 Maret 2024</p>
-                    </div>
-                </a>   
-                <a href="#" class="flex flex-row border border-gray-300 shadow-md">
-                    <img src="img/Kimia.png" class="object-cover w-[120px] h-[120px] m-4" alt="">
-                    <div class="flex flex-col w-full m-4">
-                        <h2 class="text-[24px] font-medium mt-4">Integral Tak Tentu Fungsi Aljabar</h2>
-                        <p class="mt-3 text-base font-light">Matematika Peminatan</p>
-                        <p class="flex justify-end font-light">Ditambahkan pada: 25 Maret 2024</p>
-                    </div>
-                </a>   
+                @foreach ($course as $c)
+                    <a href="#" class="flex flex-row border border-gray-300 shadow-md hover:bg-gray-200">
+                        <img src="{{ asset('/storage/Poster/'.$c->Poster) }}" class="object-cover w-[120px] h-[120px] m-4" alt="">
+                        <div class="flex flex-col w-full m-4">
+                            <h2 class="text-[24px] font-medium mt-4">{{ $c->Title }}</h2>
+                            <p class="mt-3 text-base font-light">{{ $c->Lesson }}</p>
+                            <p class="flex justify-end font-light">Ditambahkan pada: {{ $c->created_at->format('d M Y') }}</p>
+                        </div>
+                    </a>
+                @endforeach
             </div>
         </div>
         <div class="flex justify-between m-8">

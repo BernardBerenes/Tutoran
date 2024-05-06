@@ -13,7 +13,7 @@
 <body>
     @include('Component.Navbar')
     <div class="grid grid-row-2">
-        <div class="p-14 flex flex-col justify-between">
+        <div class="py-14 px-32 flex flex-col justify-between">
             <p class="font-semibold text-5xl mb-10">Keranjang Belanja</p>
             <div class="text-[28px] font-semibold grid grid-cols-8">
                 <p class="col-span-6">Kursus</p>
@@ -52,7 +52,7 @@
                 <p class="text-2xl text-[#65668B] font-medium ml-4">Tambah Kursus</p>
             </div>
         </div>
-        <div class="p-14 flex flex-col justify-between">
+        <div class="px-32 py-14 flex flex-col justify-between">
             <p class="text-[40px] font-medium">Total:</p>
             <p class="text-4xl font-medium">Rp 358.000,00</p>
             <a href="#" class="mt-5 inline-flex w-80 justify-center items-center px-3 py-3 text-xl font-bold text-center text-white bg-[#65668B] rounded-lg hover:bg-[#7981A2]">Checkout</a>

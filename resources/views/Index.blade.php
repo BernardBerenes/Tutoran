@@ -32,12 +32,12 @@
             </div>
         </div>
         <div>
-            <div class="flex flex-row justify-center">
+            <div class="flex flex-row gap-10 justify-center">
                 <img src="{{ asset('Assets/img/SD.png') }}">
                 <img src="{{ asset('Assets/img/SMP.png') }}">
                 <img src="{{ asset('Assets/img/SMA.png') }}">
             </div>
-            <div class="flex flex-row space-x-0 place-content-evenly mt-[-80px]">
+            <div class="flex flex-row space-x-0 ml-[200px] gap-40 mt-[-80px]">
                 <div class="bg-[#65668B] shadow-outer shadow-2xl w-90 h-65">
                     <div class="p-6">
                         <p class="text-[25px] text-white">Mulai dari</p>
@@ -66,7 +66,7 @@
             <div class="bg-[url('Assets/Main-2.png')] bg-cover min-h-screen"></div>
             <div class="flex justify-end mt-[-140px] mr-40"><button type="submit" class="text-black end-2.5 bottom-2.5 bg-white hover:bg-gray-200 font-semibold rounded-lg text-4xl px-20 py-2 m-2">Beli Sekarang</button></div>
         </div>
-        <div class="bg-white py-10">
+        <div class="bg-white py-10 px-36">
             <div class="mt-5 m-20 bg-[url('Assets/Main-3.png')] bg-cover bg-no-repeat">
                 <div><p class="text-[90px] font-bold">Tutor Terbaik</p></div>
                 <div><p class="text-[32px] font-medium mb-4">Januari 2024 - Juni 2024</p></div>
@@ -89,7 +89,7 @@
                         </div>
                     @endforeach
                 </div>
-                <div class="flex flex-row items-center bg-gray-800 my-6 rounded-lg w-1/2">
+                <div class="flex flex-row items-center bg-gray-800 mt-16 rounded-lg w-3/4">
                     <img src="{{ asset('Assets/img/Trophy 1.png') }}" class="p-6">
                     <div class="m-4">
                         <p class="font-bold text-6xl text-white">Leaderboard</p>

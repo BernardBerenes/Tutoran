@@ -67,3 +67,5 @@ Route::get('/payment', [PageController::class, 'PaymentPage'])->name('PaymentPag
 Route::get('/membership', [PageController::class, 'MembershipPage'])->name('MembershipPage');
 
 Route::get('/student-report', [PageController::class, 'StudentReportPage'])->name('StudentReportPage');
+
+Route::get('/leaderboard', [PageController::class, 'LeaderboardPage'])->name('LeaderboardPage');

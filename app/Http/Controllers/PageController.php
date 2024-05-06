@@ -118,4 +118,8 @@ class PageController extends Controller
 
         return view('StudentReport')->with('currentPage', '')->with('user', $user);
     }
+
+    public function LeaderboardPage(){
+        return view('Leaderboard')->with('currentPage', '');
+    }
 }

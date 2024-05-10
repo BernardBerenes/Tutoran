@@ -12,11 +12,16 @@
 </head>
 <body>
     @include('Component.Navbar')
-    <div class="flex fle-row p-16 justify-between">
-        <div class="flex flex-col">
+    <div class="flex justify-between p-16 w-screen">
+        <div class="flex flex-col px-[20%]">
             <h1 class="font-bold text-[36px]">Profil Murid</h1>
-            <h1 class="font-bold text-[64px]">Dicky Dharma Susanto</h1>
-            <p class="flex items-center justify-center w-[200px] h-[50px] bg-[#65668B] rounded-2xl text-white text-[20px] font-bold">Kelas 10 - SMA 1</p>
+            <div class="flex flex-row gap-4"> 
+              <img src="img/ProfileStudent.png" class="w-[220px] h-[220px] object-cover bg-no-repeat rounded-xl"/>
+              <div class="flex flex-col">
+                <h1 class="font-bold text-[48px] max-w-[480px] leading-tight">Dicky Dharma Susanto</h1>
+                <p class="flex items-center justify-center w-[200px] h-[50px] bg-[#65668B] rounded-2xl text-white text-[20px] font-bold">Kelas 10 - SMA 1</p>
+              </div>
+            </div>
             <div class="flex flex-col gap-y-4 overflow-x-hidden overflow-y-auto w-[760px] h-[310px] my-10 pr-4">
                 <a class="w-[710px] h-[63px] bg-white border border-gray-300 flex items-center p-4 justify-between rounded-2xl shadow-md">
                     <p class="text-[20px]">Fungsi Komposisi dan fungsi invers</p>
@@ -64,7 +69,7 @@
                     </div>
                 </a>
             </div>
-            <div class="flex flex-row bg-[#8292AC] w-[710px] h-[63px] items-center space-x-64 p-4 justify-between">
+            <div class="flex flex-row bg-[#8292AC] w-[710px] h-[63px] items-center space-x-64 p-4 justify-between rounded-2xl">
                 <p class="text-[20px] font-semibold text-white">Suhu dan Kalor</p>
                 <form class="inline-block relative h-[30px] text-[30px] leading-[30px]">
                     <label class="absolute h-full cursor-pointer top-0 left-0 z-[5]">
@@ -130,7 +135,6 @@
                   </form>
             </div>
         </div>
-        <img src="img/ProfileStudent.png" class="w-[483px] h-[753px] object-cover bg-no-repeat"/>
     </div>
     @include('Component.Footer')
     <script>

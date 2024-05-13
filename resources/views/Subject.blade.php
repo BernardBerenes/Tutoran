@@ -6,14 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('Style/app.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
-    <title>Tutoran</title>
+    <title>Subject</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        document.getElementById('kelas').addEventListener('change', function() {
-            var form = document.getElementById('kelas');
-            form.submit();
-        });
-    </script>
 </head>
 <body class="overflow-x-hidden">
     @include('Component.Navbar')
@@ -22,20 +16,24 @@
         <div class="flex flex-row bg-white min-h-screen mt-16 mx-40 justify-between">
             <div class="flex flex-col mr-16">
                 <div class="flex flex-row">
-                    <select id="kelas" class="flex items-center justify-center bg-gray-200 border-none rounded-full p-4 w-[170px] h-[55px] text-base font-light text-[#999999] hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-300">
-                        <option value="Pilih Kelas" class="bg-white" selected>Pilih Kelas</option>
-                        <option value="SD" class="bg-white">SD</option>
-                        <option value="SMP" class="bg-white">SMP</option>
-                        <option value="SMK" class="bg-white">SMK</option>
-                        <option value="SMA" class="bg-white">SMA</option>
-                    </select>
-                    <select id="kurikulum" class="flex items-center justify-center bg-gray-200 border-none rounded-full p-4 ml-8 w-[170px] h-[55px] text-base font-light text-[#999999] hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-300">
-                        <option value="Kurikulum" class="bg-white" selected>Kurikulum</option>
-                        <option value="SD" class="bg-white">SD</option>
-                        <option value="SMP" class="bg-white">SMP</option>
-                        <option value="SMK" class="bg-white">SMK</option>
-                        <option value="SMA" class="bg-white">SMA</option>
-                    </select>
+                    <form action="" id="class-form">
+                        <select id="class" class="flex items-center justify-center bg-gray-200 border-none rounded-full p-4 w-[170px] h-[55px] text-base font-light text-[#999999] hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-300" name="">
+                            <option value="Pilih Kelas" class="bg-white" selected>Pilih Kelas</option>
+                            <option value="SD" class="bg-white">SD</option>
+                            <option value="SMP" class="bg-white">SMP</option>
+                            <option value="SMK" class="bg-white">SMK</option>
+                            <option value="SMA" class="bg-white">SMA</option>
+                        </select>
+                    </form>
+                    <form action="" id="curriculum-form">
+                        <select id="curriculum" class="flex items-center justify-center bg-gray-200 border-none rounded-full p-4 ml-8 w-[170px] h-[55px] text-base font-light text-[#999999] hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-300">
+                            <option value="Kurikulum" class="bg-white" selected>Kurikulum</option>
+                            <option value="SD" class="bg-white">SD</option>
+                            <option value="SMP" class="bg-white">SMP</option>
+                            <option value="SMK" class="bg-white">SMK</option>
+                            <option value="SMA" class="bg-white">SMA</option>
+                        </select>
+                    </form>
                 </div>
                 <div class="grid grid-cols-3 gap-8 mt-8">
                     <a href="#" class="flex flex-col items-center justify-center w-[150px] h-[150px] border border-gray-300 rounded-xl shadow-lg hover:border-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300">
@@ -87,5 +85,19 @@
     </div> 
     @include('Component.Footer')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script>
+        document.getElementById('class').addEventListener('change', function () {
+            var selectedValue = this.value;
+            var form = document.getElementById('class-form');
+            console.log(selectedValue);
+            // form.submit();
+        });
+        document.getElementById('curriculum').addEventListener('change', function () {
+            var selectedValue = this.value;
+            var form = document.getElementById('curriculum-form');
+            console.log(selectedValue);
+            // form.submit();
+        });
+    </script>
 </body>
 </html>

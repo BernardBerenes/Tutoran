@@ -93,7 +93,7 @@
                     <img src="{{ asset('Assets/img/Trophy 1.png') }}" class="p-6">
                     <div class="m-4">
                         <p class="font-bold text-6xl text-white">Leaderboard</p>
-                        <a href="#" class="mt-5 inline-flex w-80 justify-center items-center px-3 py-2 text-xl font-bold text-center text-black bg-white rounded-lg hover:bg-gray-200">Cek Peringkat</a>
+                        <a href="{{ route('LeaderboardPage') }}" class="mt-5 inline-flex w-80 justify-center items-center px-3 py-2 text-xl font-bold text-center text-black bg-white rounded-lg hover:bg-gray-200">Cek Peringkat</a>
                     </div>
                 </div>
             </div>

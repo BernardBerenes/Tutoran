@@ -73,11 +73,13 @@ class PageController extends Controller
         return view('TutorDetail')->with('currentPage', '')->with('tutor', $tutor)->with('course', $course);
     }
 
-    public function ForumDiscussionPage(){
+    public function ForumDiscussionPage(Request $request){
         $publisher = Student::all();
-        $forumQuestion = ForumQuestion::orderBy('created_at', 'desc')->get();
 
-        return view('ForumDiscussion')->with('currentPage', 'Forum')->with('question', $forumQuestion)->with('publisher', $publisher);
+        if($request->sorting == 'newest' || $request->sorting == null) $forumQuestion = ForumQuestion::orderBy('created_at', 'desc')->get();
+        else $forumQuestion = ForumQuestion::orderBy('created_at', 'asc')->get();
+
+        return view('ForumDiscussion')->with('currentPage', 'Forum')->with('question', $forumQuestion)->with('publisher', $publisher)->with('sorting', $request->sorting);
     }
 
     public function ForumDiscussionDetailPage($QuestionID){
@@ -87,7 +89,7 @@ class PageController extends Controller
         return view('ForumDiscussionDetail')->with('currentPage', 'Forum')->with('forumQuestion', $forumQuestion)->with('forumAnswer', $forumAnswer);
     }
 
-    public function SubjectPage(){
+    public function SubjectPage(Request $request){
         $topTutor = Tutor::orderByDesc('Rating')->take(5)->get();
 
         return view('Subject')->with('currentPage', 'Subject')->with('topTutor', $topTutor);
@@ -124,7 +126,7 @@ class PageController extends Controller
     public function StudentReportPage(){
         $user = auth()->guard(strtolower(session('Roles')))->user();
 
-        return view('StudentReport')->with('currentPage', '')->with('user', $user);
+        return view('Profile.StudentReport')->with('currentPage', 'Report')->with('user', $user);
     }
 
     public function LeaderboardPage(){

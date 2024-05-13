@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('Style/app.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
-    <title>Sub Topicx</title>
+    <title>Sub Topic</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>

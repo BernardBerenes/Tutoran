@@ -28,7 +28,7 @@
         @if(auth('student')->check())
             <a href="" class="pl-4 h-14 flex items-center border border-y-gray-300 hover:bg-gray-300 transition duration-150">Riwayat Pembelian</a>
         @endif
-        <a href="" class="pl-4 h-14 flex items-center border border-y-gray-300 hover:bg-gray-300 transition duration-150">Laporan Siswa</a>
+        <a href="{{ route('StudentReportPage') }}" class="pl-4 h-14 flex items-center border border-y-gray-300 hover:bg-gray-300 transition duration-150 {{ $currentPage === 'Report' ? 'bg-gray-200' : ''}}">Laporan Siswa</a>
         <a href="{{ route('ChangePasswordPage') }}" class="pl-4 h-14 flex items-center border border-y-gray-300 hover:bg-gray-300 transition duration-150 {{ $currentPage === 'ChangePassword' ? 'bg-gray-200' : ''}}">Ubah Kata Sandi</a>
         <form method="POST" action="{{ route('Logout') }}" class="h-14 flex items-center border border-y-gray-300 hover:bg-gray-300 hover:cursor-pointer transition duration-100 text-red-600">
             @csrf

@@ -23,15 +23,12 @@
     <div>
         <div class="py-16 px-4 mx-auto max-w-6xl"> 
             <div class="flex justify-between">
-                <button id="dropdownButton1" data-dropdown-toggle="dropdownKelas" class="text-gray-400 mt-4 bg-[#D9D9D9] hover:bg-[#BDBFC5] focus:ring-2 focus:outline-none focus:ring-gray-300 font-medium rounded-full text-[#999999] text-base px-5 py-2.5 text-center inline-flex items-center border border-gray-50" type="button">Terbaru 
-                    <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                    </svg>
-                </button>
-                <ul id="dropdownKelas" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
-                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Terbaru</a></li>
-                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Terlama</a></li>
-                </ul>
+                <form method="GET" action="{{ route('ForumDiscussionPage') }}" id="sorting-form">
+                    <select id="sorting" class="flex items-center bg-gray-200 border-none rounded-3xl py-3 px-4 text-base font-light text-[#999999] hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-300" name="sorting">
+                        <option value="newest" class="bg-white" {{ $sorting == 'newest' ? 'selected' : '' }}>Terbaru</option>
+                        <option value="latest" class="bg-white" {{ $sorting == 'latest' ? 'selected' : '' }}>Terlama</option>
+                    </select>
+                </form>
                 <div class="flex flex-col">
                     <button id="addForum" onclick=forumInput() class="w-[150px] h-[50px] bg-[#65668B] hover:bg-[#7981A2] font-semibold rounded-2xl text-[20px] text-white">Tambah</button>
                 </div>
@@ -67,5 +64,13 @@
     </div>
     @include('Component.Footer')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script>
+        document.getElementById('sorting').addEventListener('change', function () {
+            var selectedValue = this.value;
+            var form = document.getElementById('sorting-form');
+            console.log(selectedValue);
+            form.submit();
+        });
+    </script>
 </body>
 </html>

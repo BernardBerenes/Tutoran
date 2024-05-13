@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\ForumAnswer;
 use App\Models\ForumQuestion;
 use App\Models\Student;
 use App\Models\Tutor;
@@ -77,6 +78,13 @@ class PageController extends Controller
         $forumQuestion = ForumQuestion::orderBy('created_at', 'desc')->get();
 
         return view('ForumDiscussion')->with('currentPage', 'Forum')->with('question', $forumQuestion)->with('publisher', $publisher);
+    }
+
+    public function ForumDiscussionDetailPage($QuestionID){
+        $forumQuestion = ForumQuestion::findOrFail($QuestionID);
+        $forumAnswer = ForumAnswer::where('QuestionID', $QuestionID)->get();
+
+        return view('ForumDiscussionDetail')->with('currentPage', 'Forum')->with('forumQuestion', $forumQuestion)->with('forumAnswer', $forumAnswer);
     }
 
     public function SubjectPage(){

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ForumAnswer;
 use App\Models\ForumQuestion;
 use Illuminate\Http\Request;
 
@@ -20,9 +21,17 @@ class ForumController extends Controller
         return redirect(route('ForumDiscussionPage'));
     }
 
-    public function AddForumAnswer(Request $request){
-        $request->validate([
-            'answer' => 'required|regex:/(\w+\s){4,}\w+/'
+    public function AddForumAnswer(Request $request, $QuestionID){
+        // $request->validate([
+        //     'answer' => 'required|regex:/(\w+\s){4,}\w+/'
+        // ]);
+
+        ForumAnswer::create([
+            'QuestionID' => $QuestionID,
+            'StudentID' => auth('student')->user()->id,
+            'Answer' => $request->answer
         ]);
+
+        return back();
     }
 }

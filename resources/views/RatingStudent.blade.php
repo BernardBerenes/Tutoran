@@ -5,56 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
-    <title>Tutoran</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <title>Rating Student</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="">
-    <nav class="flex items-center h-28 w-full bg-slate-200">
-        <a href=""><img src="/img/Logo_Tutoran.png" alt="" class="ml-20"></a>
-        <div class="flex justify-between ml-16 text-2xl font-medium w-3/4">
-            <div class="flex gap-x-12">
-                <a href="" class="underline underline-offset-2">Beranda</a>
-                <a href="index.html" class="group text-black font-medium transition-all duration-600 ease-in-out"><span class="bg-left-bottom bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out my-2 mx-3">Mata Pelajaran</span></a>
-                <a href="index.html" class="group text-black font-medium transition-all duration-600 ease-in-out"><span class="bg-left-bottom bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out my-2 mx-3">Tentang Kami</span></a>
-            </div>
-            <div>
-                <a href="" class="px-5 py-3 bg-[#D9D9D9] text-[#65668B] hover:bg-[#BDBFC5] font-bold rounded-full">Masuk/Daftar</a>
-                <a href="" class="px-5 py-3 ml-5 bg-[#65668B] hover:bg-[#7981A2] font-bold rounded-full text-white">Langganan</a>
+<body>
+    @include('Component.Navbar')
+    <div class="flex flex-col p-36 justify-center gap-16">
+        <!-- foreach mulai disini -->
+        <div class="flex justify-center gap-4">
+            <img src="img/ProfileStudent.png" class="w-[380px] h-[380px] object-cover bg-no-repeat rounded-xl"/>
+            <div class="flex flex-col gap-4">
+                <h2 class="text-[36px] font-semibold">Dicky Dharma Susanto</h2>
+                <h3 class="text-[30px] font-medium">Kelas 10 SMA-1</h3>
+                <a href="" class="flex justify-center w-[80%] py-3 bg-[#65668B] hover:bg-[#7981A2] text-[30px] font-medium rounded-2xl text-white">Beri Nilai</a>
+                <ul class="grid grid-cols-2 grid-row-3 gap-x-8 gap-y-2 text-[30px] font-light list-disc list-inside">
+                    <li>Matematika</li>
+                    <li>Fisika</li>
+                    <li>Kimia</li>
+                    <li>Kimia</li>
+                    <li>Kimia</li>
+                </ul>
             </div>
         </div>
-    </nav>
-    <div class="px-36 py-24 flex flex-col gap-12">
-        <div class="flex flex-col">
-            <div class="flex flex-row my-4">
-                <img src="img/Xi Lhit.png" class="object-cover w-[60px] h-[60px] mr-8 rounded-full" alt="">
-                <div class="flex-col">
-                    <h2 class="text-2xl font-medium text-black">Dicky Dharma Susanto</h2>    
-                    <h2 class="text-base font-light text-black">11 Maret 2024</h2>    
-                </div>
-            </div>
-            <p class="my-4 text-justify text-[22px] font-medium">Apakah ada proyek atau tugas praktis yang dapat dilakukan untuk mengaplikasikan konsep yang dipelajari?</p> 
-        </div>
-        <div class="flex flex-row">
-            <img src="img/Xi Lhit.png" class="object-cover w-[60px] h-[60px] rounded-full" alt="">
-            <form action="" class="flex flex-col w-full">
-                <textarea id="popup" rows="4" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full h-[100px] p-2.5 mx-4 mb-4 resize-none" placeholder="Tulis jawabanmu disini" required></textarea>    
-                <div class="flex justify-end">
-                    <button id="addForumBtn" class="w-[150px] h-[50px] bg-[#65668B] hover:bg-[#7981A2] font-semibold rounded-2xl text-[20px] text-white">Tambahkan</button>
-                </div>   
-            </form>
-        </div>
-        <hr class="h-px w-full bg-gray-200 border-0 bg-gray-700">
-        <!-- foreach mulai darisini -->
-        <div class="flex flex-col">
-            <div class="flex flex-row my-4">
-                <img src="img/Xi Lhit.png" class="object-cover w-[60px] h-[60px] mr-8 rounded-full" alt="">
-                <div class="flex-col">
-                    <h2 class="text-2xl font-medium text-black">Dicky Dharma Susanto</h2>    
-                    <h2 class="text-base font-light text-black">11 Maret 2024</h2>    
-                </div>
-            </div>
-            <p class="my-4 text-justify text-[22px] font-medium">Apakah ada proyek atau tugas praktis yang dapat dilakukan untuk mengaplikasikan konsep yang dipelajari?</p> 
-        </div>              
     </div>
     <footer class="bg-[#27272E]">
         <div class="mx-auto w-full max-w-screen-xl p-4 pt-20 pb-6 lg:pb-8">
@@ -115,7 +88,7 @@
                 </div>
                 <div>
                     <h2 class="mb-6 text-sm font-semibold uppercase text-white underline underline-offset-4">Media Sosial</h2>
-                    <div class="text-gray-500 font-medium flex flex-row">
+                    <div class="text-[#D9D9D9] font-medium flex flex-row">
                             <a href="#" class="flex items-center rtl:space-x-reverse">
                                 <img src="img/Facebook.png" class="h-8" alt="Tutoran Logo" />
                             </a>
@@ -136,7 +109,6 @@
             <span class="text-sm text-gray-500 sm:text-center text-gray-400">© 2024 <a href="" class="hover:underline">tutoran</a>. All Rights Reserved.
             </span>
             </div>
-        </div>
         </div>
     </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>

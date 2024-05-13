@@ -46,12 +46,12 @@
             </form>
             <div class="grid gap-4 grid-cols-2 gap-6 mt-12">
                 @foreach ($question as $q)
-                    <a href="#" class="flex flex-col border border-gray-300 rounded-lg shadow-md">
+                    <a href="{{ route('ForumDiscussionDetailPage', ['QuestionID'=>$q->id]) }}" class="flex flex-col border border-gray-300 rounded-lg shadow-md">
                         <div class="flex flex-row my-4 mx-8">
                             <img src="{{ asset('/storage/Profile Picture/Student/'.$q->Student->Image) }}" class="object-cover w-[60px] h-[60px] mr-8 rounded-full border-[1px] border-solid border-gray-300" alt="">
                             <div class="flex-col">
                                 <h2 class="text-2xl font-medium text-black">{{ $q->Student->Name }}</h2>    
-                                <h2 class="text-base font-light text-black">{{ strftime('%e %B %Y', strtotime($q->created_at)) }}</h2>    
+                                <h2 class="text-base font-light text-black">{{ strftime('%e %B %Y', strtotime($q->created_at)) }}</h2>
                             </div>
                         </div>
                         <div class="flex flex-col justify-between">

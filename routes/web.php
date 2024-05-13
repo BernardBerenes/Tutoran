@@ -40,6 +40,8 @@ Route::middleware('customer')->group(function(){
     Route::post('/change-picture', [ProfileController::class, 'ChangePicture'])->name('ChangePicture');
     Route::get('/forum-discussion', [PageController::class, 'ForumDiscussionPage'])->name('ForumDiscussionPage');
     Route::post('/forum-discussion/post', [ForumController::class, 'AddForumQuestion'])->name('AddForumQuestion');
+    Route::get('/forum-discussion/detail/{QuestionID}', [PageController::class, 'ForumDiscussionDetailPage'])->name('ForumDiscussionDetailPage');
+    Route::post('/forum-discussion/detail/{QuestionID}', [ForumController::class, 'AddForumAnswer'])->name('AddForumAnswer');
 });
 
 Route::middleware('tutor')->group(function(){

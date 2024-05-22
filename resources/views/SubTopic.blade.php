@@ -12,7 +12,7 @@
 </head>
 <body>
     @include('Component.Navbar')
-    <div>
+    <div class="min-h-[90vh]">
         <div class="py-8 px-4 mx-auto max-w-4xl lg:py-16">
             <form class="">   
                 <label for="search-course" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
@@ -23,7 +23,7 @@
                         </svg>
                     </div>
                     <input type="search" id="search-course" class="block w-full p-4 ps-10 text-lg text-gray-900 border border-gray-300 rounded-full bg-[#D9D9D9]focus:ring-blue-500 focus:border-blue-500" placeholder="Cari Kursus" required/>
-                    <button type="submit" class="absolute end-2.5 bottom-2.5 px-5 py-3 ml-5 bg-[#65668B] hover:bg-[#7981A2] font-bold rounded-full text-white">Search</button>
+                    <button type="submit" class="absolute end-2.5 bottom-2.5 px-5 py-2 ml-5 bg-[#65668B] hover:bg-[#7981A2] font-bold rounded-full text-white">Search</button>
                 </div>
             </form>
             <div class="grid gap-4 grid-rows-3 gap-6 mt-12">

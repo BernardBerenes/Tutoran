@@ -12,7 +12,7 @@
 </head>
 <body>
     @include('Component.Navbar')
-    <div class="grid grid-row-2">
+    <div class="grid grid-row-2 min-h-[90vh]">
         <div class="py-14 px-32 flex flex-col justify-between">
             <p class="font-semibold text-5xl mb-10">Keranjang Belanja</p>
             <div class="text-[28px] font-semibold grid grid-cols-8">
@@ -20,7 +20,7 @@
                 <p>Harga</p>
             </div>
             @foreach ($course as $c)
-                <hr class="h-px my-8 bg-gray-200 border-0 bg-gray-700">
+                <hr class="h-px my-8 bg-gray    -200 border-0 bg-gray-700">
                 <div class="grid grid-cols-8">
                     <img src="{{ asset('/storage/Poster/'.$c->Poster) }}" class="w-32 h-32">
                     <div class="flex-row col-span-5 items-center">
@@ -44,7 +44,7 @@
                 <hr class="h-px my-8 bg-gray-200 border-0 bg-gray-700">
             @endforeach
             <div class="flex flex-row items-center">
-                <a href="{{ route('SubjectPage') }}">
+                <a href="{{ route('SubTopicPage') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-[50px] h-[50px] text-[#65668B] hover:text-[#7981A2]">
                         <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" clip-rule="evenodd" />
                       </svg>                                                     

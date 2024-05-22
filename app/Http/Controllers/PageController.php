@@ -132,4 +132,17 @@ class PageController extends Controller
     public function LeaderboardPage(){
         return view('Leaderboard')->with('currentPage', '');
     }
+
+    public function CourseDetailPage(){
+        return view('CourseDetail')->with('currentPage', '');
+    }
+    
+    public function CourseDetailPaymentPage(){
+        return view('CourseDetailPayment')->with('currentPage', '');
+    }
+
+    public function HistoryPage(){
+        return view('Profile.History')->with('currentPage', '');
+    }
+
 }

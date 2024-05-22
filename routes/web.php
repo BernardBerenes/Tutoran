@@ -71,3 +71,9 @@ Route::get('/membership', [PageController::class, 'MembershipPage'])->name('Memb
 Route::get('/student-report', [PageController::class, 'StudentReportPage'])->name('StudentReportPage');
 
 Route::get('/leaderboard', [PageController::class, 'LeaderboardPage'])->name('LeaderboardPage');
+
+Route::get('/course-detail', [PageController::class, 'CourseDetailPage'])->name('CourseDetailPage');
+
+Route::get('/course-detail-payment', [PageController::class, 'CourseDetailPaymentPage'])->name('CourseDetailPaymentPage');
+
+Route::get('/history', [PageController::class, 'HistoryPage'])->name('HistoryPage');

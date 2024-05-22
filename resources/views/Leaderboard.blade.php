@@ -11,7 +11,7 @@
 </head>
 <body>
     @include('Component.Navbar')
-    <div class="bg-[#D6BBEB] p-24">
+    <div class="bg-[#D6BBEB] p-24 min-h-[90vh]">
         <div class="flex flex-col items-center justify-center gap-y-24">
             <h1 class="text-[40px] font-bold">Leaderboard</h1>
             <div class="flex flex-row gap-x-16">

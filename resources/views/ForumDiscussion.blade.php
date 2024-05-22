@@ -9,18 +9,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <title>Forum Discussion</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        function forumInput() {
-            var inputField = document.getElementById('popup');
-            var addForumBtn = document.getElementById('addForumBtn');
-            inputField.classList.toggle('hidden');
-            addForumBtn.classList.toggle('hidden');
-        }
-    </script>
 </head>
 <body>
     @include('Component.Navbar')
-    <div>
+    <div class="min-h-[90vh]">
         <div class="py-16 px-4 mx-auto max-w-6xl"> 
             <div class="flex justify-between">
                 <form method="GET" action="{{ route('ForumDiscussionPage') }}" id="sorting-form">
@@ -43,8 +35,9 @@
             </form>
             <div class="grid gap-4 grid-cols-2 gap-6 mt-12">
                 @foreach ($question as $q)
-                    <a href="{{ route('ForumDiscussionDetailPage', ['QuestionID'=>$q->id]) }}" class="flex flex-col border border-gray-300 rounded-lg shadow-md">
-                        <div class="flex flex-row my-4 mx-8">
+                <div class="relative">
+                    <a href="{{ route('ForumDiscussionDetailPage', ['QuestionID'=>$q->id]) }}" class="flex flex-col border border-gray-300 rounded-lg shadow-md z-0">
+                        <div class="flex flex-row my-4 mx-8 relative">
                             <img src="{{ asset('/storage/Profile Picture/Student/'.$q->Student->Image) }}" class="object-cover w-[60px] h-[60px] mr-8 rounded-full border-[1px] border-solid border-gray-300" alt="">
                             <div class="flex-col">
                                 <h2 class="text-2xl font-medium text-black">{{ $q->Student->Name }}</h2>    
@@ -58,6 +51,17 @@
                             </div>    
                         </div>
                     </a>
+                    <div class="absolute right-0 top-4 z-50 cursor-pointer toggle-button" type="button" onclick="toggleActionMenu(this); event.stopPropagation();">
+                        <svg class="w-8 h-8 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M12 6h.01M12 12h.01M12 18h.01"/>
+                        </svg>
+                    </div>
+                    <div class="absolute flex flex-col bg-white top-0 right-0 mr-6 border border-gray-200 hidden actionButton" onclick="event.stopPropagation();">
+                        <span class="p-2 cursor-pointer hover:bg-gray-200">Edit</span>
+                        <hr>
+                        <span class="p-2 cursor-pointer hover:bg-gray-200">Delete</span>
+                    </div>
+                </div>
                 @endforeach
             </div>
         </div>
@@ -71,6 +75,31 @@
             console.log(selectedValue);
             form.submit();
         });
+
+        function toggleActionMenu(button) {
+            document.querySelectorAll('.actionButton').forEach(function(menu) {
+                if (menu !== button.nextElementSibling) {
+                    menu.classList.add('hidden');
+                }
+            });
+            var actionButton = button.nextElementSibling;
+            actionButton.classList.toggle('hidden');
+        }
+
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.actionButton') && !event.target.closest('.toggle-button')) {
+                document.querySelectorAll('.actionButton').forEach(function(menu) {
+                    menu.classList.add('hidden');
+                });
+            }
+        });
+
+        function forumInput() {
+            var inputField = document.getElementById('popup');
+            var addForumBtn = document.getElementById('addForumBtn');
+            inputField.classList.toggle('hidden');
+            addForumBtn.classList.toggle('hidden');
+        }
     </script>
 </body>
 </html>

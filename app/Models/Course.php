@@ -11,11 +11,13 @@ class Course extends Model
 
     protected $fillable = [
         'TutorID',
+        'SubjectID',
         'Title',
         'Price',
-        'Lesson',
+        'Detail',
         'Curriculum',
-        'Poster'
+        'Poster',
+        'Video'
     ];
 
     public function Student(){
@@ -24,5 +26,9 @@ class Course extends Model
 
     public function Tutor(){
         return $this->belongsTo(Tutor::class, 'TutorID', 'id');
+    }
+
+    public function Subject(){
+        return $this->belongsTo(Subject::class, 'SubjectID', 'id');
     }
 }

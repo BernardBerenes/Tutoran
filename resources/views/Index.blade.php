@@ -63,7 +63,7 @@
                     </div>
                 </div>
             </div>
-            <div class="bg-[url('Assets/Main-2.png')] bg-cover min-h-screen"></div>
+            <div class="bg-[url('Assets/Test21.jpg')] bg-cover min-h-screen"></div>
             <div class="flex justify-end mt-[-140px] mr-40"><button type="submit" class="text-black end-2.5 bottom-2.5 bg-white hover:bg-gray-200 font-semibold rounded-lg text-4xl px-20 py-2 m-2">Beli Sekarang</button></div>
         </div>
         <div class="bg-white py-10 px-36">
@@ -73,7 +73,7 @@
                 <div class="flex flex-row justify-between">
                     @foreach ($topTutor as $top)
                         <div class="max-w-sm bg-white rounded-lg shadow">
-                            <img class="rounded-t-lg" src="{{ asset('Assets/img/Xi Lhit.png') }}"/>
+                            <img class="rounded-t-lg object-fill" src="{{ asset('/storage/Profile Picture/Tutor/'.$top->Image) }}"/>
                             <div class="p-5 bg-[#D1D2E5]">
                                 <p class="mb-2 text-4xl font-bold tracking-tight text-gray-900">{{ $top->Name }}</p>
                                 <div class="flex flex-row">

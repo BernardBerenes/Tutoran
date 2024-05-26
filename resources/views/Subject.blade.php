@@ -36,22 +36,12 @@
                     </form>
                 </div>
                 <div class="grid grid-cols-3 gap-8 mt-8">
-                    <a href="#" class="flex flex-col items-center justify-center w-[150px] h-[150px] border border-gray-300 rounded-xl shadow-lg hover:border-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300">
-                        <img src="Assets/BahasaInggris.png">
-                        <p>Bahasa Inggris</p>
-                    </a>
-                    <a href="#" class="flex flex-col items-center justify-center w-[150px] h-[150px] border border-gray-300 rounded-xl shadow-lg hover:border-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300">
-                        <img src="Assets/BahasaInggris.png">
-                        <p>Bahasa Inggris</p>
-                    </a>
-                    <a href="#" class="flex flex-col items-center justify-center w-[150px] h-[150px] border border-gray-300 rounded-xl shadow-lg hover:border-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300">
-                        <img src="Assets/BahasaInggris.png">
-                        <p>Bahasa Inggris</p>
-                    </a>
-                    <a href="#" class="flex flex-col items-center justify-center w-[150px] h-[150px] border border-gray-300 rounded-xl shadow-lg hover:border-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300">
-                        <img src="Assets/BahasaInggris.png">
-                        <p>Bahasa Inggris</p>
-                    </a>
+                    @foreach ($subject as $s)
+                        <a href="#" class="flex flex-col items-center justify-center w-[150px] h-[150px] border border-gray-300 rounded-xl shadow-lg hover:border-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300">
+                            <img src="Assets/Bahasa Inggris.png">
+                            <p>{{ $s }}</p>
+                        </a>
+                    @endforeach
                 </div>
             </div>
             <div>
@@ -90,13 +80,13 @@
             var selectedValue = this.value;
             var form = document.getElementById('class-form');
             console.log(selectedValue);
-            // form.submit();
+            form.submit();
         });
         document.getElementById('curriculum').addEventListener('change', function () {
             var selectedValue = this.value;
             var form = document.getElementById('curriculum-form');
             console.log(selectedValue);
-            // form.submit();
+            form.submit();
         });
     </script>
 </body>

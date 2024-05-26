@@ -37,8 +37,10 @@ Route::middleware('customer')->group(function(){
     Route::get('/change-password', [PageController::class, 'ChangePasswordPage'])->name('ChangePasswordPage');
     Route::patch('/change-password', [ProfileController::class, 'ChangePassword'])->name('ChangePassword');
     Route::patch('/profile/update-profile', [ProfileController::class, 'UpdateProfile'])->name('UpdateProfile');
+    Route::get('/profile/history', [PageController::class, 'HistoryPage'])->name('HistoryPage');
     Route::post('/change-picture', [ProfileController::class, 'ChangePicture'])->name('ChangePicture');
     Route::get('/forum-discussion', [PageController::class, 'ForumDiscussionPage'])->name('ForumDiscussionPage');
+    Route::delete('/forum-discussion/delete/{QuestionID}', [ForumController::class, 'DeleteForumQuestion'])->name('DeleteForumQuestion');
     Route::post('/forum-discussion/post', [ForumController::class, 'AddForumQuestion'])->name('AddForumQuestion');
     Route::get('/forum-discussion/detail/{QuestionID}', [PageController::class, 'ForumDiscussionDetailPage'])->name('ForumDiscussionDetailPage');
     Route::post('/forum-discussion/detail/{QuestionID}', [ForumController::class, 'AddForumAnswer'])->name('AddForumAnswer');
@@ -47,8 +49,8 @@ Route::middleware('customer')->group(function(){
 Route::middleware('tutor')->group(function(){
     Route::get('/add-course', [PageController::class, 'AddCoursePage'])->name('AddCoursePage');
     Route::post('/add-course/post', [CourseController::class, 'AddCourse'])->name('AddCourse');
-    Route::get('/tutor-course-list/{TutorID}', [PageController::class, 'TutorCourseListPage'])->name('TutorCourseListPage');
 });
+Route::get('/my-course-list/', [PageController::class, 'MyCourseListPage'])->name('MyCourseListPage');
 
 Route::middleware('student')->group(function(){
     Route::post('/insert-cart/{CourseID}', [CourseController::class, 'InsertCart'])->name('InsertCart');
@@ -75,5 +77,3 @@ Route::get('/leaderboard', [PageController::class, 'LeaderboardPage'])->name('Le
 Route::get('/course-detail', [PageController::class, 'CourseDetailPage'])->name('CourseDetailPage');
 
 Route::get('/course-detail-payment', [PageController::class, 'CourseDetailPaymentPage'])->name('CourseDetailPaymentPage');
-
-Route::get('/history', [PageController::class, 'HistoryPage'])->name('HistoryPage');

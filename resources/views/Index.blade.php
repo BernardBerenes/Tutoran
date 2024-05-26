@@ -37,7 +37,7 @@
                 <img src="{{ asset('Assets/img/SMP.png') }}">
                 <img src="{{ asset('Assets/img/SMA.png') }}">
             </div>
-            <div class="flex flex-row space-x-0 ml-[200px] gap-40 mt-[-80px]">
+            <div class="flex flex-row space-x-0 ml-[200px] gap-40 mt-[-80px] mb-32">
                 <div class="bg-[#65668B] shadow-outer shadow-2xl w-90 h-65">
                     <div class="p-6">
                         <p class="text-[25px] text-white">Mulai dari</p>
@@ -63,17 +63,17 @@
                     </div>
                 </div>
             </div>
-            <div class="bg-[url('Assets/Test21.jpg')] bg-cover min-h-screen"></div>
-            <div class="flex justify-end mt-[-140px] mr-40"><button type="submit" class="text-black end-2.5 bottom-2.5 bg-white hover:bg-gray-200 font-semibold rounded-lg text-4xl px-20 py-2 m-2">Beli Sekarang</button></div>
+            <img src="{{ asset('Assets/img/Test21.png') }}" class="min-h-screen mb-1">
+            <div class="flex justify-end mt-[-140px] mr-40"><button type="submit" class="text-black end-2.5 bottom-2.5 bg-white hover:bg-gray-200 font-semibold rounded-lg text-4xl px-20 py-2 my-10 m-2">Beli Sekarang</button></div>
         </div>
-        <div class="bg-white py-10 px-36">
+        <div class="bg-white py-10 px-36 z-[10]">
             <div class="mt-5 m-20 bg-[url('Assets/Main-3.png')] bg-cover bg-no-repeat">
                 <div><p class="text-[90px] font-bold">Tutor Terbaik</p></div>
                 <div><p class="text-[32px] font-medium mb-4">Januari 2024 - Juni 2024</p></div>
                 <div class="flex flex-row justify-between">
                     @foreach ($topTutor as $top)
                         <div class="max-w-sm bg-white rounded-lg shadow">
-                            <img class="rounded-t-lg object-fill" src="{{ asset('/storage/Profile Picture/Tutor/'.$top->Image) }}"/>
+                            <img class="min-w-[384px] rounded-t-lg object-cover" src="{{ asset('/storage/Profile Picture/Tutor/'.$top->Image) }}"/>
                             <div class="p-5 bg-[#D1D2E5]">
                                 <p class="mb-2 text-4xl font-bold tracking-tight text-gray-900">{{ $top->Name }}</p>
                                 <div class="flex flex-row">

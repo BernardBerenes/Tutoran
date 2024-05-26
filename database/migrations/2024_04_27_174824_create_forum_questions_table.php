@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('StudentID');
             $table->foreign('StudentID')->references('id')->on('students')->onUpdate('cascade')->onDelete('cascade');
             $table->longText('Question');
+            $table->integer('AnswerCount')->default(0);
             $table->timestamps();
         });
     }

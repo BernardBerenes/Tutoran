@@ -21,6 +21,12 @@ class ForumController extends Controller
         return redirect(route('ForumDiscussionPage'));
     }
 
+    public function DeleteForumQuestion($QuestionID){
+        ForumQuestion::findOrFail($QuestionID)->delete();
+
+        return back();
+    }
+
     public function AddForumAnswer(Request $request, $QuestionID){
         // $request->validate([
         //     'answer' => 'required|regex:/(\w+\s){4,}\w+/'
@@ -31,6 +37,10 @@ class ForumController extends Controller
             'StudentID' => auth('student')->user()->id,
             'Answer' => $request->answer
         ]);
+
+        $question = ForumQuestion::findOrFail($QuestionID);
+        $question->AnswerCount += 1;
+        $question->save();
 
         return back();
     }

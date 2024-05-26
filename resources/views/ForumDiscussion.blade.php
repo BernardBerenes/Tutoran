@@ -47,20 +47,22 @@
                         <div class="flex flex-col justify-between">
                             <p class="mx-8 text-justify text-[22px] font-medium">{{ $q->Question }}</p>
                             <div class="flex justify-end">
-                                <p class="text-base my-4 mx-8">2 jawaban</p>
+                                <p class="text-base my-4 mx-8">{{ $q->AnswerCount }} jawaban</p>
                             </div>    
                         </div>
                     </a>
-                    <div class="absolute right-0 top-4 z-50 cursor-pointer toggle-button" type="button" onclick="toggleActionMenu(this); event.stopPropagation();">
-                        <svg class="w-8 h-8 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M12 6h.01M12 12h.01M12 18h.01"/>
-                        </svg>
-                    </div>
-                    <div class="absolute flex flex-col bg-white top-0 right-0 mr-6 border border-gray-200 hidden actionButton" onclick="event.stopPropagation();">
-                        <span class="p-2 cursor-pointer hover:bg-gray-200">Edit</span>
-                        <hr>
-                        <span class="p-2 cursor-pointer hover:bg-gray-200">Delete</span>
-                    </div>
+                    @if ($q->StudentID == auth(strtolower(session('Roles')))->user()->id)
+                        <div class="absolute right-0 top-4 z-50 cursor-pointer toggle-button" type="button" onclick="toggleActionMenu(this); event.stopPropagation();">
+                            <svg class="w-8 h-8 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M12 6h.01M12 12h.01M12 18h.01"/>
+                            </svg>
+                        </div>
+                        <form method="POST" action="{{ route('DeleteForumQuestion', ['QuestionID'=>$q->id]) }}" class="absolute flex flex-col bg-white top-0 right-0 mr-6 mt-3  hidden actionButton" onclick="event.stopPropagation();">
+                            @method('DELETE')
+                            @csrf
+                            <button class="p-2 cursor-pointer rounded-md text-white bg-red-500 hover:bg-red-600">Delete</button>
+                        </form>
+                    @endif
                 </div>
                 @endforeach
             </div>

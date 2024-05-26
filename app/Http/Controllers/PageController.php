@@ -6,6 +6,7 @@ use App\Models\Course;
 use App\Models\ForumAnswer;
 use App\Models\ForumQuestion;
 use App\Models\Student;
+use App\Models\Subject;
 use App\Models\Tutor;
 use Illuminate\Http\Request;
 
@@ -91,8 +92,9 @@ class PageController extends Controller
 
     public function SubjectPage(Request $request){
         $topTutor = Tutor::orderByDesc('Rating')->take(5)->get();
+        $subject = Subject::select('SubjectName')->distinct()->pluck('SubjectName');
 
-        return view('Subject')->with('currentPage', 'Subject')->with('topTutor', $topTutor);
+        return view('Subject')->with('currentPage', 'Subject')->with('topTutor', $topTutor)->with('subject', $subject);
     }
 
     public function StudentRatingPage(){
@@ -145,4 +147,8 @@ class PageController extends Controller
         return view('Profile.History')->with('currentPage', '');
     }
 
+    public function MyCourseListPage(){
+        $course = Course::all();
+        return view('MyCourseList')->with('currentPage', 'Tutor Course List')->with('course', $course);
+    }
 }

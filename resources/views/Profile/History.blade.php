@@ -16,7 +16,8 @@
         <div class="w-full flex justify-center">
             <div class="w-1/2 mt-12 flex flex-col">
                 <h1 class="font-medium text-[40px] mb-7">Riwayat Pembelian</h1>
-                <form action="" id="history-filter" class="ml-auto">
+                <img src="Assets/empty-img/empty-history.png" class="w-1/4 mx-auto" alt="empty-history">
+                {{-- <form action="" id="history-filter" class="ml-auto">
                     <select id="history" class="flex items-center justify-center bg-gray-200 border-none rounded-full p-4 w-[170px] h-[55px] text-base font-light text-[#999999] hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-300">
                         <option value="Kurikulum" class="bg-white" selected>Kurikulum</option>
                         <option value="Membership" class="bg-white">Membership</option>
@@ -64,9 +65,9 @@
                                 <p class="text-[18px] font-medium ml-auto">Rp 199.000,00</p>
                             </div>
                         </div>
-                    </div>
-                    
-                </div>
+                    </div> 
+                </div>--}}
+                
             </div>
         </div>
     </div>

@@ -11,8 +11,8 @@
 </head>
 <body>
     @include('Component.Navbar')
-    <div>
-        <div class="pt-8 px-4 mx-auto max-w-4xl lg:pt-16">
+    <div class="min-h-[90vh] flex flex-col justify-between">
+        <div class="pt-8 px-4 mx-72 lg:pt-16">
             <form class="">   
                 <label for="search-course" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
                 <div class="relative">
@@ -26,7 +26,7 @@
                 </div>
             </form>
             <div class="grid gap-6 mt-12">
-                @foreach ($course as $c)
+                {{-- @foreach ($course as $c)
                     <a href="#" class="flex flex-row border border-gray-300 shadow-md hover:bg-gray-200">
                         <img src="{{ asset('/storage/Poster/'.$c->Poster) }}" class="object-cover w-[120px] h-[120px] m-4" alt="">
                         <div class="flex flex-col w-full m-4">
@@ -35,7 +35,8 @@
                             <p class="flex justify-end font-light">Ditambahkan pada: {{ $c->created_at->format('d M Y') }}</p>
                         </div>
                     </a>
-                @endforeach
+                @endforeach --}}
+                <img src="Assets/empty-img/empty-tutor.png" class="w-1/4 mx-auto" alt="empty-cart">
             </div>
         </div>
         <div class="flex justify-between m-8">

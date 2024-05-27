@@ -34,7 +34,7 @@
                 <button id="addForumBtn" class="hidden w-[150px] h-[50px] bg-[#65668B] hover:bg-[#7981A2] font-semibold rounded-2xl text-[20px] text-white">Tambahkan</button>
             </form>
             <div class="grid gap-4 grid-cols-2 gap-6 mt-12">
-                @foreach ($question as $q)
+                {{-- @foreach ($question as $q)
                 <div class="relative">
                     <a href="{{ route('ForumDiscussionDetailPage', ['QuestionID'=>$q->id]) }}" class="flex flex-col border border-gray-300 rounded-lg shadow-md z-0">
                         <div class="flex flex-row my-4 mx-8 relative">
@@ -64,7 +64,8 @@
                         </form>
                     @endif
                 </div>
-                @endforeach
+                @endforeach --}}
+                <img src="Assets/empty-img/empty-forum.png" class="w-1/4 mx-auto col-span-2" alt="empty-cart">
             </div>
         </div>
     </div>

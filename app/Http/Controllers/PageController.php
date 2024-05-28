@@ -52,10 +52,15 @@ class PageController extends Controller
         return view('AddCourse')->with('currentPage', '');
     }
 
-    public function SubTopicPage(){
-        $student = Student::findOrFail(auth('student')->user()->id);
-        $cart = $student->Course()->pluck('CourseID');
-        $course = Course::whereNotIn('id', $cart)->get();
+    public function SubTopicPage($SubjectName){
+        $subjectID = Subject::where('SubjectName', $SubjectName)->pluck('id')->first();
+        if(auth('student')->check()){
+            $student = Student::findOrFail(auth('student')->user()->id);
+            $cart = $student->Course()->pluck('CourseID');
+            $course = Course::all()->whereNotIn('id', $cart)->where('SubjectID', $subjectID);
+        } else{
+            $course = Course::all()->where('SubjectID', $subjectID);
+        }
         $tutor = Tutor::all();
 
         return view('SubTopic')->with('currentPage', '')->with('course', $course)->with('tutor', $tutor);
@@ -92,9 +97,11 @@ class PageController extends Controller
 
     public function SubjectPage(Request $request){
         $topTutor = Tutor::orderByDesc('Rating')->take(5)->get();
-        $subject = Subject::select('SubjectName')->distinct()->pluck('SubjectName');
+        $subject = Subject::distinct()->get();
 
-        return view('Subject')->with('currentPage', 'Subject')->with('topTutor', $topTutor)->with('subject', $subject);
+        if($request->grade != null) $subject = Subject::where('Grade', $request->grade)->distinct()->get();
+
+        return view('Subject')->with('currentPage', 'Subject')->with('topTutor', $topTutor)->with('subject', $subject)->with('grade', $request->grade);
     }
 
     public function StudentRatingPage(){
@@ -132,7 +139,12 @@ class PageController extends Controller
     }
 
     public function LeaderboardPage(){
-        return view('Leaderboard')->with('currentPage', '');
+        $first = Tutor::orderBy('Rating', 'asc')->first();
+        $second = Tutor::orderBy('Rating', 'asc')->skip(1)->first();
+        $third = Tutor::orderBy('Rating', 'asc')->skip(2)->first();
+        $remainTutor = Tutor::whereNotIn('id', [$first->id, $second->id, $third->id])->orderBy('Rating')->get();
+
+        return view('Leaderboard')->with('currentPage', '')->with('first', $first)->with('second', $second)->with('third', $third)->with('remainTutor', $remainTutor);
     }
 
     public function CourseDetailPage(){

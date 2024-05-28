@@ -38,6 +38,6 @@ class Tutor extends Model implements Authenticatable
     }
 
     public function Course(){
-        return $this->belongsToMany(Course::class, 'tutors');
+        return $this->hasMany(Course::class, 'TutorID');
     }
 }

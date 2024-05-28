@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -16,7 +17,7 @@ class Student
     public function handle(Request $request, Closure $next): Response
     {
         if(!auth('student')->check()){
-            return back();
+            return redirect(route('LoginPage'));
         }
         return $next($request);
     }

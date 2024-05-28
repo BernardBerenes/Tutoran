@@ -49,7 +49,7 @@
                             <form class="flex items-center justify-between">
                                 @csrf
                                 <p class="font-medium text-[18px] text-black">Rp {{ number_format($c->Price, 2, ',', '.') }}</p>
-                                <button type="" class="w-1/4 py-2 ml-5 bg-[#65668B] hover:bg-[#7981A2] text-base rounded-full text-white">Beli Sekarang</button>
+                                <button class="w-1/4 py-2 ml-5 bg-[#65668B] hover:bg-[#7981A2] text-base rounded-full text-white">Beli Sekarang</button>
                             </form>
                         </div>
                     </a>

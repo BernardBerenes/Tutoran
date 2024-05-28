@@ -43,7 +43,7 @@
                         <p class="text-[25px] text-white">Mulai dari</p>
                         <p class="text-[#C2CEFF] text-5xl font-bold">Rp 99.000</p>
                         <p class="text-white text-[35px] font-semibold m-2">/bulan</p>
-                        <button type="submit" class="text-black end-2.5 bottom-2.5 bg-white hover:bg-gray-200 font-semibold rounded-lg text-2xl px-4 py-2 m-2">Pelajari Selengkapnya</button>
+                        <a href="{{ route('SubjectPage', ['grade'=>'SD']) }}" type="submit" class="text-black end-2.5 bottom-2.5 bg-white hover:bg-gray-200 font-semibold rounded-lg text-2xl px-4 py-2 m-2">Pelajari Selengkapnya</a>
                     </div>
                 </div>
                 <div class="bg-[#65668B] shadow-outer shadow-2xl w-90 h-65">
@@ -51,7 +51,7 @@
                         <p class="text-[25px] text-white">Mulai dari</p>
                         <p class="text-[#C2CEFF] text-5xl font-bold">Rp 125.000</p>
                         <p class="text-white text-[35px] font-semibold m-2">/bulan</p>
-                        <button type="submit" class="text-black end-2.5 bottom-2.5 bg-white hover:bg-gray-200 font-semibold rounded-lg text-2xl px-4 py-2 m-2">Pelajari Selengkapnya</button>
+                        <a href="{{ route('SubjectPage', ['grade'=>'SMP']) }}" type="submit" class="text-black end-2.5 bottom-2.5 bg-white hover:bg-gray-200 font-semibold rounded-lg text-2xl px-4 py-2 m-2">Pelajari Selengkapnya</a>
                     </div>
                 </div>
                 <div class="bg-[#65668B] shadow-outer shadow-2xl w-90 h-65">
@@ -59,7 +59,7 @@
                         <p class="text-[25px] text-white">Mulai dari</p>
                         <p class="text-[#C2CEFF] text-5xl font-bold">Rp 150.000</p>
                         <p class="text-white text-[35px] font-semibold m-2">/bulan</p>
-                        <button type="submit" class="text-black end-2.5 bottom-2.5 bg-white hover:bg-gray-200 font-semibold rounded-lg text-2xl px-4 py-2 m-2">Pelajari Selengkapnya</button>
+                        <a href="{{ route('SubjectPage', ['grade'=>'SMA']) }}" type="submit" class="text-black end-2.5 bottom-2.5 bg-white hover:bg-gray-200 font-semibold rounded-lg text-2xl px-4 py-2 m-2">Pelajari Selengkapnya</a>
                     </div>
                 </div>
             </div>

@@ -66,7 +66,7 @@
                 </div>
                 @endforeach
                 
-                @if (!$question)
+                @if ($question->isEmpty())
                     <img src="Assets/empty-img/empty-forum.png" class="w-1/4 mx-auto col-span-2" alt="empty-cart">
                 @endif
             </div>

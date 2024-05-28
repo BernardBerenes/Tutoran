@@ -97,8 +97,8 @@ class PageController extends Controller
 
     public function SubjectPage(Request $request){
         $topTutor = Tutor::orderByDesc('Rating')->take(5)->get();
-        $subject = Subject::distinct()->get();
-
+        $subject = Subject::distinct()->get(['SubjectName']);
+        
         if($request->grade != null) $subject = Subject::where('Grade', $request->grade)->distinct()->get();
 
         return view('Subject')->with('currentPage', 'Subject')->with('topTutor', $topTutor)->with('subject', $subject)->with('grade', $request->grade);

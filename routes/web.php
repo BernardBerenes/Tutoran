@@ -50,16 +50,16 @@ Route::middleware('tutor')->group(function(){
     Route::get('/add-course', [PageController::class, 'AddCoursePage'])->name('AddCoursePage');
     Route::post('/add-course/post', [CourseController::class, 'AddCourse'])->name('AddCourse');
 });
-Route::get('/my-course-list/', [PageController::class, 'MyCourseListPage'])->name('MyCourseListPage');
+Route::get('/my-course-list', [PageController::class, 'MyCourseListPage'])->name('MyCourseListPage');
 
 Route::middleware('student')->group(function(){
     Route::post('/insert-cart/{CourseID}', [CourseController::class, 'InsertCart'])->name('InsertCart');
     Route::delete('/delete-cart/{CourseID}', [CourseController::class, 'DeleteCart'])->name('DeleteCart');
-    Route::get('/tutor-list', [PageController::class, 'TutorListPage'])->name('TutorListPage');
-    Route::get('/tutor-detail/{TutorID}', [PageController::class, 'TutorDetailPage'])->name('TutorDetailPage');
     Route::get('/rating-tutor/{TutorID}', [PageController::class, 'RatingTutor'])->name('RatingTutor');
 });
 
+Route::get('/tutor-list', [PageController::class, 'TutorListPage'])->name('TutorListPage');
+Route::get('/tutor-detail/{TutorID}', [PageController::class, 'TutorDetailPage'])->name('TutorDetailPage');
 Route::get('/about-us', [PageController::class, 'AboutUsPage'])->name('AboutUsPage');
 Route::get('/student-rating/detail', [PageController::class, 'StudentRatingDetailPage'])->name('StudentRatingDetailPage');
 Route::get('/payment', [PageController::class, 'PaymentPage'])->name('PaymentPage');

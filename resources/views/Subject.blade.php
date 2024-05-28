@@ -39,10 +39,10 @@
                 </div>
                 <div class="grid grid-cols-3 gap-8 mt-8">
                     @foreach ($subject as $s)
-                    <a href="{{ route('SubTopicPage', ['SubjectName'=>$s->SubjectName]) }}" class="flex flex-col items-center justify-center w-[150px] h-[150px] border border-gray-300 rounded-xl shadow-lg hover:border-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300">
-                        <img src="Assets/Subject Poster/{{ $s->SubjectName }}.png">
-                        <p>{{ $s->SubjectName }}</p>
-                    </a>
+                        <a href="{{ route('SubTopicPage', ['SubjectName'=>$s->SubjectName]) }}" class="flex flex-col items-center justify-center w-[150px] h-[150px] border border-gray-300 rounded-xl shadow-lg hover:border-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300">
+                            <img src="Assets/Subject Poster/{{ $s->SubjectName }}.png">
+                            <p>{{ $s->SubjectName }}</p>
+                        </a>
                     @endforeach
                 </div>
             </div>

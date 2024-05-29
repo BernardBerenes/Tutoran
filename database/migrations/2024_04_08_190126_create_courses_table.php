@@ -19,8 +19,8 @@ return new class extends Migration
             $table->foreign('SubjectID')->references('id')->on('subjects')->onUpdate('cascade')->onDelete('cascade');
             $table->string('Title');
             $table->integer('Price');
-            $table->longText('Detail');
             $table->string('Curriculum');
+            $table->longText('Detail');
             $table->string('Poster');
             $table->string('Video');
             $table->timestamps();

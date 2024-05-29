@@ -66,7 +66,8 @@ Route::get('/payment', [PageController::class, 'PaymentPage'])->name('PaymentPag
 Route::get('/membership', [PageController::class, 'MembershipPage'])->name('MembershipPage');
 Route::get('/student-report', [PageController::class, 'StudentReportPage'])->name('StudentReportPage');
 Route::get('/leaderboard', [PageController::class, 'LeaderboardPage'])->name('LeaderboardPage');
+
 Route::get('/subject/sub-topic/{SubjectName}', [PageController::class, 'SubTopicPage'])->name('SubTopicPage');
 Route::get('/subject', [PageController::class, 'SubjectPage'])->name('SubjectPage');
-Route::get('/course-detail', [PageController::class, 'CourseDetailPage'])->name('CourseDetailPage');
+Route::get('/course-detail/{CourseID}', [PageController::class, 'CourseDetailPage'])->name('CourseDetailPage');
 Route::get('/course-detail-payment', [PageController::class, 'CourseDetailPaymentPage'])->name('CourseDetailPaymentPage');

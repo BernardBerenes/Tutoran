@@ -32,9 +32,9 @@
                 <div class="ml-10">
                     <h2 class="mb-6 text-sm font-semibold uppercase text-white underline underline-offset-4 ">Tautan</h2>
                     <ul class="text-gray-500  font-medium">
-                        <li><a href="" class="hover:underline">SD</a></li>
-                        <li><a href="" class="hover:underline">SMP</a></li>
-                        <li><a href="" class="hover:underline">SMA</a></li>
+                        <li><a href="{{ route('SubjectPage', ['grade'=>'SD']) }}" class="hover:underline">SD</a></li>
+                        <li><a href="{{ route('SubjectPage', ['grade'=>'SMP']) }}" class="hover:underline">SMP</a></li>
+                        <li><a href="{{ route('SubjectPage', ['grade'=>'SMA']) }}" class="hover:underline">SMA</a></li>
                     </ul>
                 </div>
                 <div>
@@ -57,7 +57,8 @@
             </div>
         </div>
         <div class="sm:flex sm:items-center sm:justify-center mt-12">
-            <span class="text-sm text-gray-500 sm:text-center text-gray-400">© 2024 <a href="" class="hover:underline">tutoran</a>. All Rights Reserved.
+            <span class="text-sm text-gray-500 sm:text-center text-gray-400">© 2024 
+                <a href="{{ route('IndexPage') }}"  class="hover:underline">tutoran</a>. All Rights Reserved.
             </span>
             </div>
         </div>

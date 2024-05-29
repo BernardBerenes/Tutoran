@@ -97,9 +97,9 @@ class PageController extends Controller
 
     public function SubjectPage(Request $request){
         $topTutor = Tutor::orderByDesc('Rating')->take(5)->get();
-        $subject = Subject::distinct()->get(['SubjectName']);
+        $subject = Subject::distinct()->orderBy('SubjectName')->get(['SubjectName']);
         
-        if($request->grade != null) $subject = Subject::where('Grade', $request->grade)->distinct()->get();
+        if($request->grade != null) $subject = Subject::where('Grade', $request->grade)->distinct()->orderBy('SubjectName')->get();
 
         return view('Subject')->with('currentPage', 'Subject')->with('topTutor', $topTutor)->with('subject', $subject)->with('grade', $request->grade);
     }
@@ -147,8 +147,10 @@ class PageController extends Controller
         return view('Leaderboard')->with('currentPage', '')->with('first', $first)->with('second', $second)->with('third', $third)->with('remainTutor', $remainTutor);
     }
 
-    public function CourseDetailPage(){
-        return view('CourseDetail')->with('currentPage', '');
+    public function CourseDetailPage($CourseID){
+        $course = Course::findOrFail($CourseID);
+
+        return view('CourseDetail')->with('currentPage', '')->with('course', $course);
     }
     
     public function CourseDetailPaymentPage(){
@@ -160,7 +162,8 @@ class PageController extends Controller
     }
 
     public function MyCourseListPage(){
-        $course = Course::all();
+        $course = Course::where('TutorID', 'like', auth('tutor')->user()->id)->get();
+    
         return view('MyCourseList')->with('currentPage', 'Tutor Course List')->with('course', $course);
     }
 }

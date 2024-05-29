@@ -18,19 +18,26 @@ class CourseController extends Controller
 
         $lastId = Course::latest()->value('id') + 1;
         $extension = $request->file('poster')->getClientOriginalExtension();
-        $fileName = $lastId.'.'.$extension;
-        $request->file('poster')->storeAs('/public/Poster/', $fileName);
+        $posterName = $lastId.'.'.$extension;
+        $request->file('poster')->storeAs('/public/Poster/', $posterName);
+
+        $extension = $request->file('video')->getClientOriginalExtension();
+        $videoName = $lastId.'.'.$extension;
+        $request->file('video')->storeAs('/public/Video/', $videoName);
 
         Course::create([
             'TutorID' => auth('tutor')->user()->id,
+            'SubjectID' => 1,
             'Title' => $request->title,
             'Price' => $request->price,
             'Lesson' => 'Matematika',
             'Curriculum' => 'K13',
-            'Poster' => $fileName
+            'Detail' => $request->detail,
+            'Poster' => $posterName,
+            'Video' => $videoName
         ]);
 
-        return redirect(route('SubjectPage'));
+        return redirect(route('MyCourseListPage'));
     }
 
     public function InsertCart($CourseID){

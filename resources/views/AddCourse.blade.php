@@ -50,7 +50,7 @@
                     </div>
                     <div class="flex flex-col col-span-2">
                         <label for="detailCourse" class="block mb-2 text-2xl font-medium text-black ">Detail</label>
-                        <textarea id="detailCourse" rows="4" class="flex sm:col-span-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full h-[100px] p-2.5 mb-5 resize-none" placeholder="Tulis penjelasan disini" name="detailCourse"></textarea>
+                        <textarea id="detailCourse" rows="4" class="flex sm:col-span-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full h-[100px] p-2.5 mb-5 resize-none" placeholder="Tulis penjelasan disini" name="detail"></textarea>
                     </div>
                     <div class="sm:col-span-2">
                         <label for="gambarPoster" class="block mb-2 text-2xl font-medium text-black ">Gambar Poster</label>
@@ -78,7 +78,7 @@
                                     <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
                                     <p class="text-xs text-gray-500">.MP4 or MOV</p>
                                 </div>
-                                <input type="file" id="videoCourse" class="hidden" name="poster"/>
+                                <input type="file" id="videoCourse" class="hidden" name="video"/>
                             </label>
                         </div>
                     </div>

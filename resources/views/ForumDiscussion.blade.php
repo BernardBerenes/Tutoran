@@ -51,7 +51,7 @@
                             </div>    
                         </div>
                     </a>
-                    @if ($q->StudentID == auth(strtolower(session('Roles')))->user()->id)
+                    @if ($q->StudentID == auth('student')->check() && $q->StudentID == auth('student')->user()->id)
                         <div class="absolute right-0 top-4 z-50 cursor-pointer toggle-button" type="button" onclick="toggleActionMenu(this); event.stopPropagation();">
                             <svg class="w-8 h-8 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M12 6h.01M12 12h.01M12 18h.01"/>

@@ -14,16 +14,16 @@
     <div class="px-36 py-24 flex flex-col gap-12">
         <div class="flex flex-col">
             <div class="flex flex-row my-4">
-                <img src="{{ asset('/storage/Profile Picture/Student/'.$forumQuestion->Student->Image) }}" class="object-cover w-[60px] h-[60px] mr-8 rounded-full" alt="">
+                <img src="{{ asset('/storage/Profile Picture/'.($forumQuestion->StudentID ? 'Student/'.$forumQuestion->Student->Image : 'Tutor/'.$forumQuestion->Tutor->Image)) }}" class="object-cover w-[60px] h-[60px] mr-8 rounded-full" alt="">
                 <div class="flex-col">
-                    <h2 class="text-2xl font-medium text-black">{{ $forumQuestion->Student->Name }}</h2>    
+                    <h2 class="text-2xl font-medium {{ $forumQuestion->StudentID ? 'text-black' : 'text-red-500'}}">{{ $forumQuestion->StudentID ? $forumQuestion->Student->Name : $forumQuestion->Tutor->Name }}</h2>    
                     <h2 class="text-base font-light text-black">{{ strftime('%e %B %Y', strtotime($forumQuestion->created_at)) }}</h2>    
                 </div>
             </div>
             <p class="my-4 text-justify text-[22px] font-medium">{{ $forumQuestion->Question }}</p> 
         </div>
         <div class="flex flex-row">
-            <img src="{{ asset('/storage/Profile Picture/Student/'.auth('student')->user()->Image) }}" class="object-cover w-[60px] h-[60px] rounded-full" alt="">
+            <img src="{{ asset('/storage/Profile Picture/'.session('Roles').'/'.auth(strtolower(session('Roles')))->user()->Image) }}" class="object-cover w-[60px] h-[60px] rounded-full" alt="">
             <form method="POST" action="{{ route('AddForumAnswer', ['QuestionID'=>$forumQuestion->id]) }}" class="flex flex-col w-full">
                 @csrf
                 <textarea id="popup" rows="4" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full h-[100px] p-2.5 mx-4 mb-4 resize-none" placeholder="Tulis jawabanmu disini" name="answer"></textarea>    
@@ -36,9 +36,9 @@
         @foreach ($forumAnswer as $answer)
             <div class="flex flex-col">
                 <div class="flex flex-row my-4">
-                    <img src="{{ asset('/storage/Profile Picture/Student/'.$answer->Student->Image) }}" class="object-cover w-[60px] h-[60px] mr-8 rounded-full" alt="">
+                    <img src="{{ asset('/storage/Profile Picture/'.($answer->StudentID ? 'Student/'.$answer->Student->Image : 'Tutor/'.$answer->Tutor->Image)) }}" class="object-cover w-[60px] h-[60px] mr-8 rounded-full" alt="">
                     <div class="flex-col">
-                        <h2 class="text-2xl font-medium text-black">{{ $answer->Student->Name }}</h2>    
+                        <h2 class="text-2xl font-medium {{ $answer->StudentID ? 'text-black' : 'text-red-500'}}">{{ $answer->StudentID ? $answer->Student->Name : $answer->Tutor->Name }}</h2>    
                         <h2 class="text-base font-light text-black">{{ strftime('%e %B %Y', strtotime($answer->created_at)) }}</h2>    
                     </div>
                 </div>

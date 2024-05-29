@@ -39,15 +39,22 @@ class ForumController extends Controller
         //     'answer' => 'required|regex:/(\w+\s){4,}\w+/'
         // ]);
 
-        ForumAnswer::create([
-            'QuestionID' => $QuestionID,
-            'StudentID' => auth('student')->user()->id,
-            'Answer' => $request->answer
-        ]);
+        if(auth('student')->check()){
+            ForumAnswer::create([
+                'QuestionID' => $QuestionID,
+                'StudentID' => auth('student')->user()->id,
+                'Answer' => $request->answer
+            ]);
+        } else{
+            ForumAnswer::create([
+                'QuestionID' => $QuestionID,
+                'TutorID' => auth('tutor')->user()->id,
+                'Answer' => $request->answer
+            ]);
+        }
 
         $question = ForumQuestion::findOrFail($QuestionID);
-        $question->AnswerCount += 1;
-        $question->save();
+        $question->increment('AnswerCount');
 
         return back();
     }

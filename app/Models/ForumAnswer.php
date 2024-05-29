@@ -12,10 +12,15 @@ class ForumAnswer extends Model
     protected $fillable = [
         'QuestionID',
         'StudentID',
+        'TutorID',
         'Answer'
     ];
 
     public function Student(){
         return $this->belongsTo(Student::class, 'StudentID', 'id');
+    }
+
+    public function Tutor(){
+        return $this->belongsTo(Tutor::class, 'TutorID', 'id');
     }
 }

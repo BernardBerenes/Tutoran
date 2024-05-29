@@ -57,10 +57,14 @@ class PageController extends Controller
         if(auth('student')->check()){
             $student = Student::findOrFail(auth('student')->user()->id);
             $cart = $student->Course()->pluck('CourseID');
-            $course = Course::all()->whereNotIn('id', $cart)->where('SubjectID', $subjectID);
+            if($subjectID == null) {
+                $course = Course::all()->whereNotIn('id', $cart);
+            } else{
+                $course = Course::all()->whereNotIn('id', $cart)->where('SubjectID', $subjectID);
+            }
         } else{
             $course = Course::all()->where('SubjectID', $subjectID);
-        }
+        }   
         $tutor = Tutor::all();
 
         return view('SubTopic')->with('currentPage', '')->with('course', $course)->with('tutor', $tutor);

@@ -30,20 +30,26 @@
         </div>
         <div class="flex flex-col mx-12">
             <form method="POST" action="{{ route('InsertCart', ['CourseID'=>$course->id]) }}" class="flex items-center justify-between">
+                @csrf
                 <div class="flex flex-col text-base font-regular">
                     <p>Mulai: {{ date('d/m/Y') }}</p>
                     <p>Akhir: {{ date('d/m/Y', strtotime('+1 year')) }}</p>
                 </div>
-                <button type="submit" class="flex flex-row px-4 py-2 justify-center bg-[#65668B] hover:bg-[#7981A2] text-base rounded-full text-white">
-                    <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10V6a3 3 0 0 1 3-3v0a3 3 0 0 1 3 3v4m3-2 .917 11.923A1 1 0 0 1 17.92 21H6.08a1 1 0 0 1-.997-1.077L6 8h12Z"/>
-                    </svg>
-                    Tambahkan
-                </button>
+                @if (auth('student')->check())
+                    <button type="submit" class="flex flex-row px-4 py-2 justify-center bg-[#65668B] hover:bg-[#7981A2] text-base rounded-full text-white">
+                        <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10V6a3 3 0 0 1 3-3v0a3 3 0 0 1 3 3v4m3-2 .917 11.923A1 1 0 0 1 17.92 21H6.08a1 1 0 0 1-.997-1.077L6 8h12Z"/>
+                        </svg>
+                        Tambahkan
+                    </button>
+                @endif
             </form>
             <form class="flex items-center justify-between">
+                @csrf
                 <p class="font-medium text-[18px] text-black">Rp {{ number_format($course->Price, 2, ',', '.') }}</p>
-                <button type="submit" class="py-2 px-5 items-center bg-[#65668B] hover:bg-[#7981A2] text-base rounded-full text-white">Beli Sekarang</button>
+                @if (auth('student')->check())
+                    <button type="submit" class="py-2 px-5 items-center bg-[#65668B] hover:bg-[#7981A2] text-base rounded-full text-white">Beli Sekarang</button>
+                @endif
             </form>
         </div>
     </div>

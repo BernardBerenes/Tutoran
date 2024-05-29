@@ -49,7 +49,7 @@ class CourseController extends Controller
         }
         $student->Course()->attach($CourseID);
 
-        return back();
+        return redirect(route('CartPage'));
     }
 
     public function DeleteCart($CourseID){

@@ -15,7 +15,8 @@
     <div class="grid grid-row-2 min-h-[90vh]">
         <div class="py-14 px-28 flex flex-col">
             <p class="font-semibold text-5xl mb-10">Keranjang Belanja</p>
-            <img src="Assets/empty-img/empty-cart.png" class="w-1/4 mx-auto" alt="empty-cart">
+            <img src="Assets/empty-img/empty-cart.png" class="w-1/4 mx-auto" alt="empty-cart"> 
+            {{-- yg dibawah sini hidden pas kosong --}}
             <div class="text-[28px] font-semibold grid grid-cols-8">
                 <p class="col-span-6">Kursus</p>
                 <p>Harga</p>
@@ -65,11 +66,12 @@
                     <button class="inline-flex items-center px-3 text-xl text-white bg-[#65668B] border border-gray-300 rounded-r-lg hover:bg-[#7981A2]">Terapkan</button>
                 </div>
             </form>
-            <a href="" class="ml-auto">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-[80px] h-[80px] text-[#65668B] hover:text-[#7981A2]">
-                    <path fill-rule="evenodd" d="M4.804 21.644A6.707 6.707 0 0 0 6 21.75a6.721 6.721 0 0 0 3.583-1.029c.774.182 1.584.279 2.417.279 5.322 0 9.75-3.97 9.75-9 0-5.03-4.428-9-9.75-9s-9.75 3.97-9.75 9c0 2.409 1.025 4.587 2.674 6.192.232.226.277.428.254.543a3.73 3.73 0 0 1-.814 1.686.75.75 0 0 0 .44 1.223ZM8.25 10.875a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM10.875 12a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Zm4.875-1.125a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z" clip-rule="evenodd"/>
-                </svg>                      
-            </a>
+            <div class="ml-auto">
+                <a href="#" class="flex items-center justify-center w-[100px] h-[100px] rounded-full bg-[#65668B] hover:bg-[#7981A2]">
+                    <svg class="w-[50px] h-[50px] text-white " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M4 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h1v2a1 1 0 0 0 1.707.707L9.414 13H15a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4Z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M8.023 17.215c.033-.03.066-.062.098-.094L10.243 15H15a3 3 0 0 0 3-3V8h2a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-1v2a1 1 0 0 1-1.707.707L14.586 18H9a1 1 0 0 1-.977-.785Z" clip-rule="evenodd"/></svg>
+                </a>
+            </div> {{-- klo misal lu bingung comment dri mana nad ini commentnya dari baris 20-72 untuk yg hidden --}}
+            {{-- yg dibawah ini muncul pas kosong --}}
             <div class="flex justify-between mt-32">
                 <a href="{{ route('SubTopicPage', ['SubjectName'=>'all']) }}">
                     <svg class="w-[100px] h-[100px] text-[#65668B] hover:text-[#7981A2]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">

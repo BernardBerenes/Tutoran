@@ -11,10 +11,15 @@ class ForumQuestion extends Model
 
     protected $fillable = [
         'StudentID',
+        'TutorID',
         'Question'
     ];
 
     public function Student(){
         return $this->belongsTo(Student::class, 'StudentID', 'id');
+    }
+
+    public function Tutor(){
+        return $this->belongsTo(Tutor::class, 'TutorID', 'id');
     }
 }

@@ -21,9 +21,10 @@ class PageController extends Controller
     public function CartPage(){
         $student = Student::findOrFail(auth('student')->user()->id);
         $course = $student->Course;
+        $price = $course->sum('Price');
         $tutor = Tutor::all();
 
-        return view('Cart')->with('currentPage', '')->with('course', $course)->with('tutor', $tutor);
+        return view('Cart')->with('currentPage', '')->with('course', $course)->with('price', $price)->with('tutor', $tutor);
     }
 
     public function RegisterPage(){

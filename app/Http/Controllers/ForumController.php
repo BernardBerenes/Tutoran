@@ -13,10 +13,17 @@ class ForumController extends Controller
             'question' => 'required|regex:/(\w+\s){4,}\w+/'
         ]);
 
-        ForumQuestion::create([
-            'StudentID' => auth(strtolower(session('Roles')))->user()->id,
-            'Question' => $request->question
-        ]);
+        if(auth('student')->check()){
+            ForumQuestion::create([
+                'StudentID' => auth('student')->user()->id,
+                'Question' => $request->question
+            ]);
+        } else{
+            ForumQuestion::create([
+                'TutorID' => auth('tutor')->user()->id,
+                'Question' => $request->question
+            ]);
+        }
 
         return redirect(route('ForumDiscussionPage'));
     }

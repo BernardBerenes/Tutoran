@@ -25,7 +25,7 @@
                     <input type="search" id="search-course" class="block w-full p-4 ps-10 text-lg text-gray-900 border border-gray-300 rounded-full bg-[#D9D9D9]focus:ring-blue-500 focus:border-blue-500" placeholder="Cari Tutor"/>
                     <button type="submit" class="absolute end-2.5 bottom-2.5 px-5 py-2 ml-5 bg-[#65668B] hover:bg-[#7981A2] font-bold rounded-full text-white">Search</button>
                 </div>
-            </form>  
+            </form>
             <div class="w-1/3 flex justify-between">
                 <button id="dropdownButton1" data-dropdown-toggle="dropdownKelas" class="text-white mt-4 bg-[#D9D9D9] hover:bg-[#BDBFC5] focus:ring-2 focus:outline-none focus:ring-gray-300 font-medium rounded-full text-[#999999] text-base px-5 py-2.5 text-center inline-flex items-center border border-gray-50" type="button">Pilih Kelas <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>

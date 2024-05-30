@@ -16,7 +16,7 @@
             <div class="flex flex-row my-4">
                 <img src="{{ asset('/storage/Profile Picture/'.($forumQuestion->StudentID ? 'Student/'.$forumQuestion->Student->Image : 'Tutor/'.$forumQuestion->Tutor->Image)) }}" class="object-cover w-[60px] h-[60px] mr-8 rounded-full" alt="">
                 <div class="flex-col">
-                    <h2 class="text-2xl font-medium {{ $forumQuestion->StudentID ? 'text-black' : 'text-red-500'}}">{{ $forumQuestion->StudentID ? $forumQuestion->Student->Name : $forumQuestion->Tutor->Name }}</h2>    
+                    <h2 class="text-2xl font-medium {{ $forumQuestion->StudentID ? 'text-black' : 'text-[#0F4C82]'}}">{{ $forumQuestion->StudentID ? $forumQuestion->Student->Name : $forumQuestion->Tutor->Name }}</h2>    
                     <h2 class="text-base font-light text-black">{{ strftime('%e %B %Y', strtotime($forumQuestion->created_at)) }}</h2>    
                 </div>
             </div>
@@ -38,7 +38,7 @@
                 <div class="flex flex-row my-4">
                     <img src="{{ asset('/storage/Profile Picture/'.($answer->StudentID ? 'Student/'.$answer->Student->Image : 'Tutor/'.$answer->Tutor->Image)) }}" class="object-cover w-[60px] h-[60px] mr-8 rounded-full" alt="">
                     <div class="flex-col">
-                        <h2 class="text-2xl font-medium {{ $answer->StudentID ? 'text-black' : 'text-red-500'}}">{{ $answer->StudentID ? $answer->Student->Name : $answer->Tutor->Name }}</h2>    
+                        <h2 class="text-2xl font-medium grow {{ $answer->StudentID ? 'text-black' : 'text-[#0F4C82]'}}">{{ $answer->StudentID ? $answer->Student->Name : $answer->Tutor->Name }}</h2>    
                         <h2 class="text-base font-light text-black">{{ strftime('%e %B %Y', strtotime($answer->created_at)) }}</h2>    
                     </div>
                 </div>

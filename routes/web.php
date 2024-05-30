@@ -62,7 +62,8 @@ Route::get('/tutor-list', [PageController::class, 'TutorListPage'])->name('Tutor
 Route::get('/tutor-detail/{TutorID}', [PageController::class, 'TutorDetailPage'])->name('TutorDetailPage');
 Route::get('/about-us', [PageController::class, 'AboutUsPage'])->name('AboutUsPage');
 Route::get('/student-rating/detail', [PageController::class, 'StudentRatingDetailPage'])->name('StudentRatingDetailPage');
-Route::get('/payment', [PageController::class, 'PaymentPage'])->name('PaymentPage');
+Route::get('/payment/{CourseID}', [PageController::class, 'PaymentPage'])->name('PaymentPage');
+Route::post('/payment/{CourseID}', [CourseController::class, 'Payment'])->name('Payment');
 Route::get('/membership', [PageController::class, 'MembershipPage'])->name('MembershipPage');
 Route::get('/student-report', [PageController::class, 'StudentReportPage'])->name('StudentReportPage');
 Route::get('/leaderboard', [PageController::class, 'LeaderboardPage'])->name('LeaderboardPage');

@@ -10,9 +10,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Profile</title>
 </head>
-<body class="">
+<body class="overflow-hidden">
     @include('Component.Navbar')
-    <div class="flex flex-row h-screen">
+    <div class="flex flex-row h-screen ">
         @include('Component.ProfileMenu')
         <div class="w-full flex justify-center">
             <div class="w-1/2 h-screen mt-12 flex flex-col">

@@ -123,8 +123,8 @@ class PageController extends Controller
         return view('TutorCourseList')->with('currentPage', 'Tutor Course List')->with('course', $course);
     }
 
-    public function PaymentPage(){
-        return view('Payment')->with('currentPage', '');
+    public function PaymentPage($CourseID){
+        return view('Payment')->with('currentPage', '')->with('ids', $CourseID);
     }
 
     public function MembershipPage(){

@@ -40,7 +40,7 @@
                         <div class="flex flex-row my-4 mx-8 relative">
                             <img src="{{ asset('/storage/Profile Picture/'.($q->StudentID ? 'Student/'.$q->Student->Image : 'Tutor/'.$q->Tutor->Image)) }}" class="object-cover w-[60px] h-[60px] mr-8 rounded-full border-[1px] border-solid border-gray-300" alt="">
                             <div class="flex-col">
-                                <h2 class="text-2xl font-medium {{ $q->StudentID ? 'text-black' : 'text-red-500'}}">{{ $q->StudentID ? $q->Student->Name : $q->Tutor->Name }}</h2>    
+                                <h2 class="text-2xl font-medium {{ $q->StudentID ? 'text-black' : 'text-[#0F4C82]'}}">{{ $q->StudentID ? $q->Student->Name : $q->Tutor->Name }}</h2>    
                                 <h2 class="text-base font-light text-black">{{ strftime('%e %B %Y', strtotime($q->created_at)) }}</h2>
                             </div>
                         </div>

@@ -55,10 +55,13 @@
                     <p class="text-2xl text-[#65668B] font-medium ml-4">Tambah Kursus</p>
                 </div>
             </div>
+            @php
+                $ids = implode('-', $course->pluck('id')->toArray())
+            @endphp
             <div class="px-32 py-14 flex flex-col justify-between">
                 <p class="text-[40px] font-medium">Total:</p>
                 <p class="text-4xl font-medium">Rp {{ number_format($price, 2, ',', '.') }}</p>
-                <a href="{{ route('PaymentPage') }}" class="mt-5 inline-flex w-80 justify-center items-center px-3 py-3 text-xl font-bold text-center text-white bg-[#65668B] rounded-lg hover:bg-[#7981A2]">Checkout</a>
+                <a href="{{ route('PaymentPage', ['CourseID'=>$ids]) }}" class="mt-5 inline-flex w-80 justify-center items-center px-3 py-3 text-xl font-bold text-center text-white bg-[#65668B] rounded-lg hover:bg-[#7981A2]">Checkout</a>
                 <hr class="h-px my-8 w-[412px] bg-gray-200 border-0 bg-gray-700">
                 <form class="">
                     <label for="" class="text-2xl font-medium">Kupon Promo</label>

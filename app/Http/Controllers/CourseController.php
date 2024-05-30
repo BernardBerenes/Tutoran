@@ -58,4 +58,16 @@ class CourseController extends Controller
 
         return back();
     }
+
+    public function Payment($CourseID){
+        $CourseID = explode('-', $CourseID);
+        $studentID = auth('student')->user()->id;
+        $student = Student::findOrFail($studentID);
+
+        $student->StudentCourse()->attach($CourseID);
+
+        DB::table('carts')->where('StudentID', $studentID)->whereIn('CourseID', $CourseID)->delete();
+
+        return redirect(route('CartPage'));
+    }
 }

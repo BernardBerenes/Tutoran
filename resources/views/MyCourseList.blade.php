@@ -29,7 +29,7 @@
             @endif
             <div class="grid gap-6 mt-12">
                 @if ($course->isEmpty())
-                    <img src="Assets/empty-img/empty-tutor.png" class="w-1/4 mx-auto" alt="empty-cart">
+                    <img src="Assets/empty-img/empty-tutor.png" class="w-1/4 mx-auto mt-32" alt="empty-cart">
                 @endif
 
                 @foreach ($course as $c)

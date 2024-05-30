@@ -10,8 +10,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         var loadFile = function (event) {
-        var image = document.getElementById("output");
-        image.src = URL.createObjectURL(event.target.files[0]);
+            var image = document.getElementById("output");
+            image.src = URL.createObjectURL(event.target.files[0]);
         };
     </script>
 </head>
@@ -39,7 +39,7 @@
                     <div class="flex items-center p-2 rounded hover:bg-gray-100 gap-4">
                         <input id="default-radio-4" type="radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500" value="Assets/Payment/OVO.png" name="paymentOption">
                         <div class="flex flex-col">
-                            <img src="Assets/Payment/OVO.png" class="object-cover w-[300px] h-[180px]" alt="">
+                            <img src="Assets/OVO.png" class="object-cover w-[300px] h-[180px]" alt="">
                             <label for="default-radio-4" class="flex w-auto text-sm font-medium text-gray-900 rounded items-center justify-center">OVO</label>    
                         </div>
                     </div>

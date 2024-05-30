@@ -23,6 +23,7 @@
                     <ul class="text-gray-500 font-medium">
                         <li><a href="{{ route('IndexPage') }}" class="hover:underline">Beranda</a></li>
                         <li><a href="{{ route('AboutUsPage') }}" class="hover:underline">Tentang Kami</a></li>
+                        <li><a href="{{ route('JobVacancyPage') }}" class="hover:underline">Gabung dengan Kami</a></li>
                         <li><a href="" class="hover:underline">Pelayanan Kami</a></li>
                         <li><a href="" class="hover:underline">Kebijakan Privasi</a></li>
                         <li><a href="" class="hover:underline">Syarat dan Ketentuan</a></li>

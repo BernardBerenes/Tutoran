@@ -9,6 +9,7 @@ use App\Models\Student;
 use App\Models\Subject;
 use App\Models\Tutor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
 {
@@ -167,8 +168,26 @@ class PageController extends Controller
     }
 
     public function MyCourseListPage(){
-        $course = Course::where('TutorID', 'like', auth('tutor')->user()->id)->get();
+        if(auth('student')->check()){
+            $studentID = auth('student')->user()->id;
+            $course = DB::table('student_courses')
+            ->join('courses', 'student_courses.CourseID', '=', 'courses.id')
+            ->join('tutors', 'courses.TutorID', '=', 'tutors.id')
+            ->where('student_courses.StudentID', $studentID)
+            ->select('courses.*', 'tutors.name as Name', 'student_courses.created_at as created_at')
+            ->get();
+        } else{
+            $course = Course::where('TutorID', 'like', auth('tutor')->user()->id)->get();
+        }
     
         return view('MyCourseList')->with('currentPage', 'Tutor Course List')->with('course', $course);
+    }
+
+    public function FAQPage(){
+        return view('FAQPage.faq')->with('currentPage', '');
+    }
+
+    public function JobVacancyPage(){
+        return view('JobVacancy')->with('currentPage', '');
     }
 }

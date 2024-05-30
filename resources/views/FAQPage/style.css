@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    font-size: 14px;
+    font-family: "Inter", sans-serif;
+    background: white;
+    min-height: 100vh;
+}
+
+h1 {
+    font-size: 60px;
+    text-align: center;
+    color: black;
+}
+
+.up {
+    text-align: center;
+}
+
+.split {
+    /* overflow: auto; */
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    /* z-index: 1; */
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.left {
+    left: 0;
+    background-color: white;
+}
+
+.left img {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 600px;
+}
+
+.right {
+    right: 0;
+    background-color: white;
+}
+
+.right .accordion {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.accordion {
+    width: 600px;
+    /* max-width: 400px; */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+    font-family: "Inter", sans-serif;
+    background: white;
+}
+
+.accordion__label,
+.accordion__content {
+    padding: 14px 20px;
+}
+
+.accordion__label {
+    line-height: 1.5;
+    text-align: justify;
+    display: block;
+    color: black;
+    font-weight: 700;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.1s ease;
+}
+
+.accordion__label:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.accordion__label::after {
+    content: "";
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 25px;
+    height: 25px;
+    background: url(drop.svg) no-repeat;
+    background-size: contain;
+}
+
+.accordion__content {
+    background: whitesmoke;
+    line-height: 1.5;
+    text-align: justify;
+    font-size: 15px;
+    display: none;
+}
+
+.accordion__input {
+    display: none;
+}
+
+.accordion__input:checked ~ .accordion__content {
+    display: block;
+}
+
+.accordion__input:checked ~ .accordion__label::after {
+    transform: rotateX(180deg);
+    position: absolute;
+}

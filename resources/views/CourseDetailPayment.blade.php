@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('Style/app.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
     <title>Course Detail</title>
@@ -12,10 +13,10 @@
 <body>
     @include('Component.Navbar')
     <div class="min-h-[90vh]">
-        <h1 class="text-[55px] px-12 py-6 font-bold">Sudut-Teori</h1>
+        <h1 class="text-[55px] px-12 py-6 font-bold">{{ $course->Title }}</h1>
         <hr>
         <div class="p-12">
-            <div class="bg-red-100 h-[700px]">AA</div>
+            <div class="bg-red-100 h-[700px]"></div>
         </div>
         <hr>
         <div class="flex flex-row px-12 py-6 justify-between">

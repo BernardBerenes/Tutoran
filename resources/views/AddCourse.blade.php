@@ -41,11 +41,9 @@
                         <label class="block mb-2 text-2xl font-medium text-black ">Kurikulum</label>
                         <select class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 shadow-md" name="curriculum">
                             <option selected>Pilih Kurikulum</option>
-                            <option value="ABC">Kurikulum Merdeka 1</option>
-                            <option value="">Kurikulum Merdeka 2</option>
-                            <option value="">Kurikulum Merdeka 3</option>
-                            <option value="">Kurikulum Merdeka 4</option>
-                            <option value="">Kurikulum Merdeka 5</option>
+                            <option value="Kurikulum Merdeka">Kurikulum Merdeka</option>
+                            <option value="Kurikulum KTSP">Kurikulum Tingkat Satuan Pendidikan (KTSP)</option>
+                            <option value="Kurikulum 2013">K-13</option>
                         </select>
                     </div>
                     <div class="flex flex-col col-span-2">

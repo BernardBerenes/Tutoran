@@ -32,7 +32,9 @@
                 </div>   
             </form>
         </div>
-        <hr class="h-px w-full bg-gray-200 border-0 bg-gray-700">
+        @if (!$forumAnswer->isEmpty())
+            <hr class="h-px w-full bg-gray-200 border-0 bg-gray-700">
+        @endif
         @foreach ($forumAnswer as $answer)
             <div class="flex flex-col">
                 <div class="flex flex-row my-4">

@@ -71,7 +71,7 @@ Route::get('/leaderboard', [PageController::class, 'LeaderboardPage'])->name('Le
 Route::get('/subject/sub-topic/{SubjectName}', [PageController::class, 'SubTopicPage'])->name('SubTopicPage');
 Route::get('/subject', [PageController::class, 'SubjectPage'])->name('SubjectPage');
 Route::get('/course-detail/{CourseID}', [PageController::class, 'CourseDetailPage'])->name('CourseDetailPage');
-Route::get('/course-detail-payment', [PageController::class, 'CourseDetailPaymentPage'])->name('CourseDetailPaymentPage');
+Route::get('/course-detail-payment/{CourseID}', [PageController::class, 'CourseDetailPaymentPage'])->name('CourseDetailPaymentPage');
 
 Route::get('/faq', [PageController::class, 'FAQPage'])->name('FAQPage');
 Route::get('/job-vacancy', [PageController::class, 'JobVacancyPage'])->name('JobVacancyPage');

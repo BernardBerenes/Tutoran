@@ -159,23 +159,35 @@ class PageController extends Controller
         return view('CourseDetail')->with('currentPage', '')->with('course', $course);
     }
     
-    public function CourseDetailPaymentPage(){
-        return view('CourseDetailPayment')->with('currentPage', '');
+    public function CourseDetailPaymentPage($CourseID){
+        $course = Course::findOrFail($CourseID);
+
+        return view('CourseDetailPayment')->with('currentPage', '')->with('course', $course);
     }
 
     public function HistoryPage(){
         return view('Profile.History')->with('currentPage', '');
     }
 
-    public function MyCourseListPage(){
+    public function MyCourseListPage(Request $request){
         if(auth('student')->check()){
             $studentID = auth('student')->user()->id;
-            $course = DB::table('student_courses')
-            ->join('courses', 'student_courses.CourseID', '=', 'courses.id')
-            ->join('tutors', 'courses.TutorID', '=', 'tutors.id')
-            ->where('student_courses.StudentID', $studentID)
-            ->select('courses.*', 'tutors.name as Name', 'student_courses.created_at as created_at')
-            ->get();
+            if(!$request->courseToFind){
+                $course = DB::table('student_courses')
+                ->join('courses', 'student_courses.CourseID', '=', 'courses.id')
+                ->join('tutors', 'courses.TutorID', '=', 'tutors.id')
+                ->where('student_courses.StudentID', $studentID)
+                ->select('courses.*', 'tutors.name as Name', 'student_courses.created_at as created_at')
+                ->get();
+            } else{
+                $course = DB::table('student_courses')
+                ->join('courses', 'student_courses.CourseID', '=', 'courses.id')
+                ->join('tutors', 'courses.TutorID', '=', 'tutors.id')
+                ->where('student_courses.StudentID', $studentID)
+                ->where('courses.Title', 'LIKE', '%'.$request->courseToFind.'%')
+                ->select('courses.*', 'tutors.name as Name', 'student_courses.created_at as created_at')
+                ->get();
+            }
         } else{
             $course = Course::where('TutorID', 'like', auth('tutor')->user()->id)->get();
         }

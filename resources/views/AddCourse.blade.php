@@ -30,11 +30,18 @@
                         <label for="mataPelajaran" class="block mb-2 text-2xl font-medium text-black ">Mata Pelajaran</label>
                         <select id="mataPelajaran" class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 shadow-md">
                             <option selected>Pilih Mata Pelajaran</option>
-                            <option value="">Matematika Peminatan</option>
-                            <option value="TV">Matematika</option>
-                            <option value="PC">Biology</option>
-                            <option value="GA">Fisika</option>
-                            <option value="PH">Kimia</option>
+                            @foreach ($subject as $s)
+                                <option value="{{ $s->SubjectName }}">{{ $s->SubjectName }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label for="jenjang" class="block mb-2 text-2xl font-medium text-black ">Jenjang</label>
+                        <select id="jenjang" class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 shadow-md">
+                            <option selected>Pilih Jenjang</option>
+                            <option value="SD">SD</option>
+                            <option value="SMP">SMP</option>
+                            <option value="SMA">SMA</option>
                         </select>
                     </div>
                     <div class="sm:col-span-2">

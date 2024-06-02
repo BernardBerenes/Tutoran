@@ -37,7 +37,7 @@
                 </li>
                 <li>
                     <div class="flex items-center p-2 rounded hover:bg-gray-100 gap-4">
-                        <input id="default-radio-4" type="radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500" value="Assets/Payment/OVO.png" name="paymentOption">
+                        <input id="default-radio-4" type="radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500" value="{{ asset('Assets/Payment/OVO.png') }}" name="paymentOption">
                         <div class="flex flex-col">
                             <img src="{{ asset('Assets/Payment/OVO.png') }}" class="object-cover w-full h-[180px]" alt="">
                             <label for="default-radio-4" class="flex w-auto text-sm font-medium text-gray-900 rounded items-center justify-center">OVO</label>    
@@ -46,7 +46,7 @@
                 </li>
                 <li>
                     <div class="flex items-center p-2 rounded hover:bg-gray-100 gap-4">
-                        <input id="default-radio-4" type="radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500" value="Assets/Payment/QRIS.png" name="paymentOption">
+                        <input id="default-radio-4" type="radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500" value="{{ asset('Assets/Payment/QRIS.png') }}" name="paymentOption">
                         <div class="flex flex-col">
                             <img src="{{ asset('Assets/Payment/QRIS.png') }}" class="object-cover w-[300px] h-[180px]" alt="">
                             <label for="default-radio-4" class="flex w-auto text-sm font-medium text-gray-900 rounded items-center justify-center">QRIS</label>    
@@ -55,7 +55,7 @@
                 </li>
                 <li>
                     <div class="flex items-center p-2 rounded hover:bg-gray-100 gap-4">
-                        <input id="default-radio-4" type="radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500" value="Assets/Payment/Gopay.png" name="paymentOption">
+                        <input id="default-radio-4" type="radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500" value="{{ asset('Assets/Payment/Gopay.png') }}" name="paymentOption">
                         <div class="flex flex-col">
                             <img src="{{ asset('Assets/Payment/Gopay.png') }}" class="object-cover w-[300px] h-[180px]" alt="">
                             <label for="default-radio-4" class="flex w-auto text-sm font-medium text-gray-900 rounded items-center justify-center">Gopay</label>    
@@ -75,7 +75,7 @@
                 <div class="p-8">
                     <div class="flex justify-between font-medium text-[23px]">
                         <p>Nomor Pembayaran</p>
-                        <p>TUT230004212</p>
+                        <p>{{ $invoiceNumber }}</p>
                     </div>
                     <div class="flex justify-between font-medium text-[23px] mt-2">
                         <p>Created</p>
@@ -87,7 +87,7 @@
                     </div>
                     <div class="flex justify-between font-semibold text-[23px] mt-2 mb-8">
                         <p>Total</p>
-                        <p class="text-[#65668B]">IDR 199,000</p>
+                        <p class="text-[#65668B]">Rp {{ number_format($price, 2, ',', '.') }}</p>
                     </div>
                 </div>   
                 <div class="flex flex-row justify-between p-8">

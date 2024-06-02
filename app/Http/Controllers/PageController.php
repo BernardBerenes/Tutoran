@@ -51,7 +51,9 @@ class PageController extends Controller
     }
 
     public function AddCoursePage(){
-        return view('AddCourse')->with('currentPage', '');
+        $subject = Subject::select('SubjectName')->distinct()->get();
+
+        return view('AddCourse')->with('currentPage', '')->with('subject', $subject);
     }
 
     public function SubTopicPage($SubjectName){
@@ -125,17 +127,24 @@ class PageController extends Controller
     }
 
     public function PaymentPage($CourseID){
-        return view('Payment')->with('currentPage', '')->with('ids', $CourseID);
+        $invoiceNumber = sprintf('%s%010d', "TUT", rand(1, 999999999));
+        $CourseID = explode('-', $CourseID);
+        $course = Course::find($CourseID);
+        $price = $course->sum('Price');
+        $CourseID = implode('-', $CourseID);
+
+        return view('Payment')->with('currentPage', '')->with('ids', $CourseID)->with('price', $price)->with('invoiceNumber', $invoiceNumber);
     }
 
     public function MembershipPage(){
         return view('Membership')->with('currentPage', '');
     }
 
-    public function RatingTutor($TutorID){
+    public function RatingTutorPage($TutorID, $CourseID){
         $tutor = Tutor::findOrFail($TutorID);
+        $course = Course::findOrFail($CourseID);
 
-        return view('RatingTutor')->with('currentPage', '')->with('tutor', $tutor);
+        return view('RatingTutor')->with('currentPage', '')->with('tutor', $tutor)->with('course', $course);
     }
 
     public function StudentReportPage(){
@@ -196,7 +205,7 @@ class PageController extends Controller
     }
 
     public function FAQPage(){
-        return view('FAQPage.faq')->with('currentPage', '');
+        return view('FAQ')->with('currentPage', '');
     }
 
     public function JobVacancyPage(){

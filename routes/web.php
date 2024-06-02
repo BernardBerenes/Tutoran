@@ -55,7 +55,7 @@ Route::get('/my-course-list', [PageController::class, 'MyCourseListPage'])->name
 Route::middleware('student')->group(function(){
     Route::post('/insert-cart/{CourseID}', [CourseController::class, 'InsertCart'])->name('InsertCart');
     Route::delete('/delete-cart/{CourseID}', [CourseController::class, 'DeleteCart'])->name('DeleteCart');
-    Route::get('/rating-tutor/{TutorID}', [PageController::class, 'RatingTutor'])->name('RatingTutor');
+    Route::get('/rating-tutor/{TutorID}-{CourseID}', [PageController::class, 'RatingTutorPage'])->name('RatingTutorPage');
 });
 
 Route::get('/tutor-list', [PageController::class, 'TutorListPage'])->name('TutorListPage');

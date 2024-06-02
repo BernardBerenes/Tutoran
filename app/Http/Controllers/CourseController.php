@@ -27,11 +27,10 @@ class CourseController extends Controller
 
         Course::create([
             'TutorID' => auth('tutor')->user()->id,
-            'SubjectID' => 1,
+            'SubjectID' => $request->subject,
             'Title' => $request->title,
             'Price' => $request->price,
-            'Lesson' => 'Matematika',
-            'Curriculum' => 'K13',
+            'Curriculum' => $request->curriculum,
             'Detail' => $request->detail,
             'Poster' => $posterName,
             'Video' => $videoName

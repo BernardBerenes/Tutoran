@@ -27,7 +27,7 @@
                         <li><a href="" class="hover:underline">Pelayanan Kami</a></li>
                         <li><a href="" class="hover:underline">Kebijakan Privasi</a></li>
                         <li><a href="" class="hover:underline">Syarat dan Ketentuan</a></li>
-                        <li><a href="" class="hover:underline">Pertanyaan yang Sering Ditanyakan</a></li>
+                        <li><a href="{{ route('FAQPage') }}" class="hover:underline">Pertanyaan yang Sering Ditanyakan</a></li>
                     </ul>
                 </div>
                 <div class="ml-10">

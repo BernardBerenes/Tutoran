@@ -14,21 +14,23 @@
     @include('Component.Navbar')
     <div class="min-h-[90vh]">
         <div class="py-8 px-4 mx-auto max-w-4xl lg:py-16">
-            <form class="">   
-                <label for="search-course" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
-                <div class="relative flex justify-center items-center">
-                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                        </svg>
+            @if (!$course->isEmpty())
+                <form class="">   
+                    <label for="search-course" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
+                    <div class="relative flex justify-center items-center">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                            </svg>
+                        </div>
+                        <input type="search" id="search-course" class="block w-full p-4 ps-10 text-lg text-gray-900 border border-gray-300 rounded-full bg-[#D9D9D9]focus:ring-blue-500 focus:border-blue-500" placeholder="Cari Kursus" required/>
+                        <button type="submit" class="absolute end-2.5 bottom-2.5 px-5 py-2 ml-5 bg-[#65668B] hover:bg-[#7981A2] font-bold rounded-full text-white">Search</button>
                     </div>
-                    <input type="search" id="search-course" class="block w-full p-4 ps-10 text-lg text-gray-900 border border-gray-300 rounded-full bg-[#D9D9D9]focus:ring-blue-500 focus:border-blue-500" placeholder="Cari Kursus" required/>
-                    <button type="submit" class="absolute end-2.5 bottom-2.5 px-5 py-2 ml-5 bg-[#65668B] hover:bg-[#7981A2] font-bold rounded-full text-white">Search</button>
-                </div>
-            </form>
+                </form>
+            @endif
             <div class="grid gap-4 grid-rows-3 gap-6 mt-12">
                 @foreach ($course as $c)
-                    <a href="#" class="grid grid-cols-4 border border-gray-300 shadow-md">
+                    <a href="{{ route('CourseDetailPage', ['CourseID'=>$c->id]) }}" class="grid grid-cols-4 border border-gray-300 shadow-md">
                         <img src="{{ asset('/storage/Poster/'.$c->Poster) }}" class="object-cover w-[235px] h-[216px]" alt="">
                         <div class="grid grid-row-5 col-span-3 flex flex-col p-4">
                             <p class="text-[30px] font-medium text-black">{{ $c->Title }}</p>
@@ -46,7 +48,7 @@
                                     Tambahkan
                                 </button>
                             </form>
-                            <form action="{{ route('Payment', ['CourseID'=>$c->id]) }}" class="flex items-center justify-between">
+                            <form action="{{ route('PaymentPage', ['CourseID'=>$c->id]) }}" class="flex items-center justify-between">
                                 <p class="font-medium text-[18px] text-black">Rp {{ number_format($c->Price, 2, ',', '.') }}</p>
                                 <button class="w-1/4 py-2 ml-5 bg-[#65668B] hover:bg-[#7981A2] text-base rounded-full text-white">Beli Sekarang</button>
                             </form>

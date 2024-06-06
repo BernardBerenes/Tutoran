@@ -32,7 +32,7 @@ class CourseController extends Controller
 
         Course::create([
             'TutorID' => auth('tutor')->user()->id,
-            'SubjectID' => $request->subject,
+            'SubjectID' => 1,
             'Title' => $request->title,
             'Price' => $request->price,
             'Curriculum' => $request->curriculum,

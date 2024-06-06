@@ -43,11 +43,11 @@
                     Tambahkan
                 </button>
             </form>
-            <form action="{{ route('Payment', ['CourseID'=>$course->id]) }}" class="flex items-center justify-between">
+            <div  class="flex items-center justify-between">
                 @csrf
                 <p class="font-medium text-[18px] text-black">Rp {{ number_format($course->Price, 2, ',', '.') }}</p>
-                <button type="submit" class="py-2 px-5 items-center bg-[#65668B] hover:bg-[#7981A2] text-base rounded-full text-white">Beli Sekarang</button>
-            </form>
+                <a href="{{ route('Payment', ['CourseID'=>$course->id]) }}" class="py-2 px-5 items-center bg-[#65668B] hover:bg-[#7981A2] text-base rounded-full text-white">Beli Sekarang</a>
+            </div>
         </div>
     </div>
     @include('Component.Footer')

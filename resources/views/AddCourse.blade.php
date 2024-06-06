@@ -75,35 +75,19 @@
                             <p class="text-red-500">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="sm:col-span-2">
-                        <label for="gambarPoster" class="block mb-2 text-2xl font-medium text-black ">Gambar Poster</label>
-                        <div class="flex items-center justify-center w-full shadow-md">
-                            <label for="gambarPoster" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 rounded-lg cursor-pointer bg-gray-50">
-                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                    <svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                                    </svg>
-                                    <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                                    <p class="text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
-                                </div>
-                                <input type="file" id="gambarPoster" class="hidden" name="poster"/>
-                            </label>
-                        </div>
+                    <div class="flex flex-col col-span-2">
+                        <label for="gambarPoster" class="block mb-2 text-2xl font-medium text-black ">Gambar Poster</label>  
+                        <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50  focus:outline-none" aria-describedby="gambarPoster_help" id="gambarPoster" type="file">
+                        <img id="preview" src="#" alt="Image Preview" class="hidden object-cover max-w-[800px] max-h-[400px] mt-8"/>
+                        <p class="mt-1 text-sm text-gray-500" id="gambarPoster_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
                     </div>
-                    <div class="sm:col-span-2">
-                        <label for="videoCourse" class="block mb-2 text-2xl font-medium text-black ">Video</label>
-                        <div class="flex items-center justify-center w-full shadow-md">
-                            <label for="videoCourse" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 rounded-lg cursor-pointer bg-gray-50">
-                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                    <svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                                    </svg>
-                                    <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                                    <p class="text-xs text-gray-500">.MP4 or MOV</p>
-                                </div>
-                                <input type="file" id="videoCourse" class="hidden" name="video"/>
-                            </label>
-                        </div>
+                    <div class="flex flex-col col-span-2">
+                        <label for="videoCourse" class="block mb-2 text-2xl font-medium text-black">Video</label>
+                        <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" aria-describedby="videoCourse_help" id="videoCourse" type="file">
+                        <p class="mt-1 text-sm text-gray-500" id="videoCourse_help">.MP4 or MOV</p>
+                        <video id="videoPreview" class="hidden mt-4" controls>
+                            <source id="videoSource" src="#" type="video/mp4">
+                        </video>
                     </div>
                 </div>
                 <button type="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-[#65668B] hover:bg-[#7981A2] rounded-lg focus:ring-4 focus:ring-[#7981A2]">
@@ -114,5 +98,55 @@
     </div>
     @include('Component.Footer')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script>
+    document.getElementById('gambarPoster').addEventListener('change', function() {
+        const gambarPoster = document.getElementById('gambarPoster');
+        const helpText = document.getElementById('gambarPoster_help');
+        const preview = document.getElementById('preview');
+
+        if (gambarPoster.files.length > 0) {
+            helpText.style.display = 'none';
+
+            const file = gambarPoster.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+
+            reader.readAsDataURL(file);
+        } else {
+            helpText.style.display = 'block';
+            preview.style.display = 'none';
+        }
+    });
+
+    document.getElementById('videoCourse').addEventListener('change', function() {
+        const videoCourse = document.getElementById('videoCourse');
+        const videoPreview = document.getElementById('videoPreview');
+        const videoHelpText = document.getElementById('videoCourse_help');
+        const videoSource = document.getElementById('videoSource');
+
+        if (videoCourse.files.length > 0) {
+            videoHelpText.style.display = 'none';
+
+            const file = videoCourse.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                videoSource.src = e.target.result;
+                videoPreview.style.display = 'block';
+                videoPreview.load();
+            }
+
+            reader.readAsDataURL(file);
+        } else {
+            videoHelpText.style.display = 'block';
+            videoPreview.style.display = 'none';
+        }
+    });
+
+    </script>
 </body>
 </html>

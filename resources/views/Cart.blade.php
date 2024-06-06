@@ -16,15 +16,15 @@
         <div class="py-14 px-28 flex flex-col">
             <p class="font-semibold text-5xl mb-10">Keranjang Belanja</p>
             @if($course->isEmpty())
-                <img src="Assets/empty-img/empty-cart.png" class="w-1/4 mx-auto" alt="empty-cart">
+                <img src="{{ asset('Assets/empty-img/empty-cart.png') }}" class="w-1/4 mx-auto" alt="empty-cart">
             @else
                 <div class="text-[28px] font-semibold grid grid-cols-8">
                     <p class="col-span-6">Kursus</p>
                     <p>Harga</p>
                 </div>
+                <hr class="h-px mt-8 bg-gray-200 border-0 bg-gray-700">
                 @foreach ($course as $c)
-                    <hr class="h-px my-8 bg-gray    -200 border-0 bg-gray-700">
-                    <div class="grid grid-cols-8">
+                    <a href="{{ route('CourseDetailPage', ['CourseID'=>$c->id]) }}" class="grid grid-cols-8 hover:bg-gray-200 transition duration-200 ease-in-out p-8">
                         <img src="{{ asset('/storage/Poster/'.$c->Poster) }}" class="w-32 h-32">
                         <div class="flex-row col-span-5 items-center">
                             <p class="text-[32px]">{{ $c->Title }}</p>
@@ -43,10 +43,10 @@
                             </form>
                             <p class="ml-2 font-medium text-2xl">Rp {{ number_format($c->Price, 2, ',', '.') }}</p>
                         </div>
-                    </div>
-                    <hr class="h-px my-8 bg-gray-200 border-0 bg-gray-700">
+                    </a>
+                    <hr class="h-px bg-gray-200 border-0 bg-gray-700">
                 @endforeach
-                <div class="flex flex-row items-center">
+                <div class="flex flex-row items-center mt-8">
                     <a href="{{ route('SubTopicPage', ['SubjectName'=>'all']) }}">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-[50px] h-[50px] text-[#65668B] hover:text-[#7981A2]">
                             <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" clip-rule="evenodd" />

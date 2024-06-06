@@ -12,7 +12,7 @@
 <body class="overflow-x-hidden">
     @include('Component.Navbar')
     <div class="flex flex-col">
-        <img src="Assets/Banner.png">
+        <img src="{{ asset('Assets/Banner.png') }}">
         <div class="flex flex-row bg-white min-h-screen mt-16 mx-40 justify-between">
             <div class="flex flex-col mr-16">
                 <div class="flex flex-row">
@@ -40,7 +40,7 @@
                 <div class="grid grid-cols-3 gap-8 mt-8">
                     @foreach ($subject as $s)
                         <a href="{{ route('SubTopicPage', ['SubjectName'=>$s->SubjectName]) }}" class="flex flex-col items-center justify-center w-[150px] h-[150px] border border-gray-300 rounded-xl shadow-lg hover:border-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300">
-                            <img src="Assets/Subject Poster/{{ $s->SubjectName }}.png">
+                            <img src="{{ asset('Assets/Subject Poster/' . $s->SubjectName . '.png') }}">
                             <p>{{ $s->SubjectName }}</p>
                         </a>
                     @endforeach

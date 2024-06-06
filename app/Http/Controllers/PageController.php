@@ -74,8 +74,12 @@ class PageController extends Controller
         return view('SubTopic')->with('currentPage', '')->with('course', $course)->with('tutor', $tutor);
     }
 
-    public function TutorListPage(){
-        $tutors = Tutor::all();
+    public function TutorListPage(Request $request){
+        if(!$request->tutorToFind){
+            $tutors = Tutor::all();
+        } else{
+            $tutors = Tutor::where('Name', 'LIKE', '%'.$request->tutorToFind.'%')->get();
+        }
 
         return view('TutorList')->with('currentPage', '')->with('tutors', $tutors);
     }

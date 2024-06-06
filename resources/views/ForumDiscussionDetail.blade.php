@@ -36,7 +36,7 @@
             <hr class="h-px w-full bg-gray-200 border-0 bg-gray-700">
         @endif
         @foreach ($forumAnswer as $answer)
-            <div class="flex flex-col">
+            <div class="flex flex-col relative">
                 <div class="flex flex-row my-4">
                     <img src="{{ asset('/storage/Profile Picture/'.($answer->StudentID ? 'Student/'.$answer->Student->Image : 'Tutor/'.$answer->Tutor->Image)) }}" class="object-cover w-[60px] h-[60px] mr-8 rounded-full" alt="">
                     <div class="flex-col">

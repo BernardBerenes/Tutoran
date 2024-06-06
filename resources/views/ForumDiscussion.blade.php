@@ -41,7 +41,7 @@
                             <img src="{{ asset('/storage/Profile Picture/'.($q->StudentID ? 'Student/'.$q->Student->Image : 'Tutor/'.$q->Tutor->Image)) }}" class="object-cover w-[60px] h-[60px] mr-8 rounded-full border-[1px] border-solid border-gray-300" alt="">
                             <div class="flex-col">
                                 <h2 class="text-2xl font-medium {{ $q->StudentID ? 'text-black' : 'text-[#0F4C82]'}}">{{ $q->StudentID ? $q->Student->Name : $q->Tutor->Name }}</h2>    
-                                <h2 class="text-base font-light text-black">{{ strftime('%e %B %Y', strtotime($q->created_at)) }}</h2>
+                                <h2 class="text-base font-light text-black">{{ \Carbon\Carbon::parse($q->created_at)->format('d F Y') }}</h2>
                             </div>
                         </div>
                         <div class="flex flex-col justify-between">
@@ -84,7 +84,7 @@
                 @endforeach
                 
                 @if ($question->isEmpty())
-                    <img src="Assets/empty-img/empty-forum.png" class="w-1/4 mx-auto col-span-2" alt="empty-cart">
+                    <img src="{{ asset('Assets/empty-img/empty-forum.png') }}" class="w-1/4 mx-auto col-span-2" alt="empty-cart">
                 @endif
             </div>
         </div>

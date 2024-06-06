@@ -1,5 +1,5 @@
 <nav class="flex items-center h-28 w-full bg-white rounded-b-2xl shadow-md z-10">
-    <a href="{{ route('IndexPage') }}"><img src="{{ asset('/Assets/img/Logo_Tutoran.png') }}" alt="" class="ml-20"></a>
+    <a href="{{ route('IndexPage') }}"><img src="{{ asset('Assets/img/Logo_Tutoran.png') }}" alt="" class="ml-20"></a>
     <div class="flex justify-between ml-16 text-2xl font-medium w-3/4 items-center">
         <div class="flex gap-x-12">
             <a href="{{ route('IndexPage') }}" class="{{ $currentPage == 'Beranda' ? 'underline underline-offset-[6px]' : '' }} group text-black font-medium transition-all duration-600 ease-in-out"><span class="bg-left-bottom bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out pb-[2px]">Beranda</span></a>

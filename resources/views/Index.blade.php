@@ -124,7 +124,7 @@
                     @if (auth(strtolower(session('Roles')))->check())
                         <div class="p-6 rounded-lg flex flex-col items-center">
                             <h1 class="text-[120px] font-bold text-white">FAQ</h1>
-                            <a href="#" class="items-center px-20 py-4 text-4xl font-medium text-center text-white bg-[#27272E] rounded-full hover:bg-[#3E3E4B] ">
+                            <a href="{{ route('FAQPage') }}" class="items-center px-20 py-4 text-4xl font-medium text-center text-white bg-[#27272E] rounded-full hover:bg-[#3E3E4B] ">
                             Pelajari Lebih Lanjut
                             </a>
                         </div>

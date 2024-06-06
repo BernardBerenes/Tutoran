@@ -21,28 +21,40 @@
                     <div class="sm:col-span-2">
                         <label class="block mb-2 text-2xl font-medium text-black ">Judul</label>
                         <input type="text" class="bg-white border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 shadow-md" placeholder="Contoh: Limit Fungsi dan Aljabar" name="title">
+                        @error('title')
+                            <p class="text-red-500">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="sm:col-span-2">
                         <label class="block mb-2 text-2xl font-medium text-black ">Harga</label>
                         <input type="number" class="bg-white border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 shadow-md" placeholder="Contoh: 100000" name="price">
+                        @error('price')
+                            <p class="text-red-500">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="sm:col-span-2">
                         <label for="mataPelajaran" class="block mb-2 text-2xl font-medium text-black ">Mata Pelajaran</label>
-                        <select id="mataPelajaran" class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 shadow-md">
+                        <select id="mataPelajaran" class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 shadow-md" name="subject">
                             <option selected>Pilih Mata Pelajaran</option>
                             @foreach ($subject as $s)
                                 <option value="{{ $s->SubjectName }}">{{ $s->SubjectName }}</option>
                             @endforeach
                         </select>
+                        @error('subject')
+                            <p class="text-red-500">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="sm:col-span-2">
                         <label for="jenjang" class="block mb-2 text-2xl font-medium text-black ">Jenjang</label>
-                        <select id="jenjang" class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 shadow-md">
+                        <select id="jenjang" class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 shadow-md" name="grade">
                             <option selected>Pilih Jenjang</option>
                             <option value="SD">SD</option>
                             <option value="SMP">SMP</option>
                             <option value="SMA">SMA</option>
                         </select>
+                        @error('grade')
+                            <p class="text-red-500">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="sm:col-span-2">
                         <label class="block mb-2 text-2xl font-medium text-black ">Kurikulum</label>
@@ -52,10 +64,16 @@
                             <option value="Kurikulum KTSP">Kurikulum Tingkat Satuan Pendidikan (KTSP)</option>
                             <option value="Kurikulum 2013">K-13</option>
                         </select>
+                        @error('curriculum')
+                            <p class="text-red-500">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="flex flex-col col-span-2">
                         <label for="detailCourse" class="block mb-2 text-2xl font-medium text-black ">Detail</label>
                         <textarea id="detailCourse" rows="4" class="flex sm:col-span-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full h-[100px] p-2.5 mb-5 resize-none" placeholder="Tulis penjelasan disini" name="detail"></textarea>
+                        @error('detail')
+                            <p class="text-red-500">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="sm:col-span-2">
                         <label for="gambarPoster" class="block mb-2 text-2xl font-medium text-black ">Gambar Poster</label>

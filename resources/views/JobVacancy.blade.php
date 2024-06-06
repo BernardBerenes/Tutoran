@@ -44,13 +44,13 @@
                     Gali Potensi Anda Dengan Mengirimkan CV Anda
                 </p>
                 <div class="flex flex-row items-center gap-4">
-                    <img src="Assets/Email.png" alt="" />
+                    <img src="{{ asset('Assets/Email.png') }}" alt="" />
                     <p class="text-[28px]">tutoran@gmail.com</p>
                 </div>
             </div>
         </div>
         <div class="bg-center bg-cover bg-no-repeat opacity-70">
-            <img src="Assets/lokerBG.png" class="object-cover w-[770px] h-[800px]"/>
+            <img src="{{ asset('Assets/lokerBG.png') }}" class="object-cover w-[770px] h-[800px]"/>
         </div>
     </div>
     @include('Component.Footer')

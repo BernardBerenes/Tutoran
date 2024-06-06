@@ -16,7 +16,9 @@
         <h1 class="text-[55px] px-12 py-6 font-bold">{{ $course->Title }}</h1>
         <hr>
         <div class="p-12">
-            <div class="bg-red-100 h-[700px]"></div>
+            <video class="bg-red-100 w-full h-[800px]" controls>
+                <source src="{{ asset('/storage/Video/'.$course->Video) }}" type="video/mp4" audio>
+            </video>
         </div>
         <hr>
         <div class="flex flex-row px-12 py-6 justify-between">

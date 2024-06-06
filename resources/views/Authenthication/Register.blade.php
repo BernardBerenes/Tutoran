@@ -11,8 +11,8 @@
 <body>
     <div class="container bg-indigo-200 min-h-screen max-w-full flex">
         <div class="w-1/2 flex flex-col pt-28 justify-center items-center">
-            <a href="{{ route('IndexPage') }}"><img src="{{ asset('/Assets/img/Logo_Tutoran.png') }}" alt=""></a>
-            <img src="{{ asset('/Assets/204 1.png') }}" alt="" class="w-full">
+            <a href="{{ route('IndexPage') }}"><img src="{{ asset('Assets/img/Logo_Tutoran.png') }}" alt=""></a>
+            <img src="{{ asset('Assets/204 1.png') }}" alt="" class="w-full">
         </div>
         <div class="w-1/2 bg-indigo-400 flex justify-center items-center">
             <form method="POST" action="{{ route('Register') }}" class="h-[90%] w-4/5 bg-white rounded-2xl p-12">
@@ -23,11 +23,11 @@
                 </div>
                 <div>
                     <a href="#" class="w-full flex border border-black flex justify-center items-center text-xl font-medium rounded-3xl py-2 gap-5 mb-5">
-                        <img src="{{ asset('/Assets/Logo google.png') }}" alt="">
+                        <img src="{{ asset('Assets/Logo google.png') }}" alt="">
                         <p>Lanjutkan dengan Google</p>
                     </a>
                     <a href="#" class="w-full flex border border-black flex justify-center items-center text-xl font-medium rounded-3xl py-2 gap-5 mb-7">
-                        <img src="{{ asset('/Assets/Logo fb.png') }}" alt="">
+                        <img src="{{ asset('Assets/Logo fb.png') }}" alt="">
                         <p>Lanjutkan dengan Facebook</p>
                     </a>
                 </div>

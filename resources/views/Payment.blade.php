@@ -92,7 +92,7 @@
                 </div>   
                 <div class="flex flex-row justify-between p-8">
                     <p class="flex items-center justify-center text-[19px]">PEMBAYARAN DENGAN</p>
-                    <img src="Assets/img/Logo_Tutoran.png" id="selectedPayment" alt="" class="w-[180px] h-[70px]">
+                    <img src="{{ asset('Assets/img/Logo_Tutoran.png') }}" id="selectedPayment" alt="" class="w-[180px] h-[70px]">
                 </div>
                 <form method="POST" action="{{ route('Payment', ['CourseID'=>$ids]) }}" class="w-full flex items-center justify-center">
                     @csrf

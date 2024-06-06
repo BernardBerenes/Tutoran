@@ -13,7 +13,12 @@ class CourseController extends Controller
         $request->validate([
             // 'title' => 'required',
             // 'price' => 'required',
-            // 'poster' => 'required|max:25000|mimes:png,jpg,jpeg,svg'
+            // 'subject' => 'required',
+            // 'grade' => 'required',
+            // 'curriculum' => 'required',
+            // 'detail' => 'required',
+            // 'poster' => 'required|max:25000|mimes:png,jpg,jpeg,svg',
+            // 'video' => 'required'
         ]);
 
         $lastId = Course::latest()->value('id') + 1;
@@ -67,6 +72,6 @@ class CourseController extends Controller
 
         DB::table('carts')->where('StudentID', $studentID)->whereIn('CourseID', $CourseID)->delete();
 
-        return redirect(route('CartPage'));
+        return redirect(route('MyCourseListPage'));
     }
 }

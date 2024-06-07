@@ -39,10 +39,11 @@ Route::middleware('customer')->group(function(){
     Route::get('/profile/history', [PageController::class, 'HistoryPage'])->name('HistoryPage');
     Route::post('/change-picture', [ProfileController::class, 'ChangePicture'])->name('ChangePicture');
     Route::get('/forum-discussion', [PageController::class, 'ForumDiscussionPage'])->name('ForumDiscussionPage');
-    Route::delete('/forum-discussion/delete/{QuestionID}', [ForumController::class, 'DeleteForumQuestion'])->name('DeleteForumQuestion');
-    Route::post('/forum-discussion/post', [ForumController::class, 'AddForumQuestion'])->name('AddForumQuestion');
+    Route::delete('/forum-discussion/delete/question/{QuestionID}', [ForumController::class, 'DeleteForumQuestion'])->name('DeleteForumQuestion');
+    Route::post('/forum-discussion/post/question', [ForumController::class, 'AddForumQuestion'])->name('AddForumQuestion');
     Route::get('/forum-discussion/detail/{QuestionID}', [PageController::class, 'ForumDiscussionDetailPage'])->name('ForumDiscussionDetailPage');
-    Route::post('/forum-discussion/detail/{QuestionID}', [ForumController::class, 'AddForumAnswer'])->name('AddForumAnswer');
+    Route::post('/forum-discussion/post/answer/{QuestionID}', [ForumController::class, 'AddForumAnswer'])->name('AddForumAnswer');
+    Route::delete('/forum-discussion/delete/answer/{AnswerID}', [ForumController::class, 'DeleteForumAnswer'])->name('DeleteForumAnswer');
     Route::get('/my-course-list', [PageController::class, 'MyCourseListPage'])->name('MyCourseListPage');
     Route::get('/student-report', [PageController::class, 'StudentReportPage'])->name('StudentReportPage');
     Route::get('/course-detail-payment/{CourseID}', [PageController::class, 'CourseDetailPaymentPage'])->name('CourseDetailPaymentPage');

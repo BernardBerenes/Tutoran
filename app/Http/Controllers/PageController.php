@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
 {
+    private function CheckRatingTime(){
+        
+    }
+
     public function IndexPage(){
         $topTutor = Tutor::orderByDesc('Rating')->take(3)->get();
 
@@ -219,7 +223,14 @@ class PageController extends Controller
                 ->get();
             }
         } else{
-            $course = Course::where('TutorID', 'like', auth('tutor')->user()->id)->get();
+            $tutorID = auth('tutor')->user()->id;
+            $course = Course::where('TutorID', 'like', $tutorID)->get();
+
+            if($request->courseToFind){
+                $course = Course::where('TutorID', 'like', $tutorID)
+                ->where('Title', 'LIKE', '%'.$request->courseToFind.'%')
+                ->get();
+            }
         }
     
         return view('MyCourseList')->with('currentPage', 'Tutor Course List')->with('course', $course);

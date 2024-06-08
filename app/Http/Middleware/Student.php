@@ -16,7 +16,9 @@ class Student
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!auth('student')->check()){
+        if(auth('tutor')->check()){
+            return back();
+        } else if(!auth('student')->check()){
             return redirect(route('LoginPage'));
         }
         return $next($request);

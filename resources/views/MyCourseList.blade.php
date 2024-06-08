@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('Style/app.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
-    <title>Tutor Course List</title>
+    <title>My Course List</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
@@ -37,7 +37,7 @@
                         <img src="{{ asset('/storage/Poster/'.$c->Poster) }}" class="object-cover w-[120px] h-[120px] m-4" alt="">
                         <div class="flex flex-col w-full m-4">
                             <h2 class="text-[24px] font-medium mt-4">{{ $c->Title }}</h2>
-                            <p class="mt-3 text-base font-light">{{ $c->Name }}</p>
+                            <p class="mt-3 text-base font-light">{{ auth('student')->check() ? 'Oleh '.$c->Name : $c->Subject->SubjectName }}</p>
                             <p class="flex justify-end font-light">Ditambahkan pada: {{ \Carbon\Carbon::parse($c->created_at)->format('d M Y') }}
                             </p>
                         </div>

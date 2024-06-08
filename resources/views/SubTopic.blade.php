@@ -29,7 +29,7 @@
                 </form>
             @endif
             <div class="flex flex-col gap-6 mt-12">
-                {{-- @foreach ($course as $c) --}}
+                @foreach ($course as $c)
                 <div class="flex flex-row border border-gray-300 shadow-md">
                     <a href="#" class="flex flex-row">
                         <img src="#" class="object-cover w-[235px] h-[216px]" alt="">
@@ -38,7 +38,7 @@
                         <p class="text-[30px] font-medium text-black">Title</p>
                         <p class="mb-3 text-base font-normal text-black">oleh Tutor</p>
                         <form method="POST" action="#" class="flex items-center justify-between">
-                            {{-- @csrf --}}
+                            @csrf
                             <div class="flex flex-col text-base font-regular">
                                 <p>Mulai: {{ date('d/m/Y') }}</p>
                                 <p>Akhir: {{ date('d/m/Y', strtotime('+1 year')) }}</p>
@@ -56,7 +56,7 @@
                         </div>
                     </div>
                 </div>
-                {{-- @endforeach --}}
+                @endforeach
             </div>
         </div>
     </div>

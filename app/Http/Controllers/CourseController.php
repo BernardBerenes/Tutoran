@@ -74,4 +74,15 @@ class CourseController extends Controller
 
         return redirect(route('MyCourseListPage'));
     }
+
+    public function UpdateRating(Request $request, $studentID){
+        DB::table('student_courses')
+        ->where('StudentID', 'LIKE', $studentID)
+        ->where('CourseID', 'LIKE', $request->CourseID)
+        ->update([
+            'RatingStudent' => $request->stars
+        ]);
+ 
+        return back();
+    }
 }

@@ -43,7 +43,7 @@ Route::middleware('customer')->group(function(){
     Route::post('/forum-discussion/post/question', [ForumController::class, 'AddForumQuestion'])->name('AddForumQuestion');
     Route::get('/forum-discussion/detail/{QuestionID}', [PageController::class, 'ForumDiscussionDetailPage'])->name('ForumDiscussionDetailPage');
     Route::post('/forum-discussion/post/answer/{QuestionID}', [ForumController::class, 'AddForumAnswer'])->name('AddForumAnswer');
-    Route::delete('/forum-discussion/delete/answer/{AnswerID}', [ForumController::class, 'DeleteForumAnswer'])->name('DeleteForumAnswer');
+    Route::delete('/forum-discussion/delete/answer/{QuestionID}-{AnswerID}', [ForumController::class, 'DeleteForumAnswer'])->name('DeleteForumAnswer');
     Route::get('/my-course-list', [PageController::class, 'MyCourseListPage'])->name('MyCourseListPage');
     Route::get('/student-report', [PageController::class, 'StudentReportPage'])->name('StudentReportPage');
     Route::get('/course-detail-payment/{CourseID}', [PageController::class, 'CourseDetailPaymentPage'])->name('CourseDetailPaymentPage');
@@ -52,7 +52,7 @@ Route::middleware('customer')->group(function(){
 Route::middleware('tutor')->group(function(){
     Route::get('/add-course', [PageController::class, 'AddCoursePage'])->name('AddCoursePage');
     Route::post('/add-course/post', [CourseController::class, 'AddCourse'])->name('AddCourse');
-    Route::get('/student-rating/detail', [PageController::class, 'StudentRatingDetailPage'])->name('StudentRatingDetailPage');
+    Route::get('/student-rating/detail/{StudentID}', [PageController::class, 'StudentRatingDetailPage'])->name('StudentRatingDetailPage');
 });
 
 Route::middleware('student')->group(function(){
@@ -74,3 +74,5 @@ Route::get('/about-us', [PageController::class, 'AboutUsPage'])->name('AboutUsPa
 Route::get('/leaderboard', [PageController::class, 'LeaderboardPage'])->name('LeaderboardPage');
 Route::get('/faq', [PageController::class, 'FAQPage'])->name('FAQPage');
 Route::get('/job-vacancy', [PageController::class, 'JobVacancyPage'])->name('JobVacancyPage');
+
+Route::patch('/update-rating/{StudentID}', [CourseController::class, 'UpdateRating'])->name('UpdateRating');

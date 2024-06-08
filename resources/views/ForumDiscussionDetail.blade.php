@@ -51,7 +51,7 @@
                                         <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M12 6h.01M12 12h.01M12 18h.01"/>
                                     </svg>
                                 </div>
-                                <form method="POST" action="{{ route('DeleteForumAnswer', ['AnswerID'=>$answer->id]) }}" class="absolute flex flex-col bg-white top-0 right-0 mr-6 mt-3  hidden actionButton" onclick="event.stopPropagation();">
+                                <form method="POST" action="{{ route('DeleteForumAnswer', ['QuestionID' => $QuestionID,  'AnswerID'=>$answer->id]) }}" class="absolute flex flex-col bg-white top-0 right-0 mr-6 mt-3  hidden actionButton" onclick="event.stopPropagation();">
                                     @method('DELETE')
                                     @csrf
                                     <button class="p-2 cursor-pointer rounded-md text-white bg-red-500 hover:bg-red-600">Delete</button>
@@ -64,7 +64,7 @@
                                         <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M12 6h.01M12 12h.01M12 18h.01"/>
                                     </svg>
                                 </div>
-                                <form method="POST" action="{{ route('DeleteForumAnswer', ['AnswerID'=>$answer->id]) }}" class="absolute flex flex-col bg-white top-0 right-0 mr-6 mt-3  hidden actionButton" onclick="event.stopPropagation();">
+                                <form method="POST" action="{{ route('DeleteForumAnswer', ['QuestionID' => $QuestionID,  'AnswerID'=>$answer->id]) }}" class="absolute flex flex-col bg-white top-0 right-0 mr-6 mt-3  hidden actionButton" onclick="event.stopPropagation();">
                                     @method('DELETE')
                                     @csrf
                                     <button class="p-2 cursor-pointer rounded-md text-white bg-red-500 hover:bg-red-600">Delete</button>

@@ -104,7 +104,7 @@ class PageController extends Controller
         $forumQuestion = ForumQuestion::findOrFail($QuestionID);
         $forumAnswer = ForumAnswer::where('QuestionID', $QuestionID)->get();
 
-        return view('ForumDiscussionDetail')->with('currentPage', 'Forum')->with('forumQuestion', $forumQuestion)->with('forumAnswer', $forumAnswer);
+        return view('ForumDiscussionDetail')->with('currentPage', 'Forum')->with('forumQuestion', $forumQuestion)->with('forumAnswer', $forumAnswer)->with('QuestionID', $QuestionID);
     }
 
     public function SubjectPage(Request $request){
@@ -118,10 +118,6 @@ class PageController extends Controller
 
     public function StudentRatingPage(){
 
-    }
-
-    public function StudentRatingDetailPage(){
-        return view('StudentRatingDetail')->with('currentPage', '');
     }
 
     public function TutorCourseListPage($TutorID){
@@ -153,8 +149,29 @@ class PageController extends Controller
 
     public function StudentReportPage(){
         $user = auth()->guard(strtolower(session('Roles')))->user();
+        $student = DB::table('students')
+        ->join('student_courses', 'students.id', '=', 'student_courses.StudentID')
+        ->join('courses', 'student_courses.CourseID', '=', 'courses.id')
+        ->where('courses.TutorID', $user->id)
+        ->select(
+            'students.id as id',
+            'students.name as StudentName',
+            DB::raw('AVG(student_courses.RatingStudent) as StudentRating')
+        )
+        ->groupBy('students.id', 'students.name')
+        ->get();
 
-        return view('Profile.StudentReport')->with('currentPage', 'Report')->with('user', $user);
+        return view('Profile.StudentReport')->with('currentPage', 'Report')->with('user', $user)->with('student', $student);
+    }
+
+    public function StudentRatingDetailPage($StudentID){
+        $student = Student::findOrFail($StudentID);
+        $studentCourse = DB::table('student_courses')
+        ->join('courses', 'student_courses.CourseID', '=', 'courses.id')
+        ->where('student_courses.StudentID', 'LIKE', $student->id)
+        ->get();
+
+        return view('StudentRatingDetail')->with('currentPage', '')->with('student', $student)->with('studentCourse', $studentCourse);
     }
 
     public function LeaderboardPage(){

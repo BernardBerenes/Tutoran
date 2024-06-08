@@ -59,8 +59,10 @@ class ForumController extends Controller
         return back();
     }
 
-    public function DeleteForumAnswer($AnswerID){
+    public function DeleteForumAnswer($QuestionID, $AnswerID){
         ForumAnswer::findOrFail($AnswerID)->delete();
+        $question = ForumQuestion::findOrFail($QuestionID);
+        $question->decrement('AnswerCount');
 
         return back();
     }

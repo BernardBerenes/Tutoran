@@ -13,14 +13,28 @@ use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
 {
-    private function CheckRatingTime(){
-        
+    private function CheckVideoConferenceTime(){
+        if(auth('student')->check()){
+            $temp = DB::table('student_courses')
+            ->join('courses', 'student_courses.CourseID', '=', 'courses.id')
+            ->join('tutors', 'courses.TutorID', '=', 'tutors.id')
+            ->where('student_courses.StudentID', 'LIKE', auth('student')->user()->id)
+            ->where(DB::raw('DATE_ADD(VideoConferenceTime, INTERVAL 1 HOUR)'), '<', now())
+            ->first(['courses.TutorID', 'student_courses.CourseID']);
+
+            return $temp;
+        }
     }
 
     public function IndexPage(){
-        $topTutor = Tutor::orderByDesc('Rating')->take(3)->get();
+        $temp = PageController::CheckVideoConferenceTime();
+        if($temp){
+            return redirect(route('RatingTutorPage', ['TutorID'=>$temp->TutorID, 'CourseID'=>$temp->CourseID]));
+        }
 
+        $topTutor = Tutor::orderByDesc('Rating')->take(3)->get();
         return view('Index')->with('currentPage', 'Beranda')->with('topTutor', $topTutor);
+
     }
 
     public function CartPage(){
@@ -120,10 +134,6 @@ class PageController extends Controller
         return view('Subject')->with('currentPage', 'Subject')->with('topTutor', $topTutor)->with('subject', $subject)->with('grade', $request->grade);
     }
 
-    public function StudentRatingPage(){
-
-    }
-
     public function TutorCourseListPage($TutorID){
         $course = Course::where('TutorID', $TutorID)->get();
         
@@ -153,19 +163,33 @@ class PageController extends Controller
 
     public function StudentReportPage(){
         $user = auth()->guard(strtolower(session('Roles')))->user();
-        $student = DB::table('students')
-        ->join('student_courses', 'students.id', '=', 'student_courses.StudentID')
-        ->join('courses', 'student_courses.CourseID', '=', 'courses.id')
-        ->where('courses.TutorID', $user->id)
-        ->select(
-            'students.id as id',
-            'students.name as StudentName',
-            DB::raw('AVG(student_courses.RatingStudent) as StudentRating')
-        )
-        ->groupBy('students.id', 'students.name')
-        ->get();
+        if(auth('tutor')->check()){
+            $student = DB::table('students')
+            ->join('student_courses', 'students.id', '=', 'student_courses.StudentID')
+            ->join('courses', 'student_courses.CourseID', '=', 'courses.id')
+            ->where('courses.TutorID', $user->id)
+            ->select(
+                'students.id as id',
+                'students.name as StudentName',
+                DB::raw('AVG(student_courses.RatingStudent) as StudentRating')
+            )
+            ->groupBy('students.id', 'students.name')
+            ->get();
 
-        return view('Profile.StudentReport')->with('currentPage', 'Report')->with('user', $user)->with('student', $student);
+            return view('Profile.StudentReport')->with('currentPage', 'Report')->with('user', $user)->with('student', $student);
+        } else{
+            $averageRating = DB::table('student_courses')
+            ->where('StudentID', $user->id)
+            ->avg('RatingStudent');
+
+            $course = DB::table('student_courses')
+            ->join('courses', 'student_courses.CourseID', '=', 'courses.id')
+            ->where('StudentID', 'LIKE', $user->id)
+            ->get();
+
+            return view('Profile.StudentReport')->with('currentPage', 'Report')->with('user', $user)->with('course', $course)->with('avg', $averageRating);
+        }
+
     }
 
     public function StudentRatingDetailPage($StudentID){

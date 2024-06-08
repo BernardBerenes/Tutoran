@@ -75,4 +75,6 @@ Route::get('/leaderboard', [PageController::class, 'LeaderboardPage'])->name('Le
 Route::get('/faq', [PageController::class, 'FAQPage'])->name('FAQPage');
 Route::get('/job-vacancy', [PageController::class, 'JobVacancyPage'])->name('JobVacancyPage');
 
-Route::patch('/update-rating/{StudentID}', [CourseController::class, 'UpdateRating'])->name('UpdateRating');
+Route::patch('/update-student-rating/{StudentID}', [CourseController::class, 'UpdateStudentRating'])->name('UpdateStudentRating');
+Route::patch('/update-tutor-rating/{CourseID}', [CourseController::class, 'UpdateTutorRating'])->name('UpdateTutorRating');
+Route::patch('/update-video-conference/{StudentID}/{CourseID}', [CourseController::class, 'UpdateConferenceTime'])->name('UpdateConferenceTime');

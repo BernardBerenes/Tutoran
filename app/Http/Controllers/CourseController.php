@@ -75,14 +75,40 @@ class CourseController extends Controller
         return redirect(route('MyCourseListPage'));
     }
 
-    public function UpdateRating(Request $request, $studentID){
+    public function UpdateStudentRating(Request $request, $StudentID){
         DB::table('student_courses')
-        ->where('StudentID', 'LIKE', $studentID)
+        ->where('StudentID', 'LIKE', $StudentID)
         ->where('CourseID', 'LIKE', $request->CourseID)
         ->update([
             'RatingStudent' => $request->stars
         ]);
  
+        return back();
+    }
+
+    public function UpdateTutorRating(Request $request, $CourseID){
+        $avg = ($request->rating_1 + $request->rating_2 + $request->rating_3 + $request->rating_4) / 4;
+        DB::table('student_courses')
+        ->where('StudentID', 'LIKE', auth('student')->user()->id)
+        ->where('CourseID', 'LIKE', $CourseID)
+        ->update([
+            'RatingTutor' => $avg
+        ]);
+
+        return redirect(route('StudentReportPage'));
+    }
+
+    public function UpdateConferenceTime($StudentID, $CourseID){
+        DB::table('student_courses')
+        ->where('StudentID', 'LIKE', $StudentID)
+        ->where('CourseID', 'LIKE', $CourseID)
+        ->whereNull('VideoConferenceTime')
+        ->update(
+            [
+                'VideoConferenceTime' => now()
+            ]
+        );
+
         return back();
     }
 }

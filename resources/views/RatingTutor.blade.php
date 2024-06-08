@@ -19,7 +19,9 @@
             <h3 class="text-[30px] font-medium">{{ $course->Title }}</h3>
             <hr class="w-[80%] h-[2px] my-4 bg-gray-200 border-0 bg-gray-700">
             <h2 class="text-[30px] font-bold mt-8">Seberapa puas Anda dengan tutor ini?</h2>
-            <form action="" class="flex flex-col my-4 gap-4">
+            <form method="POST" action="{{ route('UpdateTutorRating', ['CourseID'=>$course->id]) }}" class="flex flex-col my-4 gap-4">
+                @method('PATCH')
+                @csrf
                 <div class="grid grid-cols-2">
                     <div class="flex flex-row justify-end">
                         <label class="text-[25px] font-medium">Kemampuan mengajar (1-5)</label>

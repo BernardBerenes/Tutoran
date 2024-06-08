@@ -51,15 +51,23 @@
             </div>
         </div>
         <hr>
-        <div href="" class="px-12 py-6">
-            <a href="#" class="flex flex-row gap-6">
+        <form method="POST" action="{{ route('UpdateConferenceTime', ['StudentID'=>auth(strtolower(session('Roles')))->user()->id, 'CourseID'=>$course->id]) }}" id="VideoConferenceForm" class="px-12 py-6">
+            @method('PATCH')
+            @csrf
+            <a href="https://binus.zoom.us/j/2316221132?pwd=U2x4Z3JaNWlWUFVTUy9QYmlFeDFTUT09" target="_blank" onclick="SubmitForm()" class="flex flex-row gap-6">
                 <svg class="w-10 h-10 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                     <path fill-rule="evenodd" d="M14 7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7Zm2 9.387 4.684 1.562A1 1 0 0 0 22 17V7a1 1 0 0 0-1.316-.949L16 7.613v8.774Z" clip-rule="evenodd"/>
                 </svg>
                 <h2 class="text-[25px] font-medium">Video Conference</h2>
             </a>
-        </div>
+        </form>
     </div>
     @include('Component.Footer')
+    <script>
+        function SubmitForm(){
+            var form = document.getElementById('VideoConferenceForm');
+            form.submit();
+        }
+    </script>
 </body>
 </html>

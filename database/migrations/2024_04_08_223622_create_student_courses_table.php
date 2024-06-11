@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreign('CourseID')->references('id')->on('courses')->onUpdate('cascade')->onDelete('cascade');
             $table->float('RatingTutor')->nullable();
             $table->float('RatingStudent')->nullable();
+            $table->timestamp('VideoConferenceTime')->nullable();
             $table->timestamps();
         });
     }

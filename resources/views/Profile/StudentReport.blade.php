@@ -16,9 +16,9 @@
         @include('Component.ProfileMenu')
         @if (auth('tutor')->check())
             <div class="w-full flex justify-center">
-                <div class="w-4/5 flex flex-col my-16">
+                <div class="w-4/5 flex flex-col">
                     <h2 class="text-[40px] font-medium">Laporan Siswa</h2>
-                    <div class="flex flex-col gap-y-8 overflow-x-hidden overflow-y-auto p-8 h-[630px] my-10 border border-gray-200 shadow-md rounded-2xl">
+                    <div class="flex flex-col gap-y-8 overflow-x-hidden overflow-y-auto p-8 h-[630px] my-8 border border-gray-200 shadow-md rounded-2xl">
                         @foreach ($student as $s)
                             <div class="flex flex-row justify-between px-4 py-4 mx-4 items-center rounded-lg border border-gray-300 shadow-md">
                                 <div class="flex flex-col">

@@ -12,9 +12,9 @@
 </head>
 <body>
     @include('Component.Navbar')
-    <div class="flex flex-row ml-16 p-16">
+    <div class="flex flex-row justify-center p-16">
         <img src="{{ asset('/storage/Profile Picture/Tutor/'.$tutor->Image) }}" class="w-[483px] h-[720px] object-cover bg-no-repeat"/>
-        <div class="flex flex-col my-8 ml-16 ">
+        <div class="flex flex-col my-8 ml-16">
             <h1 class="text-[48px] font-bold">{{ $tutor->Name }}</h1>
             <h3 class="text-[30px] font-medium">{{ $course->Title }}</h3>
             <hr class="w-[80%] h-[2px] my-4 bg-gray-200 border-0 bg-gray-700">

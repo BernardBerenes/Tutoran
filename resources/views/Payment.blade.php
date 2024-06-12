@@ -20,41 +20,42 @@
     <div class="flex flex-row px-12 py-36 gap-8">
         <div class="flex flex-col w-1/2">
             <label for="payment" class="font-semibold text-[28px]">Pilih Metode Pembayaran</label>
-            <button id="dropdownRadioBgHoverButton" data-dropdown-toggle="dropdownRadioBgHover" class="text-black bg-white border border-gray-300 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-[16px] font-semibold px-5 py-2.5 text-center inline-flex items-center justify-between" type="button">E-Wallet<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            
+            <button id="dropdownRadioBgHoverButton1" data-dropdown-toggle="dropdownRadioBgHover1" class="text-black bg-white border border-gray-300 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-[16px] font-semibold px-5 py-2.5 text-center inline-flex items-center justify-between" type="button">E-Wallet<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
             </svg>
             </button>
-            <div id="dropdownRadioBgHover" class="z-10 hidden w-[47%] bg-white divide-y divide-gray-100 rounded-lg shadow border border-gray-300">
-                <ul class="grid grid-cols-2 p-3 space-y-1 text-sm text-gray-700" aria-labelledby="dropdownRadioBgHoverButton">
-                <li>
-                    <div class="flex items-center p-2 rounded hover:bg-gray-100 gap-4">
-                        <input checked id="default-radio-4" type="radio"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500" value="{{ asset('Assets/Payment/Dana.png') }}" name="paymentOption">
-                        <div class="flex flex-col">
-                            <img src="{{ asset('Assets/Payment/Dana.png') }}" class="w-[300px] h-[150px]" alt="">
-                            <label for="default-radio-4" class="flex w-auto text-sm font-medium text-gray-900 rounded items-center justify-center">Dana Wallet</label>    
+            <div id="dropdownRadioBgHover1" class="z-10 hidden w-[47%] bg-white divide-y divide-gray-100 rounded-lg shadow border border-gray-300">
+                <ul class="grid grid-cols-2 p-3 space-y-1 text-sm text-gray-700" aria-labelledby="dropdownRadioBgHoverButton1">
+                    <li>
+                        <div class="flex items-center p-2 rounded hover:bg-gray-100 gap-4 cursor-pointer" onclick="document.getElementById('default-radio-1').click();">
+                            <input id="default-radio-1" type="radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500" value="{{ asset('Assets/Payment/Dana.png') }}" name="paymentOption">
+                            <div class="flex flex-col">
+                                <img src="{{ asset('Assets/Payment/Dana.png') }}" class="w-[300px] h-[150px]" alt="Dana Wallet">
+                                <label for="default-radio-1" class="flex w-auto text-sm font-medium text-gray-900 rounded items-center justify-center">Dana Wallet</label>
+                            </div>
                         </div>
-                    </div>
-                </li>
+                    </li>
                 <li>
-                    <div class="flex items-center p-2 rounded hover:bg-gray-100 gap-4">
-                        <input id="default-radio-4" type="radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500" value="{{ asset('Assets/Payment/OVO.png') }}" name="paymentOption">
+                    <div class="flex items-center p-2 rounded hover:bg-gray-100 gap-4 cursor-pointer" onclick="document.getElementById('default-radio-2').click();">
+                        <input id="default-radio-2" type="radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500" value="{{ asset('Assets/Payment/OVO.png') }}" name="paymentOption">
                         <div class="flex flex-col">
                             <img src="{{ asset('Assets/Payment/OVO.png') }}" class=" w-full h-[150px]" alt="">
-                            <label for="default-radio-4" class="flex w-auto text-sm font-medium text-gray-900 rounded items-center justify-center">OVO</label>    
+                            <label for="default-radio-2" class="flex w-auto text-sm font-medium text-gray-900 rounded items-center justify-center">OVO</label>    
                         </div>
                     </div>
                 </li>
                 <li>
-                    <div class="flex items-center p-2 rounded hover:bg-gray-100 gap-4">
-                        <input id="default-radio-4" type="radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500" value="{{ asset('Assets/Payment/QRIS.png') }}" name="paymentOption">
+                    <div class="flex items-center p-2 rounded hover:bg-gray-100 gap-4 cursor-pointer" onclick="document.getElementById('default-radio-3').click();">
+                        <input id="default-radio-3" type="radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500" value="{{ asset('Assets/Payment/QRIS.png') }}" name="paymentOption">
                         <div class="flex flex-col">
                             <img src="{{ asset('Assets/Payment/QRIS.png') }}" class=" w-[300px] h-[150px]" alt="">
-                            <label for="default-radio-4" class="flex w-auto text-sm font-medium text-gray-900 rounded items-center justify-center">QRIS</label>    
+                            <label for="default-radio-3" class="flex w-auto text-sm font-medium text-gray-900 rounded items-center justify-center">QRIS</label>    
                         </div>
                     </div>
                 </li>
                 <li>
-                    <div class="flex items-center p-2 rounded hover:bg-gray-100 gap-4">
+                    <div class="flex items-center p-2 rounded hover:bg-gray-100 gap-4 cursor-pointer" onclick="document.getElementById('default-radio-4').click();">
                         <input id="default-radio-4" type="radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500" value="{{ asset('Assets/Payment/Gopay.png') }}" name="paymentOption">
                         <div class="flex flex-col">
                             <img src="{{ asset('Assets/Payment/Gopay.png') }}" class="w-[300px] h-[150px]" alt="">

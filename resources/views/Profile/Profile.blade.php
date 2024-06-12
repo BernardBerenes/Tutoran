@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('Style/app.css') }}">
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Profile</title>
 </head>
-<body class="overflow-hidden">
+<body class="overflow-hidden" onclick="disablePhoneNumberInput(event)">
     @include('Component.Navbar')
     <div class="flex flex-row h-screen ">
         @include('Component.ProfileMenu')
@@ -22,15 +22,15 @@
                     @csrf
                     <div class="flex flex-col">
                         <label class="font-medium text-2xl">Nama</label>
-                        <input type="text" class="rounded-lg h-12 border-gray-400 shadow-lg bg-gray-300" name="name" value="{{$user->Name}}" disabled >
+                        <input type="text" class="rounded-lg h-12 border-gray-400 shadow-lg bg-gray-300 p-2" name="name" value="{{$user->Name}}" disabled >
                     </div>
                     <div class="flex flex-col">
                         <label class="font-medium text-2xl">Email</label>
-                        <input type="text" class="rounded-lg h-12 border-gray-400 shadow-lg bg-gray-300" name="email" value="{{$user->Email}}" disabled >
+                        <input type="text" class="rounded-lg h-12 border-gray-400 shadow-lg bg-gray-300 p-2" name="email" value="{{$user->Email}}" disabled >
                     </div>
                     <div class="flex flex-col">
                         <label class="font-medium text-2xl">Jenis Kelamin</label>
-                        <select class="rounded-lg h-12 border-gray-400 shadow-lg pl-3" name="gender">
+                        <select class="rounded-lg h-12 border-gray-400 shadow-lg p-2" name="gender">
                             @if (!$user->Gender)
                                 <option selected>Pilih Jenis Kelamin</option>
                             @endif
@@ -40,11 +40,14 @@
                     </div>
                     <div class="flex flex-col">
                         <label class="font-medium text-2xl">Tanggal Lahir</label>
-                        <input type="date" class="rounded-lg h-12 border-gray-400 shadow-lg" name="dob" value="{{ $user->DateOfBirth }}" >
+                        <input type="date" class="rounded-lg h-12 border-gray-400 shadow-lg p-2" name="dob" value="{{ $user->DateOfBirth }}" >
                     </div>
                     <div class="flex flex-col">
                         <label class="font-medium text-2xl">Nomor HP</label>
-                        <input type="text" class="rounded-lg h-12 border-gray-400 shadow-lg" name="phoneNumber" value="{{ $user->PhoneNumber }}" >
+                        <div class="relative">
+                            <input type="number" id="phoneNumber" class="rounded-lg w-full h-12 border-gray-400 shadow-lg p-2" name="phoneNumber" disabled value="{{ $user->PhoneNumber }}">
+                            <i class="absolute bi bi-pencil-square right-2 text-xl mt-2 cursor-pointer" onclick="enablePhoneNumberInput(event)"></i>
+                        </div>
                         @error('phoneNumber')
                             <p class="text-red-500">{{ $message }}</p>
                         @enderror
@@ -60,5 +63,21 @@
             </div>
         </div>
     </div>
+    <script>
+        function enablePhoneNumberInput(event) {
+            event.stopPropagation();
+            const phoneNumberInput = document.getElementById('phoneNumber');
+            phoneNumberInput.disabled = false;
+            phoneNumberInput.focus();
+            phoneNumberInput.select();
+        }
+
+        function disablePhoneNumberInput(event) {
+            const phoneNumberInput = document.getElementById('phoneNumber');
+            if (!phoneNumberInput.contains(event.target) && !event.target.classList.contains('bi-pencil-square')) {
+                phoneNumberInput.disabled = true;
+            }
+        }
+    </script>
 </body>
 </html>

@@ -37,7 +37,7 @@
             </div>
             <div class="flex flex-row bg-[#8292AC] w-[710px] h-[63px] items-center space-x-64 p-4 justify-between rounded-2xl">
                 <p class="text-[20px] font-semibold text-white" id="target">-</p>
-                <form method="POST" action="{{ route('UpdateRating', ['StudentID'=>$student->id]) }}" id="RatingForm" class="inline-block relative h-[30px] text-[30px] leading-[30px]">
+                <form method="POST" action="{{ route('UpdateStudentRating', ['StudentID'=>$student->id]) }}" id="RatingForm" class="inline-block relative h-[30px] text-[30px] leading-[30px]">
                     @method('PATCH')
                     @csrf
                     <input type="number" id="CourseID" class="hidden" name="CourseID">

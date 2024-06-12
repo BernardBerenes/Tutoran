@@ -18,14 +18,14 @@
                 <div class="flex flex-col">
                     <div class="flex flex-col justify-center w-[15em] mt-[8em]">
                         <div class="flex justify-center">
-                            <img class="flex w-[12.5em] h-[12.5em] border border-white-300 border-4px rounded-full justify-center" src="{{ asset('/storage/Profile Picture/Student/'.$second->Image) }}">
+                            <img class="flex w-[12.5em] h-[12.5em] border border-white-300 border-4px rounded-full justify-center" src="{{ asset('/storage/Profile Picture/Student/'.$topTutor[1]->Image) }}">
                         </div>
                         <div class="flex justify-center">
                             <div class="flex justify-center bg-[#FF9900] rounded-full w-[3.75em] h-[3.75em] border border-white-100 border-[4px] mt-[-3em]">
                                 <h1 class="text-[30px] font-bold">2</h1>  
                             </div>
                         </div>
-                        <h2 class="text-center text-[20px] font-bold">{{ $second->Name }}</h2>
+                        <h2 class="text-center text-[20px] font-bold">{{ $topTutor[1]->Name }}</h2>
                         <div class="flex flex-row items-center gap-2">
                             <a href="" class="flex items-center justify-center w-[30px] h-[30px] rounded-full bg-[#65668B] hover:bg-[#7981A2]">
                                 <svg class="w-[15px] h-[15px] text-white " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M4 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h1v2a1 1 0 0 0 1.707.707L9.414 13H15a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4Z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M8.023 17.215c.033-.03.066-.062.098-.094L10.243 15H15a3 3 0 0 0 3-3V8h2a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-1v2a1 1 0 0 1-1.707.707L14.586 18H9a1 1 0 0 1-.977-.785Z" clip-rule="evenodd"/></svg>
@@ -42,14 +42,14 @@
                 <div class="flex flex-col">
                     <div class="flex flex-col justify-center">
                         <div class="flex justify-center">
-                            <img class="w-[16.5625em] h-[16.5625em] border border-white-300 border-4px rounded-full" src="{{ asset('/storage/Profile Picture/Student/'.$first->Image) }}">
+                            <img class="w-[16.5625em] h-[16.5625em] border border-white-300 border-4px rounded-full" src="{{ asset('/storage/Profile Picture/Student/'.$topTutor[0]->Image) }}">
                         </div>
                         <div class="flex justify-center">
                             <div class="flex justify-center bg-[#FF9900] rounded-full w-[5.375em] h-[5.375em] border border-white-100 border-[4px] mt-[-4em]">
                                 <h1 class="text-[50px] font-bold">1</h1>  
                             </div>
                         </div>
-                        <h2 class="text-center text-[24px] font-bold">{{ $first->Name }}</h2>
+                        <h2 class="text-center text-[24px] font-bold">{{ $topTutor[0]->Name }}</h2>
                         <div class="flex flex-row items-center">
                             <a href="" class="flex items-center justify-center w-[40px] h-[40px] rounded-full bg-[#65668B] mr-4 hover:bg-[#7981A2]">
                                 <svg class="w-[20px] h-[20px] text-white " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M4 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h1v2a1 1 0 0 0 1.707.707L9.414 13H15a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4Z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M8.023 17.215c.033-.03.066-.062.098-.094L10.243 15H15a3 3 0 0 0 3-3V8h2a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-1v2a1 1 0 0 1-1.707.707L14.586 18H9a1 1 0 0 1-.977-.785Z" clip-rule="evenodd"/></svg>
@@ -66,14 +66,14 @@
                 <div class="flex flex-col">
                     <div class="flex flex-col justify-center w-[15em] mt-[10em]">
                         <div class="flex justify-center">
-                           <img class="flex justify-center w-[9.375em] h-[9.375em] border border-white-300 border-4px rounded-full" src="{{ asset('/storage/Profile Picture/Student/'.$third->Image) }}"> 
+                           <img class="flex justify-center w-[9.375em] h-[9.375em] border border-white-300 border-4px rounded-full" src="{{ asset('/storage/Profile Picture/Student/'.$topTutor[2]->Image) }}"> 
                         </div>
                         <div class="flex justify-center">
                             <div class="flex justify-center bg-[#FF9900] rounded-full w-[2.5em] h-[2.5em] border border-white-100 border-[4px] mt-[-2.1em]">
                                 <h1 class="text-[22px] font-bold">3</h1>  
                             </div>
                         </div>
-                        <h2 class="text-center text-[20px] font-bold">{{ $third->Name }}</h2>
+                        <h2 class="text-center text-[20px] font-bold">{{ $topTutor[2]->Name }}</h2>
                         <div class="flex flex-row items-center">
                             <a href="" class="flex items-center justify-center w-[30px] h-[30px] rounded-full bg-[#65668B] mr-4 hover:bg-[#7981A2]">
                                 <svg class="w-[15px] h-[15px] text-white " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M4 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h1v2a1 1 0 0 0 1.707.707L9.414 13H15a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4Z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M8.023 17.215c.033-.03.066-.062.098-.094L10.243 15H15a3 3 0 0 0 3-3V8h2a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-1v2a1 1 0 0 1-1.707.707L14.586 18H9a1 1 0 0 1-.977-.785Z" clip-rule="evenodd"/></svg>

@@ -41,7 +41,7 @@
                                     <p>Mulai: {{ date('d/m/Y') }}</p>
                                     <p>Akhir: {{ date('d/m/Y', strtotime('+1 year')) }}</p>
                                 </div>
-                                @if (auth('student')->check())
+                                @if (auth('student')->check() || auth()->guest())
                                     <button class="flex flex-row w-32 justify-center px-2 py-2 bg-[#65668B] hover:bg-[#7981A2] text-base rounded-full text-white">
                                         <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10V6a3 3 0 0 1 3-3v0a3 3 0 0 1 3 3v4m3-2 .917 11.923A1 1 0 0 1 17.92 21H6.08a1 1 0 0 1-.997-1.077L6 8h12Z"/>
@@ -52,7 +52,7 @@
                             </form>
                             <div class="flex items-center justify-between">
                                 <p class="font-medium text-[18px] text-black">Rp {{ number_format($c->Price, 2, ',', '.') }}</p>
-                                @if (auth('student')->check())
+                                @if (auth('student')->check() || auth()->guest())
                                     <object class="flex justify-center w-32 px-2 py-2 bg-[#65668B] hover:bg-[#7981A2] text-base rounded-full text-white">
                                         <a href="{{ route('PaymentPage', ['CourseID'=>$c->id]) }}" class="">Beli Sekarang</a>
                                     </object>

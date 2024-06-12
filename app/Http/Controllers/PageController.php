@@ -75,7 +75,8 @@ class PageController extends Controller
     }
 
     public function SubTopicPage($SubjectName){
-        $subjectID = Subject::where('SubjectName', $SubjectName)->pluck('id')->first();
+        $subjectID = Subject::where('SubjectName', $SubjectName)
+        ->pluck('id');
         if(auth('student')->check()){
             $student = Student::findOrFail(auth('student')->user()->id);
             $cart = $student->Course()->pluck('CourseID');
@@ -85,8 +86,8 @@ class PageController extends Controller
                 $course = Course::all()->whereNotIn('id', $cart)->where('SubjectID', $subjectID);
             }
         } else{
-            $course = Course::all()->where('SubjectID', $subjectID);
-        }   
+            $course = Course::whereIn('SubjectID', $subjectID)->get();
+        }
         $tutor = Tutor::all();
 
         return view('SubTopic')->with('currentPage', '')->with('course', $course)->with('tutor', $tutor);
@@ -203,12 +204,11 @@ class PageController extends Controller
     }
 
     public function LeaderboardPage(){
-        $first = Tutor::orderBy('Rating', 'asc')->first();
-        $second = Tutor::orderBy('Rating', 'asc')->skip(1)->first();
-        $third = Tutor::orderBy('Rating', 'asc')->skip(2)->first();
-        $remainTutor = Tutor::whereNotIn('id', [$first->id, $second->id, $third->id])->orderBy('Rating')->get();
+        $topTutor = Tutor::orderBy('Rating', 'asc')->take(3)->get();
+        $topTutorID = $topTutor->pluck('id');
+        $remainTutor = Tutor::whereNotIn('id', $topTutorID)->orderBy('Rating')->get();
 
-        return view('Leaderboard')->with('currentPage', '')->with('first', $first)->with('second', $second)->with('third', $third)->with('remainTutor', $remainTutor);
+        return view('Leaderboard')->with('currentPage', '')->with('topTutor', $topTutor)->with('remainTutor', $remainTutor);
     }
 
     public function CourseDetailPage($CourseID){

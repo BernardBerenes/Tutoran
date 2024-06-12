@@ -35,7 +35,7 @@
                     <div class="sm:col-span-2">
                         <label for="mataPelajaran" class="block mb-2 text-2xl font-medium text-black ">Mata Pelajaran</label>
                         <select id="mataPelajaran" class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 shadow-md" name="subject">
-                            <option selected>Pilih Mata Pelajaran</option>
+                            <option>Pilih Mata Pelajaran</option>
                             @foreach ($subject as $s)
                                 <option value="{{ $s->SubjectName }}">{{ $s->SubjectName }}</option>
                             @endforeach
@@ -80,11 +80,16 @@
                         <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50  focus:outline-none" aria-describedby="gambarPoster_help" id="gambarPoster" type="file" name="poster">
                         <img id="preview" src="#" alt="Image Preview" class="hidden object-cover max-w-[800px] max-h-[400px] mt-8"/>
                         <p class="mt-1 text-sm text-gray-500" id="gambarPoster_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
+                        @error('poster')
+                            <p class="text-red-500">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="flex flex-col col-span-2">
                         <label for="videoCourse" class="block mb-2 text-2xl font-medium text-black">Video</label>
                         <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" aria-describedby="videoCourse_help" id="videoCourse" type="file" name="video">
                         <p class="mt-1 text-sm text-gray-500" id="videoCourse_help">.MP4 or MOV</p>
+                        @error('video')
+                        @enderror
                         <video id="videoPreview" class="hidden mt-4" controls>
                             <source id="videoSource" src="#" type="video/mp4">
                         </video>

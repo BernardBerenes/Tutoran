@@ -11,24 +11,31 @@ class CourseController extends Controller
 {
     public function AddCourse(Request $request){
         $request->validate([
-            'title' => 'required',
-            'price' => 'required',
+            'title' => 'required|min:3|max:50',
+            'price' => 'required|min:10000',
             'subject' => 'required',
             'grade' => 'required',
             'curriculum' => 'required',
-            'detail' => 'required',
-            'poster' => 'required|max:25000|mimes:png,jpg,jpeg,svg',
-            'video' => 'required'
+            'detail' => 'required|min:3|max:200',
+            'poster' => 'required|max:25000|mimes:svg,png,jpg,gif',
+            'video' => 'required|mimes:mp4,mov'
         ], [
             'title.required' => '"Judul" tidak boleh kosong',
+            'title.min' => 'Panjang "Judul" minimal 3 dan maksimal 50 huruf',
+            'title.max' => 'Panjang "Judul" minimal 3 dan maksimal 50 huruf',
             'price.required' => '"Harga" tidak boleh kosong',
+            'price.min' => '"Harga" minimal Rp 10.000,-',
             'subject.required' => '"Mata Pelajaran" tidak boleh kosong',
             'grade.required' => '"Jenjang" tidak boleh kosong',
             'curriculum.required' => '"Kurikulum" tidak boleh kosong)',
-            'detail.required' => '"Detail" tidak boleh kosong', 
+            'detail.required' => '"Detail" tidak boleh kosong',
+            'detail.min' => 'Panjang "Detail" minimal 3 dan maksimal 50 huruf',
+            'detail.max' => 'Panjang "Detail" minimal 3 dan maksimal 50 huruf',
             'poster.required' => '"Gambar Poster" tidak boleh kosong',
             'video.required' => '"Video" tidak boleh kosong'
         ]);
+
+        dd($request->curriculum);
 
         $lastId = Course::latest()->value('id') + 1;
         $extension = $request->file('poster')->getClientOriginalExtension();

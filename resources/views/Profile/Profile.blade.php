@@ -45,6 +45,9 @@
                     <div class="flex flex-col">
                         <label class="font-medium text-2xl">Nomor HP</label>
                         <input type="text" class="rounded-lg h-12 border-gray-400 shadow-lg" name="phoneNumber" value="{{ $user->PhoneNumber }}" >
+                        @error('phoneNumber')
+                            <p class="text-red-500">{{ $message }}</p>
+                        @enderror
                     </div>
                     @if (auth('tutor')->check())
                         <div class="flex flex-col">

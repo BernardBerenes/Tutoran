@@ -35,7 +35,7 @@
                     <div class="sm:col-span-2">
                         <label for="mataPelajaran" class="block mb-2 text-2xl font-medium text-black ">Mata Pelajaran</label>
                         <select id="mataPelajaran" class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 shadow-md" name="subject">
-                            <option>Pilih Mata Pelajaran</option>
+                            <option value="">Pilih Mata Pelajaran</option>
                             @foreach ($subject as $s)
                                 <option value="{{ $s->SubjectName }}">{{ $s->SubjectName }}</option>
                             @endforeach
@@ -47,7 +47,7 @@
                     <div class="sm:col-span-2">
                         <label for="jenjang" class="block mb-2 text-2xl font-medium text-black ">Jenjang</label>
                         <select id="jenjang" class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 shadow-md" name="grade">
-                            <option selected>Pilih Jenjang</option>
+                            <option value="">Pilih Jenjang</option>
                             <option value="SD">SD</option>
                             <option value="SMP">SMP</option>
                             <option value="SMA">SMA</option>
@@ -59,7 +59,7 @@
                     <div class="sm:col-span-2">
                         <label class="block mb-2 text-2xl font-medium text-black ">Kurikulum</label>
                         <select class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 shadow-md" name="curriculum">
-                            <option selected>Pilih Kurikulum</option>
+                            <option value="">Pilih Kurikulum</option>
                             <option value="Kurikulum Merdeka">Kurikulum Merdeka</option>
                             <option value="Kurikulum KTSP">Kurikulum Tingkat Satuan Pendidikan (KTSP)</option>
                             <option value="Kurikulum 2013">K-13</option>
@@ -70,7 +70,7 @@
                     </div>
                     <div class="flex flex-col col-span-2">
                         <label for="detailCourse" class="block mb-2 text-2xl font-medium text-black ">Detail</label>
-                        <textarea id="detailCourse" rows="4" class="flex sm:col-span-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full h-[100px] p-2.5 mb-5 resize-none" placeholder="Tulis penjelasan disini" name="detail"></textarea>
+                        <textarea id="detailCourse" rows="4" class="flex sm:col-span-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full h-[100px] p-2.5 resize-none" placeholder="Tulis penjelasan disini" name="detail"></textarea>
                         @error('detail')
                             <p class="text-red-500">{{ $message }}</p>
                         @enderror
@@ -89,6 +89,7 @@
                         <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" aria-describedby="videoCourse_help" id="videoCourse" type="file" name="video">
                         <p class="mt-1 text-sm text-gray-500" id="videoCourse_help">.MP4 or MOV</p>
                         @error('video')
+                            <p class="text-red-500">{{ $message }}</p>
                         @enderror
                         <video id="videoPreview" class="hidden mt-4" controls>
                             <source id="videoSource" src="#" type="video/mp4">

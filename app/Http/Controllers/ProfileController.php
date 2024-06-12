@@ -12,7 +12,12 @@ class ProfileController extends Controller
 {
     public function UpdateProfile(Request $request){
         $request->validate([
-            ''
+            'phoneNumber' => 'required|min:12|max:13|numeric'
+        ], [
+            'phoneNumber.required' => '"Nomor HP" tidak boleh kosong',
+            'phoneNumber.min' => 'Panjang "Nomor HP" minimal 12 dan maksimal 13 angka',
+            'phoneNumber.max' => 'Panjang "Nomor HP" minimal 12 dan maksimal 13 angka',
+            'phoneNumber.numeric' => '"Nomor HP" harus berisi angka'
         ]);
 
         if(session('Roles') == 'Student'){

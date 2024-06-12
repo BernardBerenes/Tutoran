@@ -11,14 +11,23 @@ class CourseController extends Controller
 {
     public function AddCourse(Request $request){
         $request->validate([
-            // 'title' => 'required',
-            // 'price' => 'required',
-            // 'subject' => 'required',
-            // 'grade' => 'required',
-            // 'curriculum' => 'required',
-            // 'detail' => 'required',
-            // 'poster' => 'required|max:25000|mimes:png,jpg,jpeg,svg',
-            // 'video' => 'required'
+            'title' => 'required',
+            'price' => 'required',
+            'subject' => 'required',
+            'grade' => 'required',
+            'curriculum' => 'required',
+            'detail' => 'required',
+            'poster' => 'required|max:25000|mimes:png,jpg,jpeg,svg',
+            'video' => 'required'
+        ], [
+            'title.required' => '"Judul" tidak boleh kosong',
+            'price.required' => '"Harga" tidak boleh kosong',
+            'subject.required' => '"Mata Pelajaran" tidak boleh kosong',
+            'grade.required' => '"Jenjang" tidak boleh kosong',
+            'curriculum.required' => '"Kurikulum" tidak boleh kosong)',
+            'detail.required' => '"Detail" tidak boleh kosong', 
+            'poster.required' => '"Gambar Poster" tidak boleh kosong',
+            'video.required' => '"Video" tidak boleh kosong'
         ]);
 
         $lastId = Course::latest()->value('id') + 1;

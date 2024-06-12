@@ -11,6 +11,8 @@ class ForumController extends Controller
     public function AddForumQuestion(Request $request){
         $request->validate([
             'question' => 'required|regex:/(\w+\s){4,}\w+/'
+        ], [
+            'question.regex' => 'Pertanyaan forum minimal 5 kata'
         ]);
 
         if(auth('student')->check()){
@@ -35,9 +37,11 @@ class ForumController extends Controller
     }
 
     public function AddForumAnswer(Request $request, $QuestionID){
-        // $request->validate([
-        //     'answer' => 'required|regex:/(\w+\s){4,}\w+/'
-        // ]);
+        $request->validate([
+            'answer' => 'required'
+        ], [
+            'answer.required' => 'Jawaban tidak boleh kosong' 
+        ]);
 
         if(auth('student')->check()){
             ForumAnswer::create([

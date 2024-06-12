@@ -62,9 +62,9 @@ Route::middleware('student')->group(function(){
     Route::get('/rating-tutor/{TutorID}-{CourseID}', [PageController::class, 'RatingTutorPage'])->name('RatingTutorPage');
     Route::get('/payment/{CourseID}', [PageController::class, 'PaymentPage'])->name('PaymentPage');
     Route::post('/payment/{CourseID}', [CourseController::class, 'Payment'])->name('Payment');
-    Route::get('/membership', [PageController::class, 'MembershipPage'])->name('MembershipPage');
 });
-
+    
+Route::get('/membership', [PageController::class, 'MembershipPage'])->name('MembershipPage');
 Route::get('/subject/sub-topic/{SubjectName}', [PageController::class, 'SubTopicPage'])->name('SubTopicPage');
 Route::get('/subject', [PageController::class, 'SubjectPage'])->name('SubjectPage');
 Route::get('/course-detail/{CourseID}', [PageController::class, 'CourseDetailPage'])->name('CourseDetailPage');

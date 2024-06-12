@@ -26,7 +26,10 @@
             <img src="{{ asset('/storage/Profile Picture/'.session('Roles').'/'.auth(strtolower(session('Roles')))->user()->Image) }}" class="object-cover w-[60px] h-[60px] rounded-full" alt="">
             <form method="POST" action="{{ route('AddForumAnswer', ['QuestionID'=>$forumQuestion->id]) }}" class="flex flex-col w-full">
                 @csrf
-                <textarea id="popup" rows="4" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full h-[100px] p-2.5 mx-4 mb-4 resize-none" placeholder="Tulis jawabanmu disini" name="answer"></textarea>    
+                <textarea id="popup" rows="4" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full h-[100px] p-2.5 mx-4 mb-4 resize-none" placeholder="Tulis jawabanmu disini" name="answer"></textarea>
+                @error('answer')
+                    <p>{{ $message }}</p> 
+                @enderror
                 <div class="flex justify-end">
                     <button id="addForumBtn" class="w-[150px] h-[50px] bg-[#65668B] hover:bg-[#7981A2] font-semibold rounded-2xl text-[20px] text-white">Tambahkan</button>
                 </div>   

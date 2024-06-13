@@ -63,11 +63,12 @@
                 <p class="text-4xl font-medium">Rp {{ number_format($price, 2, ',', '.') }}</p>
                 <a href="{{ route('PaymentPage', ['CourseID'=>$ids]) }}" class="mt-5 inline-flex w-80 justify-center items-center px-3 py-3 text-xl font-bold text-center text-white bg-[#65668B] rounded-lg hover:bg-[#7981A2]">Checkout</a>
                 <hr class="h-px my-8 w-[412px] bg-gray-200 border-0 bg-gray-700">
-                <form class="">
-                    <label for="" class="text-2xl font-medium">Kupon Promo</label>
+                <form method="POST" action="">
+                    @csrf
+                    <label class="text-2xl font-medium">Kupon Promo</label>
                     <div class="flex">
-                        <input type="text" id="" class="rounded-l-lg" placeholder="Masukkan Kupon">
-                        <button class="inline-flex items-center px-3 text-xl text-white bg-[#65668B] border border-gray-300 rounded-r-lg hover:bg-[#7981A2]">Terapkan</button>
+                        <input type="text" class="rounded-l-lg" placeholder="Masukkan Kupon">
+                        <button type="submit" class="inline-flex items-center px-3 text-xl text-white bg-[#65668B] border border-gray-300 rounded-r-lg hover:bg-[#7981A2]">Terapkan</button>
                     </div>
                 </form>
                 <div class="ml-auto">

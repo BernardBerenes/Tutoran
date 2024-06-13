@@ -78,3 +78,5 @@ Route::get('/job-vacancy', [PageController::class, 'JobVacancyPage'])->name('Job
 Route::patch('/update-student-rating/{StudentID}', [CourseController::class, 'UpdateStudentRating'])->name('UpdateStudentRating');
 Route::patch('/update-tutor-rating/{CourseID}', [CourseController::class, 'UpdateTutorRating'])->name('UpdateTutorRating');
 Route::patch('/update-video-conference/{StudentID}/{CourseID}', [CourseController::class, 'UpdateConferenceTime'])->name('UpdateConferenceTime');
+
+Route::get('/course-detail-payment/download/{File}', [CourseController::class, 'DownloadFile'])->name('DownloadFile');

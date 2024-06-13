@@ -115,16 +115,26 @@ class CourseController extends Controller
     }
 
     public function UpdateConferenceTime($StudentID, $CourseID){
-        DB::table('student_courses')
+        $course = DB::table('student_courses')
         ->where('StudentID', 'LIKE', $StudentID)
         ->where('CourseID', 'LIKE', $CourseID)
         ->whereNull('VideoConferenceTime')
-        ->update(
-            [
-                'VideoConferenceTime' => now()
-            ]
-        );
+        ->first();
+
+        if($course){
+            DB::table('student_courses')
+            ->where('id', $course->id)
+            ->update(['VideoConferenceTime' => now()]);
+        }
 
         return back();
+    }
+
+    public function DownloadFile($File){
+        $path = storage_path('app/public/Poster/'.$File);
+        if(!file_exists($path)){
+            return back();
+        }
+        return response()->download($path);
     }
 }

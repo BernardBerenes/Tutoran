@@ -19,7 +19,7 @@ class PageController extends Controller
             ->join('courses', 'student_courses.CourseID', '=', 'courses.id')
             ->join('tutors', 'courses.TutorID', '=', 'tutors.id')
             ->where('student_courses.StudentID', 'LIKE', auth('student')->user()->id)
-            ->where(DB::raw('DATE_ADD(VideoConferenceTime, INTERVAL 1 HOUR)'), '<', now())
+            ->where(DB::raw('DATE_ADD(VideoConferenceTime, INTERVAL 1 MINUTE)'), '<', now())
             ->first(['courses.TutorID', 'student_courses.CourseID']);
 
             return $temp;
@@ -77,13 +77,14 @@ class PageController extends Controller
     public function SubTopicPage($SubjectName){
         $subjectID = Subject::where('SubjectName', $SubjectName)
         ->pluck('id');
+
         if(auth('student')->check()){
             $student = Student::findOrFail(auth('student')->user()->id);
             $cart = $student->Course()->pluck('CourseID');
             if($subjectID == null) {
                 $course = Course::all()->whereNotIn('id', $cart);
             } else{
-                $course = Course::all()->whereNotIn('id', $cart)->where('SubjectID', $subjectID);
+                $course = Course::whereNotIn('id', $cart)->get();
             }
         } else{
             $course = Course::whereIn('SubjectID', $subjectID)->get();

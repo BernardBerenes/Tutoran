@@ -31,8 +31,11 @@
                           </svg>
                         </div>
                     </div>
-                    <div class="flex items-center">
-                        <input type="number" class="w-[186px] h-[33px] ml-4 p-4 text-gray-900 border border-gray-300 rounded-full bg-[#D9D9D9] focus:ring-blue-500 focus:border-blue-500 items-center" placeholder="Masukkan Angka" name="rating_1">
+                    <div class="flex items-center flex-row">
+                        <input type="number" class="w-[186px] h-[33px] ml-4 p-4 text-gray-900 border border-gray-300 rounded-full bg-[#D9D9D9] focus:ring-blue-500 focus:border-blue-500 items-center" placeholder="Masukkan Angka" name="rating_1" value="{{ old('rating_1')}}">
+                        @error('rating_1')
+                            <p class="text-red-500">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
                 <div class="grid grid-cols-2">
@@ -45,7 +48,10 @@
                         </div>
                     </div>
                     <div class="flex items-center">
-                        <input type="number" class="w-[186px] h-[33px] ml-4 p-4 text-gray-900 border border-gray-300 rounded-full bg-[#D9D9D9] focus:ring-blue-500 focus:border-blue-500 items-center" placeholder="Masukkan Angka" name="rating_2">
+                        <input type="number" class="w-[186px] h-[33px] ml-4 p-4 text-gray-900 border border-gray-300 rounded-full bg-[#D9D9D9] focus:ring-blue-500 focus:border-blue-500 items-center" placeholder="Masukkan Angka" name="rating_2" value="{{ old('rating_2')}}">
+                        @error('rating_2')
+                            <p class="text-red-500">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
                 <div class="grid grid-cols-2">
@@ -58,7 +64,10 @@
                         </div>
                     </div>
                     <div class="flex items-center">
-                        <input type="number" class="w-[186px] h-[33px] ml-4 p-4 text-gray-900 border border-gray-300 rounded-full bg-[#D9D9D9] focus:ring-blue-500 focus:border-blue-500 items-center" placeholder="Masukkan Angka" name="rating_3">
+                        <input type="number" class="w-[186px] h-[33px] ml-4 p-4 text-gray-900 border border-gray-300 rounded-full bg-[#D9D9D9] focus:ring-blue-500 focus:border-blue-500 items-center" placeholder="Masukkan Angka" name="rating_3" value="{{ old('rating_3')}}">
+                        @error('rating_3')
+                            <p class="text-red-500">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
                 <div class="grid grid-cols-2">
@@ -71,7 +80,10 @@
                         </div>
                     </div>
                     <div class="flex items-center">
-                        <input type="number" class="w-[186px] h-[33px] ml-4 p-4 text-gray-900 border border-gray-300 rounded-full bg-[#D9D9D9] focus:ring-blue-500 focus:border-blue-500 items-center" placeholder="Masukkan Angka" name="rating_4">
+                        <input type="number" class="w-[186px] h-[33px] ml-4 p-4 text-gray-900 border border-gray-300 rounded-full bg-[#D9D9D9] focus:ring-blue-500 focus:border-blue-500 items-center" placeholder="Masukkan Angka" name="rating_4" value="{{ old('rating_4')}}">
+                        @error('rating_4')
+                            <p class="text-red-500">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
                 <button class="w-[80%] text-center items-center py-2 text-[25px] mt-8 font-medium text-white bg-[#65668B] border border-gray-300 rounded-full hover:bg-[#7981A2]">Terapkan</button>

@@ -5,6 +5,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RatingController;
 use Illuminate\Support\Facades\Route;
 use Psy\CodeCleaner\FunctionContextPass;
 
@@ -75,8 +76,8 @@ Route::get('/leaderboard', [PageController::class, 'LeaderboardPage'])->name('Le
 Route::get('/faq', [PageController::class, 'FAQPage'])->name('FAQPage');
 Route::get('/job-vacancy', [PageController::class, 'JobVacancyPage'])->name('JobVacancyPage');
 
-Route::patch('/update-student-rating/{StudentID}', [CourseController::class, 'UpdateStudentRating'])->name('UpdateStudentRating');
-Route::patch('/update-tutor-rating/{CourseID}', [CourseController::class, 'UpdateTutorRating'])->name('UpdateTutorRating');
+Route::patch('/update-student-rating/{StudentID}', [RatingController::class, 'UpdateStudentRating'])->name('UpdateStudentRating');
+Route::patch('/update-tutor-rating/{CourseID}', [RatingController::class, 'UpdateTutorRating'])->name('UpdateTutorRating');
 Route::patch('/update-video-conference/{StudentID}/{CourseID}', [CourseController::class, 'UpdateConferenceTime'])->name('UpdateConferenceTime');
 
 Route::get('/course-detail-payment/download/{File}', [CourseController::class, 'DownloadFile'])->name('DownloadFile');

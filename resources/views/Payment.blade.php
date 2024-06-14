@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('Style/app.css') }}">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Tutoran</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -90,6 +90,16 @@
                         <p>Total</p>
                         <p class="text-[#65668B]">Rp {{ number_format($price, 2, ',', '.') }}</p>
                     </div>
+                    <form action="" class="mx-auto flex justify-between">
+                        <p class="font-semibold text-[23px]">Kupon</p>
+                        <div class="flex flex-col">
+                            <div class="flex">
+                                <input type="text" id="" class="rounded-l-lg border border-gray-400 p-2" placeholder="Masukkan Kupon">
+                                <button class="inline-flex items-center px-3 text-xl text-white bg-[#65668B] border border-gray-300 rounded-r-lg hover:bg-[#7981A2]"><i class="bi bi-check-lg"></i></button>
+                            </div>
+                            <p>Minimum Spend Belum Terpenuhi</p>
+                        </div>
+                    </form>
                 </div>   
                 <div class="flex flex-row justify-between p-8">
                     <p class="flex items-center justify-center text-[19px]">PEMBAYARAN DENGAN</p>

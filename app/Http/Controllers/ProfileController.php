@@ -41,7 +41,11 @@ class ProfileController extends Controller
     public function ChangePassword(Request $request){
         $request->validate([
             'currentPassword' => 'required',
-            'newPassword' => 'required'
+            'newPassword' => 'required|min:8'
+        ], [
+            'currentPassword' => '"Kata Sandi Sekarang" harus diisi',
+            'newPassword.required' => '"Kata Sandi Baru" harus diisi',
+            'newPassword.min' => 'Panjang minimal "Kata Sandi Baru" 8 huruf'
         ]);
 
         if(auth('student')->check()){

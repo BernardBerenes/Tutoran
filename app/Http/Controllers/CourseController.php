@@ -91,8 +91,6 @@ class CourseController extends Controller
         return redirect(route('MyCourseListPage'));
     }
 
-    
-
     public function UpdateConferenceTime($StudentID, $CourseID){
         $course = DB::table('student_courses')
         ->where('StudentID', 'LIKE', $StudentID)

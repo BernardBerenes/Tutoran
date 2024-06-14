@@ -65,7 +65,6 @@ Route::middleware('student')->group(function(){
     Route::post('/payment/{CourseID}', [CourseController::class, 'Payment'])->name('Payment');
 });
     
-Route::get('/membership', [PageController::class, 'MembershipPage'])->name('MembershipPage');
 Route::get('/subject/sub-topic/{SubjectName}', [PageController::class, 'SubTopicPage'])->name('SubTopicPage');
 Route::get('/subject', [PageController::class, 'SubjectPage'])->name('SubjectPage');
 Route::get('/course-detail/{CourseID}', [PageController::class, 'CourseDetailPage'])->name('CourseDetailPage');

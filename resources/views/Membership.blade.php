@@ -22,12 +22,12 @@
                         </svg>
                     </div>
                     <input type="search" id="search-course" class="block w-full p-4 ps-10 text-lg text-gray-900 border border-gray-300 rounded-full bg-[#D9D9D9]focus:ring-blue-500 focus:border-blue-500" placeholder="Cari Membership"/>
-                    <button type="submit" class="absolute end-2.5 bottom-2.5 px-5 py-2 ml-5 bg-[#65668B] hover:bg-[#7981A2] font-bold rounded-full text-white">Cari</button>
+                    <button type="submit" class="absolute end-2.5 bottom-2.5 px-5 py-2 ml-5 bg-[#65668B] hover:bg-[#7981A2] font-bold rounded-full text-white">Search</button>
                 </div>
             </form>  
             <div class="grid gap-4 grid-cols-2 gap-8 mt-12">
                 <a href="$" class="flex flex-col border border-gray-300 shadow-lg">
-                    <img src="img/membership.png" class="object-cover">
+                    <img src="{{ asset('Assets/FAQ.jpeg') }}" class="object-cover">
                     <div class="flex flex-col">
                         <div class="flex flex-col my-4">
                             <h3 class="text-[20px] font-medium text-center">Membership Indonesia Pintar</h3>

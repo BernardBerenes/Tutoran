@@ -76,7 +76,7 @@
                 <div class="p-8">
                     <div class="flex justify-between font-medium text-[23px]">
                         <p>Nomor Pembayaran</p>
-                        <p>{{ $invoiceNumber }}</p>
+                        <p>{{ session('invoiceNumber') }}</p>
                     </div>
                     <div class="flex justify-between font-medium text-[23px] mt-2">
                         <p>Created</p>
@@ -88,22 +88,25 @@
                     </div>
                     <div class="flex justify-between font-semibold text-[23px] mt-2 mb-8">
                         <p>Total</p>
-                        <p class="text-[#65668B]">Rp {{ number_format($price, 2, ',', '.') }}</p>
+                        <p class="text-[#65668B]">Rp {{ number_format(session('price'), 2, ',', '.') }}</p>
                     </div>
-                    <form action="" class="mx-auto flex justify-between">
+                    <form method="POST" action="{{ route('ApplyCoupon') }}" class="mx-auto flex justify-between">
+                        @csrf
                         <p class="font-semibold text-[23px]">Kupon</p>
                         <div class="flex flex-col">
                             <div class="flex">
-                                <input type="text" id="" class="rounded-l-lg border border-gray-400 p-2" placeholder="Masukkan Kupon">
+                                <input type="text" class="rounded-l-lg border border-gray-400 p-2" placeholder="Masukkan Kupon" value="{{ session('usedCoupon') }}" name="coupon">
                                 <button class="inline-flex items-center px-3 text-xl text-white bg-[#65668B] border border-gray-300 rounded-r-lg hover:bg-[#7981A2]"><i class="bi bi-check-lg"></i></button>
                             </div>
-                            <p>Minimum Spend Belum Terpenuhi</p>
+                            @error('coupon')
+                                <p class="text-red-500">{{ $message }}</p>
+                            @enderror
                         </div>
                     </form>
                 </div>   
                 <div class="flex flex-row justify-between p-8">
                     <p class="flex items-center justify-center text-[19px]">PEMBAYARAN DENGAN</p>
-                    <img src="{{ asset('Assets/img/Logo_Tutoran.png') }}" id="selectedPayment" alt="" class="w-[180px] h-[70px]">
+                    <img src="{{ asset('Assets/img/Logo_Tutoran.png') }}" id="selectedPayment" class="w-[180px] h-[70px]">
                 </div>
                 <form method="POST" action="{{ route('Payment', ['CourseID'=>$ids]) }}" class="w-full flex items-center justify-center">
                     @csrf

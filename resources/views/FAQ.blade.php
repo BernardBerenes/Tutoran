@@ -27,7 +27,7 @@
         <div class="text-center">
             <h1 class="font-bold text-[100px]">FAQs</h1>
         </div>
-        <div class="">
+        <div>
             <div class="mx-auto max-w-[90rem] mt-8 px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-row gap-24 justify-center max-lg:max-w-2xl mx-auto max-w-full">
                     <div class="w-full lg:w-1/2">

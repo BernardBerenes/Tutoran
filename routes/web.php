@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthenthicationController;
+use App\Http\Controllers\CouponController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\PageController;
@@ -80,3 +81,5 @@ Route::patch('/update-tutor-rating/{CourseID}', [RatingController::class, 'Updat
 Route::patch('/update-video-conference/{StudentID}/{CourseID}', [CourseController::class, 'UpdateConferenceTime'])->name('UpdateConferenceTime');
 
 Route::get('/course-detail-payment/download/{File}', [CourseController::class, 'DownloadFile'])->name('DownloadFile');
+
+Route::post('/apply-coupon', [CouponController::class, 'ApplyCoupon'])->name('ApplyCoupon');

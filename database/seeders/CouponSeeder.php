@@ -16,10 +16,14 @@ class CouponSeeder extends Seeder
         DB::table('coupons')->insert([
             [
                 'CouponName' => 'DICKYGANTENG',
+                'MinimumSpend' => 50000,
+                'Discount' => 10,
                 'EndDate' => now()
             ],
             [
                 'CouponName' => 'DICKYJELEK',
+                'MinimumSpend' =>null,
+                'Discount' => 10000,
                 'EndDate' => now()
             ]
         ]);

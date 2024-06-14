@@ -148,8 +148,13 @@ class PageController extends Controller
         $course = Course::find($CourseID);
         $price = $course->sum('Price');
         $CourseID = implode('-', $CourseID);
+        session()->put('realPrice', $price);
+        if(!session('invoiceNumber')){
+            session()->put('invoiceNumber', $invoiceNumber);
+        };
+        if(!session('usedCoupon')) session()->put('price', $price);
 
-        return view('Payment')->with('currentPage', '')->with('ids', $CourseID)->with('price', $price)->with('invoiceNumber', $invoiceNumber);
+        return view('Payment')->with('currentPage', '')->with('ids', $CourseID)->with('invoiceNumber', $invoiceNumber);
     }
 
     public function MembershipPage(){

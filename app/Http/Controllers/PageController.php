@@ -81,10 +81,12 @@ class PageController extends Controller
         if(auth('student')->check()){
             $student = Student::findOrFail(auth('student')->user()->id);
             $cart = $student->Course()->pluck('CourseID');
-            if($subjectID == null) {
+            if($subjectID->isEmpty()) {
                 $course = Course::all()->whereNotIn('id', $cart);
             } else{
-                $course = Course::whereNotIn('id', $cart)->get();
+                $course = Course::whereNotIn('id', $cart)
+                ->whereIn('SubjectID', $subjectID)
+                ->get();
             }
         } else{
             $course = Course::whereIn('SubjectID', $subjectID)->get();
@@ -159,6 +161,10 @@ class PageController extends Controller
 
     public function MembershipPage(){
         return view('Membership')->with('currentPage', '');
+    }
+
+    public function MembershipDetailPage(){
+        return view('MembershipDetail')->with('currentPage', '');
     }
 
     public function RatingTutorPage($TutorID, $CourseID){

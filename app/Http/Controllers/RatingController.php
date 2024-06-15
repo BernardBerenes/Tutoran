@@ -11,6 +11,7 @@ class RatingController extends Controller
         DB::table('student_courses')
         ->where('StudentID', 'LIKE', $StudentID)
         ->where('CourseID', 'LIKE', $request->CourseID)
+        ->whereNull('RatingStudent')
         ->update([
             'RatingStudent' => $request->stars
         ]);

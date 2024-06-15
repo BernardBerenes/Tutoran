@@ -31,6 +31,7 @@ Route::middleware('guest')->group(function(){
     Route::post('/login', [AuthenthicationController::class, 'Login'])->name('Login');
     Route::get('/membership', [PageController::class, 'MembershipPage'])->name('MembershipPage');
 });
+Route::get('/membership-detail', [PageController::class, 'MembershipDetailPage'])->name('MembershipDetailPage');
 
 Route::middleware('customer')->group(function(){
     Route::post('/logout', [AuthenthicationController::class, 'Logout'])->name('Logout');

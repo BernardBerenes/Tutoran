@@ -15,9 +15,9 @@
     <div class="flex flex-row h-screen ">
         @include('Component.ProfileMenu')
         <div class="w-full flex justify-center">
-            <div class="w-1/2 h-screen mt-12 flex flex-col">
+            <div class="w-1/2 mt-12 flex flex-col">
                 <h1 class="font-medium text-4xl mb-7">Profil</h1>
-                <form method="POST" action="{{ route('UpdateProfile') }}" class="flex flex-col gap-y-5">
+                <form method="POST" action="{{ route('UpdateProfile') }}" class="flex flex-col gap-y-3">
                     @method('PATCH')
                     @csrf
                     <div class="flex flex-col">

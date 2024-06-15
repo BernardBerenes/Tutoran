@@ -27,6 +27,7 @@
                         <button type="submit" class="absolute end-2.5 bottom-2.5 px-5 py-2 ml-5 bg-[#65668B] hover:bg-[#7981A2] font-bold rounded-full text-white">Search</button>
                     </div>
                 </form>
+                {{-- <img src="{{ asset('Assets/empty-img/empty-not-found.png')}}" class="object-cover mx-auto h-96 mt-28"> --}}
             @endif
             <div class="grid gap-4 grid-rows-3 gap-6 mt-12">
                 @foreach ($course as $c)

@@ -12,7 +12,7 @@
 <body>
     @include('Component.Navbar')
     <div class="min-h-[90vh] flex flex-col justify-between">
-        <div class="pt-8 px-4 mx-72 lg:pt-16">
+        <div class="pt-8 px-4 mx-96 lg:pt-16">
             @if (!$course->isEmpty())
                 <form method="GET" action="{{ route('MyCourseListPage') }}">   
                     <label for="search-course" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
@@ -31,7 +31,7 @@
                 @if ($course->isEmpty())
                     <img src="{{ asset('Assets/empty-img/empty-my-course-list.png') }}" class="w-1/4 mx-auto mt-32" alt="empty-cart">
                 @endif
-
+                {{-- <img src="{{ asset('Assets/empty-img/empty-not-found.png')}}" class="object-cover mx-auto h-96 my-10"> --}}
                 @foreach ($course as $c)
                     <a href="{{ route('CourseDetailPaymentPage', ['CourseID'=>$c->id]) }}" class="flex flex-row border border-gray-300 shadow-md hover:bg-gray-200">
                         <img src="{{ asset('/storage/Poster/'.$c->Poster) }}" class="object-cover w-[120px] h-[120px] m-4" alt="">

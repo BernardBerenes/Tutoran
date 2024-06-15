@@ -84,7 +84,7 @@
                 @endforeach
                 
                 @if ($question->isEmpty())
-                    <img src="{{ asset('Assets/empty-img/empty-forum.png') }}" class="w-1/4 mx-auto col-span-2" alt="empty-cart">
+                    <img src="{{ asset('Assets/empty-img/empty-forum.png') }}" class="w-1/3 mx-auto col-span-2" alt="empty-cart">
                 @endif
             </div>
         </div>

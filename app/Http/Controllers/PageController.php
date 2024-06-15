@@ -236,7 +236,12 @@ class PageController extends Controller
     }
 
     public function HistoryPage(){
-        return view('Profile.History')->with('currentPage', '');
+        $course = DB::table('student_courses')
+        ->join('courses', 'student_courses.CourseID', '=', 'courses.id')
+        ->where('StudentID', 'LIKE', auth('student')->user()->id)
+        ->get();
+
+        return view('Profile.History')->with('currentPage', 'History')->with('history', $course);
     }
 
     public function MyCourseListPage(Request $request){

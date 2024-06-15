@@ -26,7 +26,7 @@
     <div class="w-full text-2xl font-regular mt-4">
         <a href="{{ route('ProfilePage') }}" class="pl-4 h-14 flex items-center border border-y-gray-300 hover:bg-gray-300 transition duration-150 {{ $currentPage === 'Profile' ? 'bg-gray-200' : ''}}">Profil</a>
         @if(auth('student')->check())
-            <a href="{{ route('HistoryPage') }}" class="pl-4 h-14 flex items-center border border-y-gray-300 hover:bg-gray-300 transition duration-150">Riwayat Pembelian</a>
+            <a href="{{ route('HistoryPage') }}" class="pl-4 h-14 flex items-center border border-y-gray-300 hover:bg-gray-300 transition duration-150 {{ $currentPage === 'History' ? 'bg-gray-200' : ''}}">Riwayat Pembelian</a>
         @endif
         <a href="{{ route('StudentReportPage') }}" class="pl-4 h-14 flex items-center border border-y-gray-300 hover:bg-gray-300 transition duration-150 {{ $currentPage === 'Report' ? 'bg-gray-200' : ''}}">Laporan Siswa</a>
         <a href="{{ route('ChangePasswordPage') }}" class="pl-4 h-14 flex items-center border border-y-gray-300 hover:bg-gray-300 transition duration-150 {{ $currentPage === 'ChangePassword' ? 'bg-gray-200' : ''}}">Ubah Kata Sandi</a>

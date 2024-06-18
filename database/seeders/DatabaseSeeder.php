@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CourseSeeder::class);
         $this->call(StudentCourseSeeder::class);
         $this->call(CouponSeeder::class);
+        $this->call(MembershipSeeder::class);
     }
 }

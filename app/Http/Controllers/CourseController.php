@@ -80,6 +80,10 @@ class CourseController extends Controller
     }
 
     public function Payment($CourseID){
+        session()->put('price', '');
+        session()->put('realPrice', '');
+        session()->put('invoiceNumber', '');
+        session()->put('usedCoupon', '');
         $CourseID = explode('-', $CourseID);
         $studentID = auth('student')->user()->id;
         $student = Student::findOrFail($studentID);

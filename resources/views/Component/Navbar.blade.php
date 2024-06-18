@@ -11,6 +11,9 @@
                 <a href="{{ route('MyCourseListPage') }}" class="{{ $currentPage == 'Tutor Course List' ? 'underline underline-offset-[6px]' : '' }} group text-black font-medium transition-all duration-600 ease-in-out"><span class="bg-left-bottom bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out pb-[2px]">Kursus Saya</span></a>
                 <a href="{{ route('ForumDiscussionPage', ['sorting'=>'newest']) }}" class="{{ $currentPage == 'Forum' ? 'underline underline-offset-[6px]' : '' }} group text-black font-medium transition-all duration-600 ease-in-out"><span class="bg-left-bottom bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out pb-[2px]">Forum</span></a>
             @endif
+            @if (auth('student')->check())
+                <a href="{{ route('MembershipPage') }}" class="{{ $currentPage == 'Membership' ? 'underline underline-offset-[6px]' : '' }} group text-black font-medium transition-all duration-600 ease-in-out"><span class="bg-left-bottom bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out pb-[2px]">Membership</span></a>
+            @endif
             @if (auth('tutor')->check())
                 <a href="" class="{{ $currentPage == 'Chat' ? 'underline underline-offset-[6px]' : '' }} group text-black font-medium transition-all duration-600 ease-in-out"><span class="bg-left-bottom bg-gradient-to-r from-black to-black bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out pb-[2px]">Chat</span></a>
             @endif

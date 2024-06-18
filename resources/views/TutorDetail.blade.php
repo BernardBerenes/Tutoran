@@ -33,7 +33,7 @@
             <div class="flex flex-col gap-y-8 overflow-x-hidden overflow-y-auto w-[540px] h-[430px] my-10 pr-4">
                 @foreach ($course as $c)
                     <a href="{{ route('CourseDetailPage', ['CourseID'=>$c->id]) }}" class="grid grid-cols-4 border border-gray-300 shadow-md w-[500px] h-[120px] hover:bg-gray-50">
-                        <img src="{{ asset('/storage/Poster/'.$c->Poster) }}" class="p-4 object-cover w-[120px] h-[120px]" alt="">
+                        <img src="{{ asset('/storage/Poster/Course/'.$c->Poster) }}" class="p-4 object-cover w-[120px] h-[120px]" alt="">
                         <div class="flex flex-col col-span-3 flex flex-col ">
                             <p class="text-2xl font-medium text-black mt-4">{{ $c->Title }}</p>
                             <p class="mb-3 text-base text-black ">{{ $c->Subject->SubjectName }}</p>

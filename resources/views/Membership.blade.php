@@ -26,24 +26,25 @@
                 </div>
             </form>  
             <div class="grid gap-4 grid-cols-2 gap-8 mt-12">
-                <a href="$" class="flex flex-col border border-gray-300 shadow-lg">
-                    <img src="{{ asset('Assets/FAQ.jpeg') }}" class="object-cover">
-                    <div class="flex flex-col">
-                        <div class="flex flex-col my-4">
-                            <h3 class="text-[20px] font-medium text-center">Membership Indonesia Pintar</h3>
-                            <h3 class="text-[20px] font-medium text-center">Membership Indonesia Pintar</h3>
-                        </div>
-                        <div class="flex flex-col justify-between my-4 mx-4">
-                            <div class="flex flex-col">
-                                <p>Mulai: 26/02/2024</p>
-                                <p>Akhir: 26/03/2024</p>
+                @foreach ($membership as $m)
+                    <a href="{{ route('MembershipDetailPage', ['MembershipID'=>$m->id]) }}" class="flex flex-col border border-gray-300 shadow-lg">
+                        <img src="{{ asset('/storage/Poster/Membership/'.$m->Poster) }}" class="object-cover">
+                        <div class="flex flex-col">
+                            <div class="flex flex-col my-4">
+                                <h3 class="text-[20px] font-medium text-center">{{ $m->MembershipName }}</h3>
                             </div>
-                            <div>
-                                <p class="font-medium text-[18px] mt-4 text-right">Rp 199.000,00</p>
+                            <div class="flex flex-col justify-between my-4 mx-4">
+                                <div class="flex flex-col">
+                                    <p>Mulai: {{ date('d/m/Y') }}</p>
+                                    <p>Akhir: {{ date('d/m/Y', strtotime('+1 year')) }}</p>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-[18px] mt-4 text-right">Rp {{ number_format($m->Price, 2, ',', '.') }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                @endforeach
             </div>
         </div>
     </div>

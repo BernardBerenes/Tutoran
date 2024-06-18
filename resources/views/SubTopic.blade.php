@@ -32,7 +32,7 @@
             <div class="grid gap-4 grid-rows-3 gap-6 mt-12">
                 @foreach ($course as $c)
                     <a href="{{ route('CourseDetailPage', ['CourseID'=>$c->id]) }}" class="grid grid-cols-4 border border-gray-300 shadow-md">
-                        <img src="{{ asset('/storage/Poster/'.$c->Poster) }}" class="object-cover w-[235px] h-[216px]" alt="">
+                        <img src="{{ asset('/storage/Poster/Course/'.$c->Poster) }}" class="object-cover w-[235px] h-[216px]" alt="">
                         <div class="grid grid-row-5 col-span-3 flex flex-col p-4">
                             <p class="text-[30px] font-medium text-black">{{ $c->Title }}</p>
                             <p class="mb-3 text-base font-normal text-black ">oleh {{ $c->Tutor->Name }}</p>
@@ -55,7 +55,7 @@
                                 <p class="font-medium text-[18px] text-black">Rp {{ number_format($c->Price, 2, ',', '.') }}</p>
                                 @if (auth('student')->check() || auth()->guest())
                                     <object class="flex justify-center w-32 px-2 py-2 bg-[#65668B] hover:bg-[#7981A2] text-base rounded-full text-white">
-                                        <a href="{{ route('PaymentPage', ['CourseID'=>$c->id]) }}" class="">Beli Sekarang</a>
+                                        <a href="{{ route('PaymentPage', ['Menu'=>'course', 'ItemID'=>$c->id]) }}" class="">Beli Sekarang</a>
                                     </object>
                                 @endif
                             </div>

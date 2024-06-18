@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('MembershipName');
             $table->longText('Description');
+            $table->integer('Discount');
             $table->integer('Price');
             $table->string('Poster');
             $table->timestamps();

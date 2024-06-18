@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthenthicationController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ForumController;
+use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RatingController;
@@ -29,9 +30,10 @@ Route::middleware('guest')->group(function(){
     Route::get('/register', [PageController::class, 'RegisterPage'])->name('RegisterPage');
     Route::post('/register', [AuthenthicationController::class, 'Register'])->name('Register');
     Route::post('/login', [AuthenthicationController::class, 'Login'])->name('Login');
-    Route::get('/membership', [PageController::class, 'MembershipPage'])->name('MembershipPage');
 });
-Route::get('/membership-detail', [PageController::class, 'MembershipDetailPage'])->name('MembershipDetailPage');
+Route::get('/membership', [PageController::class, 'MembershipPage'])->name('MembershipPage');
+Route::get('/membership-detail/{MembershipID}', [PageController::class, 'MembershipDetailPage'])->name('MembershipDetailPage');
+
 
 Route::middleware('customer')->group(function(){
     Route::post('/logout', [AuthenthicationController::class, 'Logout'])->name('Logout');
@@ -63,8 +65,9 @@ Route::middleware('student')->group(function(){
     Route::post('/insert-cart/{CourseID}', [CourseController::class, 'InsertCart'])->name('InsertCart');
     Route::delete('/delete-cart/{CourseID}', [CourseController::class, 'DeleteCart'])->name('DeleteCart');
     Route::get('/rating-tutor/{TutorID}-{CourseID}', [PageController::class, 'RatingTutorPage'])->name('RatingTutorPage');
-    Route::get('/payment/{CourseID}', [PageController::class, 'PaymentPage'])->name('PaymentPage');
-    Route::post('/payment/{CourseID}', [CourseController::class, 'Payment'])->name('Payment');
+    Route::get('/payment/{Menu}/{ItemID}', [PageController::class, 'PaymentPage'])->name('PaymentPage');
+    Route::post('/payment/course/{CourseID}', [CourseController::class, 'Payment'])->name('CoursePayment');
+    Route::post('/payment/membership/{MembershipID}', [MembershipController::class, 'Payment'])->name('MembershipPayment');
 });
     
 Route::get('/subject/sub-topic/{SubjectName}', [PageController::class, 'SubTopicPage'])->name('SubTopicPage');

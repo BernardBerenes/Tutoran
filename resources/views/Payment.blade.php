@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('Style/app.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <title>Tutoran</title>
+    <title>Payment</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         var loadFile = function (event) {
@@ -108,8 +108,9 @@
                     <p class="flex items-center justify-center text-[19px]">PEMBAYARAN DENGAN</p>
                     <img src="{{ asset('Assets/img/Logo_Tutoran.png') }}" id="selectedPayment" class="w-[180px] h-[70px]">
                 </div>
-                <form method="POST" action="{{ route('Payment', ['CourseID'=>$ids]) }}" class="w-full flex items-center justify-center">
+                <form method="POST" action="{{ $menu == 'course' ? route('CoursePayment', ['CourseID'=>$ids]) : route('MembershipPayment', ['MembershipID'=>$ids]) }}" class="w-full flex items-center justify-center">
                     @csrf
+                    <input type="text" class="hidden" value="{{ session('usedCoupon') }}" name="coupon">
                     <button type="submit" class="flex w-[90%] p-2 m-5 items-center justify-center bg-[#65668B] hover:bg-[#7981A2] text-[21px] font-semibold rounded-md text-white">Bayar</button>
                 </form>
             </div>

@@ -42,4 +42,8 @@ class Student extends Model implements Authenticatable
     public function StudentCourse(){
         return $this->belongsToMany(Course::class, 'student_courses', 'StudentID', 'CourseID')->withTimestamps();
     }
+
+    public function StudentMembership(){
+        return $this->belongsToMany(Membership::class, 'student_memberships', 'StudentID', 'MembershipID')->withTimestamps();
+    }
 }

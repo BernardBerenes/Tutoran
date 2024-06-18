@@ -15,7 +15,7 @@
     <div class="my-36 mx-64 px-16 py-8 flex flex-col justify-center shadow-md gap-4">
         <h1 class="text-center font-bold text-[32px] mb-4">{{ $course->Title }}</h1>
         <div class="flex flex-row mx-12 justify-between">
-            <img src="{{ asset('/storage/Poster/'.$course->Poster) }}" class="w-[360px] h-[360px] bg-red-100">
+            <img src="{{ asset('/storage/Poster/Course/'.$course->Poster) }}" class="w-[360px] h-[360px] bg-red-100">
             <div class="flex flex-col gap-8">
                 <h2 class="font-medium text-[25px]">Detail Pembahasan:</h2>
                 <ul class="text-[23px] list-disc list-inside">

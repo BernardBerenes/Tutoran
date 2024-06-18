@@ -20,25 +20,24 @@
                     <img src="{{ asset('Assets/empty-img/empty-history.png')}}" class="object-cover mx-auto h-96 mt-28">
                 @endif
                 <form action="" id="history-filter" class="ml-auto">
-                    <select id="history" class="flex items-center justify-center bg-gray-200 border-none rounded-full p-4 w-[170px] h-[55px] text-base font-light text-[#999999] hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-300">
-                        <option value="Kursus" class="bg-white" selected>Kursus</option>
-                        <option value="Membership" class="bg-white">Membership</option>
+                    <select id="history" class="flex items-center justify-center bg-gray-200 border-none rounded-full p-4 w-[170px] h-[55px] text-base font-light text-[#999999] hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-300" name="menu">
+                        <option value="course" class="bg-white" {{ $menu == 'course' ? 'selected' : '' }}>Kursus</option>
+                        <option value="membership" class="bg-white" {{ $menu == 'membership' ? 'selected' : '' }}>Membership</option>
                     </select>
                 </form>
                 <div class="flex flex-col gap-y-8 overflow-x-hidden overflow-y-auto h-[540px] mt-8 pr-4">
                     @foreach ($history as $item)
                     <div class="flex flex-row border shadow-md">
-                        <img src="{{ asset('/storage/Poster/'.$item->Poster) }}" class="w-[250px] h-[250px] bg-red-100">
+                        <img src="{{ asset('/storage/Poster/'.($menu == 'course' ? 'Course/' : 'Membership/').$item->Poster) }}" class="w-[250px] h-[250px] bg-red-100">
                         <div class="flex flex-col p-4 justify-between ">
                             <div class="min-w-[380px]">
-                                <h2 class="text-[20px] font-medium">{{ $item->Title }}</h2>
-                                <h2 class="text-[20px] font-medium">Membership Indonesia Pintar</h2>
+                                <h2 class="text-[20px] font-medium">{{ $menu == 'course' ? $item->Title : $item->MembershipName }}</h2>
                             </div>
                             <div class="text-base flex flex-col">
                                 <p>Mulai: {{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</p>
                                 <p>Akhir: {{ \Carbon\Carbon::parse($item->created_at)->addYear()->format('d/m/Y') }}
                                 </p>
-                                <p class="text-[18px] font-medium ml-auto">Rp {{ number_format($item->Price, 2, ',', '.') }}</p>
+                                <p class="text-[18px] font-medium ml-96">Rp {{ number_format($item->Price, 2, ',', '.') }}</p>
                             </div>
                         </div>
                     </div>

@@ -144,27 +144,42 @@ class PageController extends Controller
         return view('TutorCourseList')->with('currentPage', 'Tutor Course List')->with('course', $course);
     }
 
-    public function PaymentPage($CourseID){
+    public function PaymentPage($Menu, $ItemID){
         $invoiceNumber = sprintf('%s%010d', "TUT", rand(1, 999999999));
-        $CourseID = explode('-', $CourseID);
-        $course = Course::find($CourseID);
-        $price = $course->sum('Price');
-        $CourseID = implode('-', $CourseID);
+        if($Menu == 'course'){
+            $ItemID = explode('-', $ItemID);
+            $course = Course::find($ItemID);
+            $price = $course->sum('Price');
+            $ItemID = implode('-', $ItemID);
+        } else{
+            $item = DB::table('memberships')
+            ->where('id', 'LIKE', $ItemID)
+            ->first();
+            $price = $item->Price;
+        }
+
         session()->put('realPrice', $price);
         if(!session('invoiceNumber')){
             session()->put('invoiceNumber', $invoiceNumber);
         };
         if(!session('usedCoupon')) session()->put('price', $price);
 
-        return view('Payment')->with('currentPage', '')->with('ids', $CourseID)->with('invoiceNumber', $invoiceNumber);
+        return view('Payment')->with('currentPage', '')->with('ids', $ItemID)->with('invoiceNumber', $invoiceNumber)->with('menu', $Menu);
     }
 
     public function MembershipPage(){
-        return view('Membership')->with('currentPage', '');
+        $membership = DB::table('memberships')
+        ->get();
+
+        return view('Membership')->with('currentPage', 'Membership')->with('membership', $membership);
     }
 
-    public function MembershipDetailPage(){
-        return view('MembershipDetail')->with('currentPage', '');
+    public function MembershipDetailPage($MembershipID){
+        $membership = DB::table('memberships')
+        ->where('id', $MembershipID)
+        ->first();
+
+        return view('MembershipDetail')->with('currentPage', '')->with('membership', $membership);
     }
 
     public function RatingTutorPage($TutorID, $CourseID){
@@ -235,13 +250,20 @@ class PageController extends Controller
         return view('CourseDetailPayment')->with('currentPage', '')->with('course', $course);
     }
 
-    public function HistoryPage(){
-        $course = DB::table('student_courses')
-        ->join('courses', 'student_courses.CourseID', '=', 'courses.id')
-        ->where('StudentID', 'LIKE', auth('student')->user()->id)
-        ->get();
+    public function HistoryPage(Request $request){
+        if($request->menu == 'membership'){
+            $item = DB::table('student_memberships')
+            ->join('memberships', 'student_memberships.MembershipID', '=', 'memberships.id')
+            ->where('StudentID', 'LIKE', auth('student')->user()->id)
+            ->get();
+        } else{
+            $item = DB::table('student_courses')
+            ->join('courses', 'student_courses.CourseID', '=', 'courses.id')
+            ->where('StudentID', 'LIKE', auth('student')->user()->id)
+            ->get();
+        }
 
-        return view('Profile.History')->with('currentPage', 'History')->with('history', $course);
+        return view('Profile.History')->with('currentPage', 'History')->with('history', $item)->with('menu', $request->menu);
     }
 
     public function MyCourseListPage(Request $request){

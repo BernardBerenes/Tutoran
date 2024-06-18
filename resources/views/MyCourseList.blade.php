@@ -34,7 +34,7 @@
                 {{-- <img src="{{ asset('Assets/empty-img/empty-not-found.png')}}" class="object-cover mx-auto h-96 my-10"> --}}
                 @foreach ($course as $c)
                     <a href="{{ route('CourseDetailPaymentPage', ['CourseID'=>$c->id]) }}" class="flex flex-row border border-gray-300 shadow-md hover:bg-gray-200">
-                        <img src="{{ asset('/storage/Poster/'.$c->Poster) }}" class="object-cover w-[120px] h-[120px] m-4" alt="">
+                        <img src="{{ asset('/storage/Poster/Course/'.$c->Poster) }}" class="object-cover w-[120px] h-[120px] m-4" alt="">
                         <div class="flex flex-col w-full m-4">
                             <h2 class="text-[24px] font-medium mt-4">{{ $c->Title }}</h2>
                             <p class="mt-3 text-base font-light">{{ auth('student')->check() ? 'Oleh '.$c->Name : $c->Subject->SubjectName }}</p>
